@@ -9,41 +9,52 @@
 <style>
   :root { --blue: #0000ff; --white: #ffffff; }
   * { box-sizing: border-box; }
-  html, body { margin: 0; min-height: 100%; background: var(--white); }
-  body { font-family: "Courier New", Courier, monospace; color: var(--blue); }
+  html, body { margin: 0; height: 100%; background: var(--white); }
+  body { font-family: "Courier New", Courier, monospace; color: var(--blue); overflow: hidden; }
   button, input, select { font: inherit; }
   img { max-width: 100%; display: block; }
   a { color: inherit; }
+  a:visited { color: inherit; }
 
-  .page { min-height: 100vh; display: flex; align-items: center; padding: 48px 20px; }
-  .layout {
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    text-align: center;
+  .stage {
+    height: 100vh; width: 100vw; background: var(--white);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
   }
 
-  .book-link { display: block; width: min(400px, 85%); flex: none; }
+  .layout {
+    width: 1120px;
+    display: grid;
+    grid-template-columns: 320px 1fr 240px;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "book badge action"
+      "book content action";
+    column-gap: 40px;
+    row-gap: 22px;
+    align-items: center;
+    padding: 40px;
+    background: var(--white);
+    flex: none;
+  }
 
-  .content { max-width: 520px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .badge-area { grid-area: badge; display: flex; justify-content: center; }
+  .book-link { grid-area: book; display: block; width: 100%; align-self: center; }
+  .content { grid-area: content; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+  .action { grid-area: action; display: flex; flex-direction: column; align-items: center; gap: 26px; justify-self: center; }
+
   .badge {
     width: 84px; height: 84px; border-radius: 50%; background: var(--blue); color: white;
-    display: grid; place-items: center; font-weight: 700; line-height: 1.15; font-size: 17px;
+    display: grid; place-items: center; font-weight: 700; line-height: 1.15; font-size: 17px; flex: none;
   }
-  .kicker { margin: 0; font-weight: 700; font-size: 13px; letter-spacing: .12em; }
-  h1 { margin: 0; font-size: clamp(32px, 5.2vw, 46px); line-height: 1.05; text-transform: uppercase; }
-  .subtitle { margin: 0; font-weight: 700; font-size: 19px; }
-  .body-text { margin: 0; line-height: 1.6; font-size: 15px; }
-  .event-heading { margin: 6px 0 0; font-weight: 700; font-size: 16px; }
-  .event-info { margin: 0; line-height: 1.6; font-size: 15px; }
-  .signature { margin: 6px 0 0; line-height: 1.6; font-size: 15px; }
+  .kicker { margin: 0; font-weight: 700; font-size: 13px; letter-spacing: .12em; white-space: nowrap; }
+  h1 { margin: 0; font-size: 42px; line-height: 1.05; text-transform: uppercase; white-space: nowrap; }
+  .subtitle { margin: 0; font-weight: 700; font-size: 19px; white-space: nowrap; }
+  .body-text { margin: 0; line-height: 1.6; font-size: 15px; white-space: nowrap; }
+  .event-heading { margin: 6px 0 0; font-weight: 700; font-size: 16px; white-space: nowrap; }
+  .event-info { margin: 0; line-height: 1.6; font-size: 15px; white-space: nowrap; }
+  .signature { margin: 6px 0 0; line-height: 1.6; font-size: 15px; white-space: nowrap; }
   .momenta-link { width: 150px; margin-top: 4px; }
 
-  .action { display: flex; flex-direction: column; align-items: center; gap: 28px; }
   .bear-button {
     position: relative; border: 0; background: none; padding: 96px 0 0; margin: 0;
     cursor: pointer; width: 210px; display: block;
@@ -53,7 +64,7 @@
     position: absolute; top: 0; left: 50%; transform: translateX(-54%);
     width: 190px; pointer-events: none;
   }
-  .speech-bubble text { font-family: "Courier New", Courier, monospace; font-weight: 700; }
+  .speech-bubble text { font-family: "Courier New", Courier, monospace; font-weight: 700; text-anchor: middle; }
 
   .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .countdown-unit { display: flex; flex-direction: column; align-items: center; gap: 6px; }
@@ -63,16 +74,23 @@
   }
   .countdown-unit strong { font-size: 12px; font-weight: 700; white-space: nowrap; }
 
-  @media (min-width: 900px) {
-    .layout { flex-direction: row; align-items: center; justify-content: center; text-align: left; gap: 48px; }
-    .content { order: 0; text-align: center; }
-    .book-link { order: -1; width: 340px; }
-    .action { order: 1; }
+  body.is-tall .layout {
+    width: 400px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "badge" "book" "content" "action";
+    row-gap: 26px;
+    padding: 32px 20px;
   }
+  body.is-tall .book-link { width: 260px; margin: 0 auto; }
+  body.is-tall .action { justify-self: center; }
+  body.is-tall h1 { font-size: 34px; }
+  body.is-tall .body-text, body.is-tall .event-info, body.is-tall .signature { white-space: normal; }
+  body.is-tall .kicker { white-space: normal; text-align: center; }
 
   .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); }
   .modal-backdrop.hidden { display: none; }
-  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); text-align: left; }
+  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); text-align: left; font-size: 16px; }
   .close-button { position: absolute; top: 12px; right: 16px; width: 38px; height: 38px; border: 0; background: transparent; color: var(--blue); font-size: 32px; cursor: pointer; }
   .system-label { margin: 0 0 12px; font-weight: 700; font-size: 14px; }
   .rsvp-modal h2 { margin: 0 0 12px; font-size: clamp(34px, 8vw, 52px); line-height: .95; text-transform: uppercase; }
@@ -100,15 +118,16 @@
 </head>
 <body>
 
-<main class="page">
-  <div class="layout">
+<main class="stage">
+  <div class="layout" data-layout>
+
+    <div class="badge-area"><span class="badge">0-5<br>År</span></div>
 
     <a class="book-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn hos Bog &amp; idé">
       <img src="images/book.png" alt="Bogomslag: Brugermanual til dit barn">
     </a>
 
     <div class="content">
-      <span class="badge">0-5<br>År</span>
       <p class="kicker">SÅDAN SIKRER DU DEN BEDSTE START PÅ LIVET</p>
       <h1>Brugermanual<br>til dit barn</h1>
       <p class="subtitle">Vores børn kom uden manual</p>
@@ -126,8 +145,8 @@
       <button class="bear-button" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen">
         <svg class="speech-bubble" viewBox="0 0 200 125" aria-hidden="true">
           <path d="M18,0 H182 A18,18 0 0 1 200,18 V90 A18,18 0 0 1 182,108 H158 L138,125 L122,108 H18 A18,18 0 0 1 0,90 V18 A18,18 0 0 1 18,0 Z" fill="white" stroke="#0000ff" stroke-width="5"/>
-          <text x="22" y="48" font-size="18" fill="#0000ff">Klik på mig</text>
-          <text x="22" y="76" font-size="18" fill="#0000ff">Tilmeld dig</text>
+          <text x="100" y="48" font-size="18" fill="#0000ff">Klik på mig</text>
+          <text x="100" y="76" font-size="18" fill="#0000ff">Tilmeld dig</text>
         </svg>
         <img src="images/bear.png" alt="">
       </button>
@@ -281,6 +300,42 @@
         submitButton.textContent = "Tilmeld mig";
       });
   });
+
+  var body = document.body;
+  var layout = document.querySelector("[data-layout]");
+  var mql = window.matchMedia("(orientation: portrait)");
+
+  function applyMode() {
+    body.classList.toggle("is-tall", mql.matches);
+    fitStage();
+  }
+
+  function fitStage() {
+    layout.style.transform = "none";
+    var rect = layout.getBoundingClientRect();
+    var scale = Math.min(window.innerWidth / rect.width, window.innerHeight / rect.height) * 0.98;
+    if (!isFinite(scale) || scale <= 0) scale = 1;
+    layout.style.transform = "scale(" + scale + ")";
+  }
+
+  if (mql.addEventListener) {
+    mql.addEventListener("change", applyMode);
+  } else if (mql.addListener) {
+    mql.addListener(applyMode);
+  }
+
+  window.addEventListener("resize", fitStage);
+  window.addEventListener("orientationchange", applyMode);
+  window.addEventListener("load", fitStage);
+
+  var bookImg = document.querySelector(".book-link img");
+  var bearImg = document.querySelector(".bear-button img");
+  [bookImg, bearImg].forEach(function (img) {
+    if (img.complete) return;
+    img.addEventListener("load", fitStage);
+  });
+
+  applyMode();
 })();
 </script>
 
