@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brugermanual til dit barn | Manual-reception</title>
+<meta name="description" content="Invitation til Manual-reception den 1. september 2026 i Kødbyen.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%230000ff'/%3E%3C/svg%3E">
+<style>
+  :root { --blue: #0000ff; --white: #ffffff; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; background: var(--white); }
+  body { font-family: "Courier New", Courier, monospace; color: var(--blue); }
+  button, input, select { font: inherit; }
+
+  .page-shell { min-height: 100vh; display: grid; place-items: center; overflow: auto; background: #fff; }
+  .invitation { position: relative; width: min(100vw, calc(100vh * 1.7786458333)); min-width: 820px; aspect-ratio: 1366 / 768; flex: none; container-type: inline-size; }
+  .invitation-art { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
+  .momenta-hotspot { position: absolute; left: 44.4%; top: 85.6%; width: 10.6%; height: 5%; cursor: pointer; }
+  .momenta-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 3px; }
+  .book-hotspot { position: absolute; left: 3.1%; top: 31%; width: 26.7%; height: 37%; cursor: pointer; }
+  .book-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 4px; }
+  .bear-hotspot { position: absolute; left: 72%; top: 20%; width: 20%; height: 51%; border: 0; padding: 0; background: transparent; cursor: pointer; border-radius: 2rem; }
+  .bear-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 4px; }
+  .countdown { position: absolute; left: 68.5%; top: 72.4%; width: 26.3%; height: 15%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 100%; column-gap: 4.4%; background: white; overflow: hidden; }
+  .countdown-unit { display: grid; grid-template-rows: 70% 30%; justify-items: center; align-items: center; min-width: 0; min-height: 0; overflow: hidden; }
+  .countdown-unit span { width: 78%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 999px; background: var(--blue); color: white; font-weight: 700; font-size: clamp(11px, 1.3vw, 20px); }
+  .countdown-unit strong { font-size: clamp(7px, .92vw, 14px); line-height: 1; white-space: nowrap; }
+
+  .mobile-invitation { display: none; width: 100%; overflow: hidden; background: white; }
+  .mobile-panel { position: relative; display: block; width: 100%; overflow: hidden; container-type: inline-size; background: white; }
+  .mobile-panel > img { position: absolute; display: block; max-width: none; user-select: none; }
+  .mobile-center-panel { aspect-ratio: 495 / 690; }
+  .mobile-center-panel > img { left: -86.87%; top: -2.17%; width: 275.96%; height: 111.3%; }
+  .mobile-momenta-hotspot { position: absolute; left: 36.8%; top: 94%; width: 27.1%; height: 4.6%; cursor: pointer; }
+  .mobile-momenta-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 3px; }
+  .mobile-book-panel { aspect-ratio: 425 / 390; cursor: pointer; }
+  .mobile-book-panel > img { left: -3.53%; top: -56.41%; width: 321.41%; height: 196.92%; }
+  .mobile-book-panel:focus-visible { outline: 4px dashed var(--blue); outline-offset: -6px; }
+  .mobile-action-panel { aspect-ratio: 420 / 610; }
+  .mobile-action-panel > img { left: -220.24%; top: -16.39%; width: 325.24%; height: 125.9%; }
+  .mobile-bear-hotspot { position: absolute; left: 2%; top: 5%; width: 90%; height: 70%; border: 0; padding: 0; background: transparent; cursor: pointer; }
+  .mobile-bear-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: -4px; }
+  .mobile-countdown { position: absolute; left: 2.5%; top: 74.5%; width: 91%; height: 18%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 100%; column-gap: 4%; background: white; overflow: hidden; }
+  .mobile-countdown .countdown-unit span { font-size: clamp(12px, 4vw, 20px); }
+  .mobile-countdown .countdown-unit strong { font-size: clamp(8px, 2.7vw, 13px); }
+
+  .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); }
+  .modal-backdrop.hidden { display: none; }
+  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); }
+  .close-button { position: absolute; top: 12px; right: 16px; width: 38px; height: 38px; border: 0; background: transparent; color: var(--blue); font-size: 32px; cursor: pointer; }
+  .system-label { margin: 0 0 12px; font-weight: 700; font-size: 14px; }
+  .rsvp-modal h2 { margin: 0 0 12px; font-size: clamp(34px, 8vw, 52px); line-height: .95; text-transform: uppercase; }
+  .modal-intro { margin: 0 0 28px; line-height: 1.5; }
+  .rsvp-modal label { display: grid; gap: 7px; margin: 0 0 18px; font-weight: 700; }
+  .rsvp-modal input, .rsvp-modal select { width: 100%; min-height: 48px; border: 2px solid var(--blue); border-radius: 0; padding: 10px 12px; background: white; color: var(--blue); outline: none; }
+  .rsvp-modal input:focus, .rsvp-modal select:focus { box-shadow: 0 0 0 3px rgb(0 0 255 / 20%); }
+  .primary-button { width: 100%; min-height: 52px; border: 2px solid var(--blue); padding: 12px 18px; background: var(--blue); color: white; font-weight: 700; cursor: pointer; }
+  .primary-button:hover { background: white; color: var(--blue); }
+  .primary-button:disabled { opacity: .6; cursor: wait; }
+  .privacy-note { margin: 14px 0 0; font-size: 11px; line-height: 1.4; }
+  .form-error { font-weight: 700; display: none; }
+  .form-error.visible { display: block; }
+  .honeypot { position: absolute; left: -9999px; }
+  .success-message { text-align: center; padding: 24px 0 8px; display: none; }
+  .success-message.visible { display: block; }
+  .success-message .primary-button { margin-top: 22px; }
+  .rsvp-form.hidden { display: none; }
+
+  @media (max-width: 819px) {
+    .page-shell { place-items: start; }
+    .invitation { min-width: 820px; }
+    .modal-backdrop { padding: 12px; }
+    .rsvp-modal { padding: 34px 24px 26px; border-radius: 24px; box-shadow: 8px 8px 0 var(--blue); }
+  }
+  @media (max-width: 819px) and (orientation: portrait) {
+    .page-shell { display: block; overflow: visible; }
+    .invitation { display: none; }
+    .mobile-invitation { display: block; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<main class="page-shell">
+  <section class="invitation" aria-label="Invitation til Manual-reception">
+    <img class="invitation-art" src="images/invitation.png" alt="Invitation til Manual-reception for Brugermanual til dit barn den 1. september 2026">
+    <a class="momenta-hotspot" href="http://forlagetmomenta.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Forlaget Momenta"></a>
+    <a class="book-hotspot" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn hos Bog &amp; idé"></a>
+    <button class="bear-hotspot" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen"></button>
+    <div class="countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
+  </section>
+
+  <div class="mobile-invitation" aria-label="Invitation til Manual-reception">
+    <section class="mobile-panel mobile-center-panel">
+      <img src="images/invitation.png" alt="Brugermanual til dit barn og invitation til Manual-reception">
+      <a class="mobile-momenta-hotspot" href="http://forlagetmomenta.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Forlaget Momenta"></a>
+    </section>
+
+    <a class="mobile-panel mobile-book-panel" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn hos Bog &amp; idé">
+      <img src="images/invitation.png" alt="Packshot af Brugermanual til dit barn">
+    </a>
+
+    <section class="mobile-panel mobile-action-panel">
+      <img src="images/invitation.png" alt="Bamse med raket og tilmelding til Manual-reception">
+      <button class="mobile-bear-hotspot" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen"></button>
+      <div class="mobile-countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" role="presentation" data-backdrop>
+    <section class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
+      <button class="close-button" type="button" data-close-rsvp aria-label="Luk">×</button>
+
+      <form class="rsvp-form" name="tilmelding" method="POST" data-netlify="true" netlify-honeypot="website">
+        <input type="hidden" name="form-name" value="tilmelding">
+        <p class="system-label">[ MANUAL-RECEPTION ]</p>
+        <h2 id="rsvp-title">Tilmeld dig</h2>
+        <p class="modal-intro">1. september 2026 · Kl. 16.00–18.00<br>Slagtehusgade 5e, Kødbyen</p>
+        <label>Navn<input name="name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <label>Hvor mange kommer I?
+          <select name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+        <label class="honeypot" aria-hidden="true">Hjemmeside<input name="website" tabindex="-1" autocomplete="off"></label>
+        <p class="form-error" data-form-error>Tilmeldingen kunne ikke gemmes. Prøv igen.</p>
+        <button class="primary-button" type="submit" data-submit-button>Tilmeld mig</button>
+        <p class="privacy-note">Oplysningerne bruges kun til administration af receptionen.</p>
+      </form>
+
+      <div class="success-message" data-success>
+        <p class="system-label">[ TILMELDING MODTAGET ]</p>
+        <h2>Vi glæder os til at se dig.</h2>
+        <p>Din plads til Manual-receptionen er registreret.</p>
+        <button class="primary-button" type="button" data-close-rsvp>Luk</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+(function () {
+  var EVENT_TIME = new Date("2026-09-01T16:00:00+02:00");
+
+  function getRemaining() {
+    var now = new Date();
+    if (now >= EVENT_TIME) return { months: 0, days: 0, hours: 0, seconds: 0 };
+    var cursor = new Date(now);
+    var months = 0;
+    while (true) {
+      var next = new Date(cursor);
+      next.setMonth(next.getMonth() + 1);
+      if (next > EVENT_TIME) break;
+      cursor = next;
+      months += 1;
+    }
+    var totalSeconds = Math.floor((EVENT_TIME.getTime() - cursor.getTime()) / 1000);
+    return {
+      months: months,
+      days: Math.floor(totalSeconds / 86400),
+      hours: Math.floor((totalSeconds % 86400) / 3600),
+      seconds: totalSeconds % 60
+    };
+  }
+
+  var countdownEls = document.querySelectorAll("[data-countdown]");
+
+  function renderCountdown() {
+    var r = getRemaining();
+    var units = [[r.months, "Måneder"], [r.days, "Dage"], [r.hours, "Timer"], [r.seconds, "Sekunder"]];
+    countdownEls.forEach(function (el) {
+      if (el.offsetParent === null) {
+        if (el.innerHTML !== "") el.innerHTML = "";
+        return;
+      }
+      el.innerHTML = units.map(function (u) {
+        return '<div class="countdown-unit"><span>' + u[0] + '</span><strong>' + u[1] + '</strong></div>';
+      }).join("");
+    });
+  }
+
+  renderCountdown();
+  setInterval(renderCountdown, 1000);
+
+  var backdrop = document.querySelector("[data-backdrop]");
+  var form = document.querySelector(".rsvp-form");
+  var successEl = document.querySelector("[data-success]");
+  var errorEl = document.querySelector("[data-form-error]");
+  var submitButton = document.querySelector("[data-submit-button]");
+
+  function openModal() {
+    backdrop.classList.remove("hidden");
+    form.classList.remove("hidden");
+    successEl.classList.remove("visible");
+    errorEl.classList.remove("visible");
+  }
+
+  function closeModal() {
+    backdrop.classList.add("hidden");
+  }
+
+  document.querySelectorAll("[data-open-rsvp]").forEach(function (btn) {
+    btn.addEventListener("click", openModal);
+  });
+  document.querySelectorAll("[data-close-rsvp]").forEach(function (btn) {
+    btn.addEventListener("click", closeModal);
+  });
+  backdrop.addEventListener("mousedown", function (event) {
+    if (event.target === backdrop) closeModal();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !backdrop.classList.contains("hidden")) closeModal();
+  });
+
+  function encodeForm(data) {
+    return Object.keys(data).map(function (key) {
+      return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
+    }).join("&");
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var website = form.elements["website"].value;
+    if (website) return;
+
+    errorEl.classList.remove("visible");
+    submitButton.disabled = true;
+    submitButton.textContent = "Sender…";
+
+    var payload = {
+      "form-name": "tilmelding",
+      name: form.elements["name"].value,
+      email: form.elements["email"].value,
+      guests: form.elements["guests"].value
+    };
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encodeForm(payload)
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error("submit failed");
+        form.classList.add("hidden");
+        successEl.classList.add("visible");
+      })
+      .catch(function () {
+        errorEl.classList.add("visible");
+      })
+      .finally(function () {
+        submitButton.disabled = false;
+        submitButton.textContent = "Tilmeld mig";
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
