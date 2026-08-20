@@ -32,13 +32,13 @@
   }
 
   .book-wrap {
+    position: relative;
     display: flex; flex-direction: column; align-items: center;
     order: -1;
     justify-self: end;
     width: 100%;
     max-width: 560px;
     min-width: 200px;
-    container-type: inline-size;
   }
 
   .book-link {
@@ -48,11 +48,11 @@
   .book-link img { width: 100%; display: block; pointer-events: none; }
 
   .zoom-hint {
-    display: block; width: 20cqw; min-width: 34px; max-width: 56px;
-    margin-top: 15.5cqw;
+    display: block; position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%);
+    width: clamp(40px, 4.5vw, 54px); height: clamp(40px, 4.5vw, 54px);
     border: 0; background: none; padding: 0; cursor: pointer;
   }
-  .zoom-hint img { width: 100%; display: block; pointer-events: none; }
+  .zoom-hint img { width: 100%; height: 100%; display: block; pointer-events: none; }
 
   .content {
     width: 100%;
@@ -291,6 +291,26 @@
 
   renderCountdown();
   setInterval(renderCountdown, 1000);
+
+  var zoomHint = document.querySelector(".zoom-hint");
+  var bookWrap = document.querySelector(".book-wrap");
+
+  function alignZoomHint() {
+    if (window.matchMedia("(orientation: portrait)").matches) return;
+    var circle = document.querySelector(".countdown-unit span");
+    if (!circle) return;
+    var circleRect = circle.getBoundingClientRect();
+    var wrapRect = bookWrap.getBoundingClientRect();
+    var centerY = circleRect.top + circleRect.height / 2;
+    zoomHint.style.top = (centerY - wrapRect.top) + "px";
+  }
+
+  alignZoomHint();
+  window.addEventListener("resize", alignZoomHint);
+  window.addEventListener("orientationchange", alignZoomHint);
+  window.addEventListener("load", alignZoomHint);
+  var bookImgForAlign = document.querySelector(".book-link img");
+  if (!bookImgForAlign.complete) bookImgForAlign.addEventListener("load", alignZoomHint);
 
   var backdrop = document.querySelector("[data-backdrop]");
   var form = document.querySelector(".rsvp-form");
