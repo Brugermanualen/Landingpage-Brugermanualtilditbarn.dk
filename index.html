@@ -44,7 +44,7 @@
     max-width: 520px;
     min-width: 280px;
     container-type: inline-size;
-    display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
   }
 
   .action {
@@ -58,23 +58,28 @@
     width: clamp(70px, 7vw, 84px); height: clamp(70px, 7vw, 84px); border-radius: 50%; background: var(--blue); color: white;
     display: grid; place-items: center; font-weight: 700; line-height: 1.15; font-size: clamp(14px, 1.4vw, 17px); flex: none;
   }
-  .kicker { margin: 0; font-weight: 700; font-size: clamp(8px, 3.6cqw, 16px); letter-spacing: -0.01em; white-space: nowrap; }
-  h1 { margin: 0; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.05; text-transform: uppercase; white-space: nowrap; }
-  .subtitle { margin: 0; font-weight: 700; font-size: clamp(15px, 1.5vw, 19px); white-space: nowrap; }
-  .body-text { margin: 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); white-space: nowrap; }
-  .event-heading { margin: 6px 0 0; font-weight: 700; font-size: clamp(13px, 1.25vw, 16px); white-space: nowrap; }
+  .kicker { margin: clamp(3px, 1.4cqw, 8px) 0 0; font-weight: 700; font-size: clamp(8px, 3.6cqw, 16px); letter-spacing: -0.01em; white-space: nowrap; }
+  h1 { margin: clamp(8px, 4cqw, 20px) 0 0; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.05; text-transform: uppercase; white-space: nowrap; }
+  .subtitle { margin: clamp(14px, 7.4cqw, 36px) 0 0; font-weight: 700; font-size: clamp(15px, 1.5vw, 19px); white-space: nowrap; }
+  .body-text { margin: clamp(14px, 7.4cqw, 36px) 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); white-space: nowrap; }
+  .event-heading { margin: clamp(12px, 6cqw, 30px) 0 0; font-weight: 700; font-size: clamp(13px, 1.25vw, 16px); white-space: nowrap; }
   .event-info { margin: 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); white-space: nowrap; }
+  .event-info + .body-text { margin-top: clamp(10px, 5cqw, 24px); }
   .signature { margin: 6px 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); white-space: nowrap; }
-  .momenta-link { width: clamp(110px, 12vw, 150px); margin-top: 4px; }
+  .momenta-link { width: clamp(110px, 12vw, 150px); margin-top: clamp(20px, 10.3cqw, 50px); }
 
   .bear-button {
-    position: relative; border: 0; background: none; padding: clamp(105px, 12vw, 145px) 0 0; margin: 0;
-    cursor: pointer; width: 100%; max-width: 210px; display: block;
+    position: relative; border: 0; background: none; padding: 0; margin: 0;
+    cursor: pointer; width: 100%; max-width: 245px; display: block;
+    aspect-ratio: 241 / 369;
   }
-  .bear-button img { pointer-events: none; width: 100%; display: block; }
+  .bear-button img {
+    position: absolute; pointer-events: none; display: block;
+    left: 40.66%; top: 19.24%; width: 59.34%; height: 80.76%;
+  }
   .speech-bubble {
-    position: absolute; top: 0; left: 50%; transform: translateX(-54%);
-    width: 90%; pointer-events: none;
+    position: absolute; left: 0; top: 0; width: 65.98%; height: 31.98%;
+    pointer-events: none;
   }
   .speech-bubble text { font-family: "Courier New", Courier, monospace; font-weight: 700; text-anchor: middle; }
 
