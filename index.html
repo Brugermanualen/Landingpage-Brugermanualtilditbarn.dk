@@ -25,30 +25,30 @@
   .layout {
     width: 100%;
     max-width: 1360px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 520px) 1fr;
     align-items: center;
-    justify-content: center;
-    gap: clamp(20px, 3.5vw, 56px);
+    column-gap: clamp(20px, 3.5vw, 56px);
   }
 
   .book-link {
     display: block;
     order: -1;
-    flex: 450 1 0%;
+    justify-self: end;
+    width: 100%;
     max-width: 560px;
     min-width: 200px;
   }
 
   .content {
-    flex: 419 1 0%;
-    max-width: 520px;
-    min-width: 280px;
+    width: 100%;
     container-type: inline-size;
     display: flex; flex-direction: column; align-items: center; text-align: center;
   }
 
   .action {
-    flex: 241 1 0%;
+    justify-self: start;
+    width: 100%;
     max-width: 300px;
     min-width: 170px;
     display: flex; flex-direction: column; align-items: center; gap: 26px;
@@ -92,10 +92,10 @@
   .countdown-unit strong { font-size: clamp(9px, 1vw, 12px); font-weight: 700; white-space: nowrap; }
 
   @media (orientation: portrait) {
-    .layout { flex-direction: column; max-width: 480px; gap: clamp(10px, 3vw, 22px); }
-    .book-link { order: 1; max-width: 300px; width: 68%; }
-    .content { order: 0; max-width: 100%; }
-    .action { order: 2; max-width: 240px; }
+    .layout { grid-template-columns: 1fr; max-width: 480px; row-gap: clamp(10px, 3vw, 22px); }
+    .book-link { order: 1; justify-self: center; max-width: 300px; width: 68%; }
+    .content { order: 0; }
+    .action { order: 2; justify-self: center; max-width: 240px; }
     h1 { font-size: clamp(28px, 9vw, 38px); white-space: normal; }
     .body-text, .event-info, .signature { white-space: normal; }
     .body-text, .event-info { font-size: 15px; }
