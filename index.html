@@ -12,42 +12,73 @@
   html, body { margin: 0; min-height: 100%; background: var(--white); }
   body { font-family: "Courier New", Courier, monospace; color: var(--blue); }
   button, input, select { font: inherit; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
 
-  .page-shell { min-height: 100vh; display: grid; place-items: center; overflow: auto; background: #fff; }
-  .invitation { position: relative; width: min(100vw, calc(100vh * 1.7786458333)); min-width: 820px; aspect-ratio: 1366 / 768; flex: none; container-type: inline-size; }
-  .invitation-art { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
-  .momenta-hotspot { position: absolute; left: 44.4%; top: 85.6%; width: 10.6%; height: 5%; cursor: pointer; }
-  .momenta-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 3px; }
-  .book-hotspot { position: absolute; left: 3.1%; top: 31%; width: 26.7%; height: 37%; cursor: pointer; }
-  .book-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 4px; }
-  .bear-hotspot { position: absolute; left: 72%; top: 20%; width: 20%; height: 51%; border: 0; padding: 0; background: transparent; cursor: pointer; border-radius: 2rem; }
-  .bear-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 4px; }
-  .countdown { position: absolute; left: 68.5%; top: 72.4%; width: 26.3%; height: 15%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 100%; column-gap: 4.4%; background: white; overflow: hidden; }
-  .countdown-unit { display: grid; grid-template-rows: 70% 30%; justify-items: center; align-items: center; min-width: 0; min-height: 0; overflow: hidden; }
-  .countdown-unit span { width: 78%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 999px; background: var(--blue); color: white; font-weight: 700; font-size: clamp(11px, 1.3vw, 20px); }
-  .countdown-unit strong { font-size: clamp(7px, .92vw, 14px); line-height: 1; white-space: nowrap; }
+  .page { min-height: 100vh; display: flex; align-items: center; padding: 48px 20px; }
+  .layout {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
 
-  .mobile-invitation { display: none; width: 100%; overflow: hidden; background: white; }
-  .mobile-panel { position: relative; display: block; width: 100%; overflow: hidden; container-type: inline-size; background: white; }
-  .mobile-panel > img { position: absolute; display: block; max-width: none; user-select: none; }
-  .mobile-center-panel { aspect-ratio: 495 / 690; }
-  .mobile-center-panel > img { left: -86.87%; top: -2.17%; width: 275.96%; height: 111.3%; }
-  .mobile-momenta-hotspot { position: absolute; left: 36.8%; top: 94%; width: 27.1%; height: 4.6%; cursor: pointer; }
-  .mobile-momenta-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: 3px; }
-  .mobile-book-panel { aspect-ratio: 425 / 390; cursor: pointer; }
-  .mobile-book-panel > img { left: -3.53%; top: -56.41%; width: 321.41%; height: 196.92%; }
-  .mobile-book-panel:focus-visible { outline: 4px dashed var(--blue); outline-offset: -6px; }
-  .mobile-action-panel { aspect-ratio: 420 / 610; }
-  .mobile-action-panel > img { left: -220.24%; top: -16.39%; width: 325.24%; height: 125.9%; }
-  .mobile-bear-hotspot { position: absolute; left: 2%; top: 5%; width: 90%; height: 70%; border: 0; padding: 0; background: transparent; cursor: pointer; }
-  .mobile-bear-hotspot:focus-visible { outline: 4px dashed var(--blue); outline-offset: -4px; }
-  .mobile-countdown { position: absolute; left: 2.5%; top: 74.5%; width: 91%; height: 18%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 100%; column-gap: 4%; background: white; overflow: hidden; }
-  .mobile-countdown .countdown-unit span { font-size: clamp(12px, 4vw, 20px); }
-  .mobile-countdown .countdown-unit strong { font-size: clamp(8px, 2.7vw, 13px); }
+  .book-link { display: block; width: min(340px, 80%); flex: none; }
+  .book-link img { filter: drop-shadow(0 18px 30px rgb(0 0 255 / 0.15)); }
+
+  .content { max-width: 520px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .badge {
+    width: 84px; height: 84px; border-radius: 50%; background: var(--blue); color: white;
+    display: grid; place-items: center; font-weight: 700; line-height: 1.15; font-size: 17px;
+  }
+  .kicker { margin: 0; font-weight: 700; font-size: 13px; letter-spacing: .12em; }
+  h1 { margin: 0; font-size: clamp(32px, 5.2vw, 46px); line-height: 1.05; text-transform: uppercase; }
+  .subtitle { margin: 0; font-weight: 700; font-size: 19px; }
+  .body-text { margin: 0; line-height: 1.6; font-size: 15px; }
+  .event-heading { margin: 6px 0 0; font-weight: 700; font-size: 16px; }
+  .event-info { margin: 0; line-height: 1.6; font-size: 15px; }
+  .signature { margin: 6px 0 0; line-height: 1.6; font-size: 15px; }
+  .momenta-link { width: 150px; margin-top: 4px; }
+
+  .action { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .bubble-wrap { position: relative; display: inline-block; margin-top: 90px; }
+  .bear-button { border: 0; background: none; padding: 0; cursor: pointer; width: 190px; }
+  .bear-button img { pointer-events: none; }
+  .speech-bubble {
+    position: absolute; top: -18px; left: 50%; transform: translate(-58%, -100%);
+    background: white; border: 3px solid var(--blue); border-radius: 20px;
+    padding: 12px 18px; font-weight: 700; font-size: 14px; line-height: 1.35;
+    white-space: nowrap; pointer-events: none;
+  }
+  .speech-bubble::after, .speech-bubble::before {
+    content: ""; position: absolute; left: 34px; top: 100%; border: 10px solid transparent;
+  }
+  .speech-bubble::before { border-top-color: var(--blue); margin-top: 0; }
+  .speech-bubble::after { border-top-color: white; margin-top: -4px; }
+
+  .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .countdown-unit { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .countdown-unit span {
+    width: 54px; height: 54px; border-radius: 50%; background: var(--blue); color: white;
+    display: grid; place-items: center; font-weight: 700; font-size: 18px;
+  }
+  .countdown-unit strong { font-size: 12px; font-weight: 700; white-space: nowrap; }
+
+  @media (min-width: 900px) {
+    .layout { flex-direction: row; align-items: center; justify-content: center; text-align: left; gap: 48px; }
+    .content { order: 0; text-align: center; }
+    .book-link { order: -1; width: 300px; }
+    .action { order: 1; }
+    .bubble-wrap { margin-top: 0; }
+  }
 
   .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); }
   .modal-backdrop.hidden { display: none; }
-  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); }
+  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); text-align: left; }
   .close-button { position: absolute; top: 12px; right: 16px; width: 38px; height: 38px; border: 0; background: transparent; color: var(--blue); font-size: 32px; cursor: pointer; }
   .system-label { margin: 0 0 12px; font-weight: 700; font-size: 14px; }
   .rsvp-modal h2 { margin: 0 0 12px; font-size: clamp(34px, 8vw, 52px); line-height: .95; text-transform: uppercase; }
@@ -67,46 +98,46 @@
   .success-message .primary-button { margin-top: 22px; }
   .rsvp-form.hidden { display: none; }
 
-  @media (max-width: 819px) {
-    .page-shell { place-items: start; }
-    .invitation { min-width: 820px; }
-    .modal-backdrop { padding: 12px; }
+  @media (max-width: 480px) {
     .rsvp-modal { padding: 34px 24px 26px; border-radius: 24px; box-shadow: 8px 8px 0 var(--blue); }
-  }
-  @media (max-width: 819px) and (orientation: portrait) {
-    .page-shell { display: block; overflow: visible; }
-    .invitation { display: none; }
-    .mobile-invitation { display: block; }
   }
   @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
 
-<main class="page-shell">
-  <section class="invitation" aria-label="Invitation til Manual-reception">
-    <img class="invitation-art" src="images/invitation.png" alt="Invitation til Manual-reception for Brugermanual til dit barn den 1. september 2026">
-    <a class="momenta-hotspot" href="http://forlagetmomenta.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Forlaget Momenta"></a>
-    <a class="book-hotspot" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn hos Bog &amp; idé"></a>
-    <button class="bear-hotspot" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen"></button>
-    <div class="countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
-  </section>
+<main class="page">
+  <div class="layout">
 
-  <div class="mobile-invitation" aria-label="Invitation til Manual-reception">
-    <section class="mobile-panel mobile-center-panel">
-      <img src="images/invitation.png" alt="Brugermanual til dit barn og invitation til Manual-reception">
-      <a class="mobile-momenta-hotspot" href="http://forlagetmomenta.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Forlaget Momenta"></a>
-    </section>
-
-    <a class="mobile-panel mobile-book-panel" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn hos Bog &amp; idé">
-      <img src="images/invitation.png" alt="Packshot af Brugermanual til dit barn">
+    <a class="book-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn hos Bog &amp; idé">
+      <img src="images/book.png" alt="Bogomslag: Brugermanual til dit barn">
     </a>
 
-    <section class="mobile-panel mobile-action-panel">
-      <img src="images/invitation.png" alt="Bamse med raket og tilmelding til Manual-reception">
-      <button class="mobile-bear-hotspot" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen"></button>
-      <div class="mobile-countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
-    </section>
+    <div class="content">
+      <span class="badge">0-5<br>År</span>
+      <p class="kicker">SÅDAN SIKRER DU DEN BEDSTE START PÅ LIVET</p>
+      <h1>Brugermanual<br>til dit barn</h1>
+      <p class="subtitle">Vores børn kom uden manual</p>
+      <p class="body-text">Derfor har vi skrevet én: Til alle, der er så heldige at få ansvar for helt nye og vidunderlige små mennesker – og gerne vil forstå dem lidt bedre.</p>
+      <p class="event-heading">Kom til Manual-reception på udgivelsesdagen</p>
+      <p class="event-info">1. september 2026 · Kl. 16.00–18.00<br>Slagtehusgade 5e, Kødbyen, KBH V</p>
+      <p class="body-text">Hvis du tilmelder dig, byder vi på lidt til hjernen, hjertet og ganen.</p>
+      <p class="signature">Vi glæder os til at se dig.<br>Dorte &amp; Niels</p>
+      <a class="momenta-link" href="http://forlagetmomenta.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Forlaget Momenta">
+        <img src="images/momenta-logo.png" alt="Forlaget Momenta">
+      </a>
+    </div>
+
+    <div class="action">
+      <div class="bubble-wrap">
+        <span class="speech-bubble">Klik på mig<br>Tilmeld dig</span>
+        <button class="bear-button" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen">
+          <img src="images/bear.png" alt="">
+        </button>
+      </div>
+      <div class="countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
+    </div>
+
   </div>
 
   <div class="modal-backdrop hidden" role="presentation" data-backdrop>
@@ -171,20 +202,14 @@
     };
   }
 
-  var countdownEls = document.querySelectorAll("[data-countdown]");
+  var countdownEl = document.querySelector("[data-countdown]");
 
   function renderCountdown() {
     var r = getRemaining();
     var units = [[r.months, "Måneder"], [r.days, "Dage"], [r.hours, "Timer"], [r.seconds, "Sekunder"]];
-    countdownEls.forEach(function (el) {
-      if (el.offsetParent === null) {
-        if (el.innerHTML !== "") el.innerHTML = "";
-        return;
-      }
-      el.innerHTML = units.map(function (u) {
-        return '<div class="countdown-unit"><span>' + u[0] + '</span><strong>' + u[1] + '</strong></div>';
-      }).join("");
-    });
+    countdownEl.innerHTML = units.map(function (u) {
+      return '<div class="countdown-unit"><span>' + u[0] + '</span><strong>' + u[1] + '</strong></div>';
+    }).join("");
   }
 
   renderCountdown();
