@@ -91,9 +91,9 @@
     .content { order: 0; max-width: 100%; }
     .action { order: 2; max-width: 240px; }
     h1 { font-size: clamp(28px, 9vw, 38px); white-space: normal; }
-    .kicker, .body-text, .event-info, .signature { white-space: normal; }
+    .body-text, .event-info, .signature { white-space: normal; }
     .body-text, .event-info { font-size: 15px; }
-    .kicker { font-size: 13px; }
+    .kicker { font-size: clamp(8px, 2.8vw, 13px); }
     .signature { font-size: 15px; }
   }
 
@@ -152,7 +152,7 @@
     <div class="action">
       <button class="bear-button" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen">
         <svg class="speech-bubble" viewBox="0 0 200 125" aria-hidden="true">
-          <path d="M18,0 H182 A18,18 0 0 1 200,18 V90 A18,18 0 0 1 182,108 H158 L138,125 L122,108 H18 A18,18 0 0 1 0,90 V18 A18,18 0 0 1 18,0 Z" fill="white" stroke="#0000ff" stroke-width="5"/>
+          <path d="M18,0 H182 A18,18 0 0 1 200,18 V90 A18,18 0 0 1 182,108 H168 L145,124 L95,108 H18 A18,18 0 0 1 0,90 V18 A18,18 0 0 1 18,0 Z" fill="white" stroke="#0000ff" stroke-width="5"/>
           <text x="100" y="48" font-size="18" fill="#0000ff">Klik på mig</text>
           <text x="100" y="76" font-size="18" fill="#0000ff">Tilmeld dig</text>
         </svg>
