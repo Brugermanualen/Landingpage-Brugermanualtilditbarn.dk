@@ -152,7 +152,8 @@
   .system-label { margin: 0 0 12px; font-weight: 700; font-size: 14px; }
   .rsvp-modal h2 { margin: 0 0 12px; font-size: clamp(34px, 8vw, 52px); line-height: .95; text-transform: uppercase; }
   .modal-intro { margin: 0 0 28px; line-height: 1.5; }
-  .rsvp-modal label { display: grid; gap: 7px; margin: 0 0 18px; font-weight: 700; }
+  .rsvp-modal .field { display: grid; gap: 7px; margin: 0 0 18px; }
+  .rsvp-modal label { font-weight: 700; }
   .rsvp-modal input, .rsvp-modal select { width: 100%; min-height: 48px; border: 2px solid var(--blue); border-radius: 0; padding: 10px 12px; background: white; color: var(--blue); outline: none; }
   .rsvp-modal input:focus, .rsvp-modal select:focus { box-shadow: 0 0 0 3px rgb(0 0 255 / 20%); }
   .primary-button { width: 100%; min-height: 52px; border: 2px solid var(--blue); padding: 12px 18px; background: var(--blue); color: white; font-weight: 700; cursor: pointer; }
@@ -238,10 +239,17 @@
         <p class="system-label">[ MANUAL-RECEPTION ]</p>
         <h2 id="rsvp-title">Tilmeld dig</h2>
         <p class="modal-intro">1. september 2026 · Kl. 16.00–18.00<br>Slagtehusgade 5e, Kødbyen</p>
-        <label>Navn<input name="name" required autocomplete="name"></label>
-        <label>Email<input name="email" type="email" required autocomplete="email"></label>
-        <label>Hvor mange kommer I?
-          <select name="guests">
+        <div class="field">
+          <label for="rsvp-name">Navn</label>
+          <input id="rsvp-name" name="name" type="text" required autocomplete="name" autocapitalize="words" autocorrect="off">
+        </div>
+        <div class="field">
+          <label for="rsvp-email">Email</label>
+          <input id="rsvp-email" name="email" type="email" required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="rsvp-guests">Hvor mange kommer I?</label>
+          <select id="rsvp-guests" name="guests">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -249,7 +257,7 @@
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
-        </label>
+        </div>
         <label class="honeypot" aria-hidden="true">Hjemmeside<input name="website" tabindex="-1" autocomplete="off"></label>
         <p class="form-error" data-form-error>Tilmeldingen kunne ikke gemmes. Prøv igen.</p>
         <button class="primary-button" type="submit" data-submit-button>Tilmeld mig</button>
