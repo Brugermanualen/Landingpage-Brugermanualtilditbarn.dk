@@ -114,12 +114,12 @@
     h1 { font-size: clamp(28px, 9vw, 38px); white-space: normal; }
     .kicker, h1, .subtitle, .body-text, .event-heading, .event-info, .signature { text-wrap: balance; }
     .body-text, .event-info, .signature { white-space: normal; }
-    .body-text, .event-info { font-size: 15px; }
-    .signature { font-size: 15px; }
+    .body-text, .event-info { font-size: clamp(10px, 3.6cqw, 15px); }
+    .event-heading { font-size: clamp(10px, 3.6cqw, 16px); }
+    .signature { font-size: clamp(10px, 3.6cqw, 15px); }
   }
 
-  .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); overflow-y: auto; }
-  .modal-backdrop > * { margin: auto; }
+  .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); }
   .modal-backdrop.hidden { display: none; }
   .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); text-align: left; font-size: 16px; }
   .book-modal {
