@@ -130,11 +130,11 @@
 
   .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); }
   .modal-backdrop.hidden { display: none; }
-  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); text-align: left; font-size: 16px; }
+  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); text-align: left; font-size: 16px; transform: translateZ(0); }
   .book-modal {
     position: relative; width: min(640px, 90vw);
     border: 4px solid var(--blue); border-radius: 34px; padding: 40px 40px 56px; background: white;
-    box-shadow: 14px 14px 0 var(--blue); text-align: center;
+    box-shadow: 14px 14px 0 var(--blue); text-align: center; transform: translateZ(0);
   }
   .book-modal-scroll { max-height: calc(100vh - 160px); overflow: auto; }
   .book-modal-img { width: 100%; display: block; }
