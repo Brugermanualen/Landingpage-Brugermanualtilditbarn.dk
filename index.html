@@ -65,7 +65,8 @@
     width: 100%;
     max-width: 300px;
     min-width: 170px;
-    display: flex; flex-direction: column; align-items: center; gap: 26px;
+    container-type: inline-size;
+    display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 9cqw, 26px);
   }
 
   .badge {
@@ -73,13 +74,13 @@
     display: grid; place-items: center; font-weight: 700; line-height: 1.15; font-size: clamp(14px, 1.4vw, 17px); flex: none;
   }
   .kicker { margin: clamp(8px, 4cqw, 20px) 0 0; font-weight: 700; font-size: clamp(8px, 3.6cqw, 16px); letter-spacing: -0.01em; white-space: nowrap; }
-  h1 { margin: clamp(8px, 4cqw, 20px) 0 0; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.05; text-transform: uppercase; white-space: nowrap; }
-  .subtitle { margin: clamp(14px, 7.4cqw, 36px) 0 0; font-weight: 700; font-size: clamp(15px, 1.5vw, 19px); white-space: nowrap; }
-  .body-text { margin: clamp(14px, 7.4cqw, 36px) 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); white-space: nowrap; }
-  .event-heading { margin: clamp(12px, 6cqw, 30px) 0 0; font-weight: 700; font-size: clamp(13px, 1.25vw, 16px); white-space: nowrap; }
-  .event-info { margin: 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); white-space: nowrap; }
+  h1 { margin: clamp(8px, 4cqw, 20px) 0 0; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.05; letter-spacing: .012em; text-transform: uppercase; white-space: nowrap; }
+  .subtitle { margin: clamp(14px, 7.4cqw, 36px) 0 0; font-weight: 700; font-size: clamp(15px, 1.5vw, 19px); letter-spacing: .015em; white-space: nowrap; }
+  .body-text { margin: clamp(14px, 7.4cqw, 36px) 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); letter-spacing: -.03em; white-space: nowrap; }
+  .event-heading { margin: clamp(12px, 6cqw, 30px) 0 0; font-weight: 700; font-size: clamp(13px, 1.25vw, 16px); letter-spacing: -.03em; white-space: nowrap; }
+  .event-info { margin: 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); letter-spacing: -.03em; white-space: nowrap; }
   .event-info + .body-text { margin-top: clamp(10px, 5cqw, 24px); }
-  .signature { margin: 6px 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); white-space: nowrap; }
+  .signature { margin: 6px 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); letter-spacing: -.03em; white-space: nowrap; }
   .momenta-link { width: clamp(110px, 12vw, 150px); margin-top: clamp(20px, 10.3cqw, 50px); }
 
   .bear-button {
@@ -95,15 +96,15 @@
     position: absolute; left: 0; top: 0; width: 65.98%; height: 31.98%;
     pointer-events: none;
   }
-  .speech-bubble text { font-family: "Courier New", Courier, monospace; font-weight: 700; text-anchor: middle; }
+  .speech-bubble text { font-family: "Courier New", Courier, monospace; font-weight: 700; text-anchor: middle; letter-spacing: -.025em; }
 
   .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(8px, 1.4vw, 14px); width: 100%; }
   .countdown-unit { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .countdown-unit span {
     width: clamp(40px, 4.5vw, 54px); height: clamp(40px, 4.5vw, 54px); border-radius: 50%; background: var(--blue); color: white;
-    display: grid; place-items: center; font-weight: 700; font-size: clamp(13px, 1.5vw, 18px);
+    display: grid; place-items: center; font-weight: 700; font-size: clamp(13px, 1.5vw, 18px); letter-spacing: -.025em;
   }
-  .countdown-unit strong { font-size: clamp(9px, 1vw, 12px); font-weight: 700; white-space: nowrap; }
+  .countdown-unit strong { font-size: clamp(9px, 1vw, 12px); font-weight: 700; letter-spacing: -.025em; white-space: nowrap; }
 
   @media (orientation: portrait) {
     .layout { grid-template-columns: 1fr; max-width: 480px; row-gap: clamp(10px, 3vw, 22px); }
@@ -117,6 +118,14 @@
     .body-text, .event-info { font-size: clamp(10px, 3.6cqw, 15px); }
     .event-heading { font-size: clamp(10px, 3.6cqw, 16px); }
     .signature { font-size: clamp(10px, 3.6cqw, 15px); }
+  }
+
+  @media (orientation: portrait) and (min-width: 600px) {
+    .layout { max-width: 680px; }
+    .book-wrap { max-width: 420px; }
+    .action { max-width: 320px; }
+    h1 { font-size: clamp(38px, 6.5vw, 64px); }
+    .badge { width: clamp(84px, 9vw, 110px); height: clamp(84px, 9vw, 110px); font-size: clamp(17px, 1.8vw, 22px); }
   }
 
   .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); }
@@ -138,6 +147,7 @@
     outline: none; -webkit-tap-highlight-color: transparent;
   }
   .buy-circle:hover { background: var(--blue); opacity: .88; }
+  .buy-circle span { color: #ffffff; }
   .close-button { position: absolute; top: 12px; right: 16px; width: 38px; height: 38px; border: 0; background: transparent; color: var(--blue); font-size: 32px; cursor: pointer; }
   .system-label { margin: 0 0 12px; font-weight: 700; font-size: 14px; }
   .rsvp-modal h2 { margin: 0 0 12px; font-size: clamp(34px, 8vw, 52px); line-height: .95; text-transform: uppercase; }
