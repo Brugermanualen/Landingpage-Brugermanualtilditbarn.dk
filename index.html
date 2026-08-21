@@ -266,7 +266,7 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select>
-          <select id="rsvp-children" name="children" required aria-label="Antal små vidunderlige mennesker">
+          <select id="rsvp-children" name="children" aria-label="Antal små vidunderlige mennesker">
             <option value="" selected disabled hidden>Antal små vidunderlige mennesker</option>
             <option value="0">0</option>
             <option value="1">1</option>
@@ -444,7 +444,7 @@
       name: form.elements["name"].value,
       email: form.elements["email"].value,
       adults: form.elements["adults"].value,
-      children: form.elements["children"].value
+      children: form.elements["children"].value || "0"
     };
 
     fetch("/", {
