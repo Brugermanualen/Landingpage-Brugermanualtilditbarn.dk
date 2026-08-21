@@ -150,6 +150,11 @@
   .success-message { text-align: center; padding: 24px 0 8px; display: none; }
   .success-message.visible { display: block; }
   .success-message .primary-button { margin-top: 22px; }
+  .success-bear-wrap { position: relative; width: 150px; aspect-ratio: 241 / 369; margin: 0 auto 12px; }
+  .success-bear-wrap img { position: absolute; left: 40.66%; top: 19.24%; width: 59.34%; height: 80.76%; display: block; }
+  .success-bear-wrap .speech-bubble { position: absolute; left: 0; top: 0; width: 65.98%; height: 31.98%; }
+  .success-message h2 { margin: 8px 0 20px; }
+  .success-message .countdown { margin: 0 0 8px; }
   .rsvp-form.hidden { display: none; }
 
   @media (max-width: 480px) {
@@ -237,9 +242,24 @@
       </form>
 
       <div class="success-message" data-success>
-        <p class="system-label">[ TILMELDING MODTAGET ]</p>
-        <h2>Vi glæder os til at se dig.</h2>
-        <p>Din plads til Manual-receptionen er registreret.</p>
+        <div class="success-bear-wrap">
+          <svg class="speech-bubble" viewBox="463 162 993 761" aria-hidden="true">
+            <path fill="#0000ff" d="M534.527,225.993c-33.894,30.827-51.737,63.141-55.421,105.599
+              c-6.424,74.028-8.354,194.391-1.463,267.838c7.422,79.114,77.876,148.673,176.312,157.815l394.851,3.174l182.879,143.448
+              c14.197,9.191,18.218,12.63,34.503,2.701l2.243-144.97c1.59-1.995,47.308-9.236,56.354-12.49
+              c66.983-24.096,110.673-90.993,116.053-149.481c6.619-71.957,7.5-186.789,1.44-258.699c-6.643-78.814-73.61-157.133-176.065-164.067
+              c-198.408-13.428-415.65,6.712-616.028-3.74C603.842,179.82,565.224,198.074,534.527,225.993z M1238.166,747.305l-0.801,126.264
+              l-177.209-137.418l-409.938-3.144c-100.17-20.252-138.059-77.131-142.797-157.537c-3.971-67.395-3.703-158.201,1.453-225.415
+              c6.147-80.133,49.022-140.589,152.173-152.671c194.412,10.412,405.037-9.261,597.543,3.77
+              c82.292,5.57,144.856,64.808,150.341,130.279c7.573,90.401-7.527,188.721-1.978,279.979
+              c-7.522,59.569-59.357,109.592-130.336,124.824C1265.134,738.7,1241.387,733.05,1238.166,747.305z"/>
+            <text x="959" y="400" font-size="95" fill="#0000ff">Du er</text>
+            <text x="959" y="525" font-size="95" fill="#0000ff">tilmeldt</text>
+          </svg>
+          <img src="images/bear.png" alt="">
+        </div>
+        <h2>Vi ses om ...</h2>
+        <div class="countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
         <button class="primary-button" type="button" data-close-rsvp>Luk</button>
       </div>
     </section>
@@ -279,14 +299,17 @@
     };
   }
 
-  var countdownEl = document.querySelector("[data-countdown]");
+  var countdownEls = document.querySelectorAll("[data-countdown]");
 
   function renderCountdown() {
     var r = getRemaining();
     var units = [[r.months, "Måneder"], [r.days, "Dage"], [r.hours, "Timer"], [r.seconds, "Sekunder"]];
-    countdownEl.innerHTML = units.map(function (u) {
+    var html = units.map(function (u) {
       return '<div class="countdown-unit"><span>' + u[0] + '</span><strong>' + u[1] + '</strong></div>';
     }).join("");
+    countdownEls.forEach(function (el) {
+      el.innerHTML = html;
+    });
   }
 
   renderCountdown();
