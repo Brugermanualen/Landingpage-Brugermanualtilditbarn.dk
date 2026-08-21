@@ -141,13 +141,17 @@
   .buy-circle {
     position: absolute; left: 50%; bottom: -48px; transform: translateX(-50%);
     width: 100px; height: 100px; border-radius: 50%; background: var(--blue); color: white;
-    display: grid; grid-auto-rows: min-content; row-gap: 0; place-items: center; text-align: center; line-height: 1;
+    text-align: center;
     font-weight: 700; font-size: 18px; letter-spacing: .25em;
     text-decoration: none; border: 4px solid white; box-shadow: 0 8px 18px rgb(0 0 255 / 0.35);
     outline: none; -webkit-tap-highlight-color: transparent;
   }
   .buy-circle:hover { background: var(--blue); opacity: .88; }
-  .buy-circle span { display: block; height: 18px; line-height: 18px; overflow: hidden; color: #ffffff; }
+  .buy-circle-label {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .buy-circle-label span { display: block; height: 18px; line-height: 18px; overflow: hidden; color: #ffffff; }
   .close-button { position: absolute; top: 12px; right: 16px; width: 38px; height: 38px; border: 0; background: transparent; color: var(--blue); font-size: 32px; cursor: pointer; }
   .system-label { margin: 0 0 12px; font-weight: 700; font-size: 14px; }
   .rsvp-modal h2 { margin: 0 0 12px; font-size: clamp(34px, 8vw, 52px); line-height: .95; text-transform: uppercase; }
@@ -294,7 +298,7 @@
       <div class="book-modal-scroll">
         <img class="book-modal-img" src="images/book.png" alt="Bogomslag: Brugermanual til dit barn">
       </div>
-      <a class="buy-circle" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer"><span>KØB</span><span>HER</span></a>
+      <a class="buy-circle" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer"><span class="buy-circle-label"><span>KØB</span><span>HER</span></span></a>
     </section>
   </div>
 </main>
