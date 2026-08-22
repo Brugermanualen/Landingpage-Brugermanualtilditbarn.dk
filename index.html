@@ -378,9 +378,10 @@
     var sigBottom = signatureEl.getBoundingClientRect().bottom;
     var naturalMarginTop = momentaLink.getBoundingClientRect().top - sigBottom;
     var naturalGapBelow = frontBubble.getBoundingClientRect().top - momentaLink.getBoundingClientRect().bottom;
+    var extraGapBelow = 16;
     var target = (naturalMarginTop + naturalGapBelow) / 2;
     momentaLink.style.marginTop = target + "px";
-    momentaLink.style.marginBottom = Math.max(0, target - naturalGapBelow) + "px";
+    momentaLink.style.marginBottom = Math.max(0, target - naturalGapBelow + extraGapBelow) + "px";
   }
 
   alignMomentaLogo();
