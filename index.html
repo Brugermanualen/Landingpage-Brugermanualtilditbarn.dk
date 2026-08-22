@@ -362,6 +362,31 @@
   window.addEventListener("orientationchange", alignZoomHint);
   window.addEventListener("load", alignZoomHint);
   var bookImgForAlign = document.querySelector(".book-link img");
+
+  var momentaLink = document.querySelector(".momenta-link");
+  var signatureEl = document.querySelector(".signature");
+  var frontBubble = document.querySelector(".action .speech-bubble");
+
+  function alignMomentaLogo() {
+    if (!window.matchMedia("(orientation: portrait)").matches) {
+      momentaLink.style.marginTop = "";
+      momentaLink.style.marginBottom = "";
+      return;
+    }
+    momentaLink.style.marginTop = "";
+    momentaLink.style.marginBottom = "";
+    var sigBottom = signatureEl.getBoundingClientRect().bottom;
+    var naturalMarginTop = momentaLink.getBoundingClientRect().top - sigBottom;
+    var naturalGapBelow = frontBubble.getBoundingClientRect().top - momentaLink.getBoundingClientRect().bottom;
+    var target = (naturalMarginTop + naturalGapBelow) / 2;
+    momentaLink.style.marginTop = target + "px";
+    momentaLink.style.marginBottom = Math.max(0, target - naturalGapBelow) + "px";
+  }
+
+  alignMomentaLogo();
+  window.addEventListener("resize", alignMomentaLogo);
+  window.addEventListener("orientationchange", alignMomentaLogo);
+  window.addEventListener("load", alignMomentaLogo);
   if (!bookImgForAlign.complete) bookImgForAlign.addEventListener("load", alignZoomHint);
 
   var backdrop = document.querySelector("[data-backdrop]");
