@@ -75,10 +75,10 @@
   .kicker-label { font-weight: 700; font-size: var(--type-small); letter-spacing: .08em; margin-bottom: 14px; }
 
   /* Bogens ikoner (hjerte/hjerne/taleboble), samme streg-stil som FIG-ikonerne på omslaget */
-  .icon-badge { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--blue); display: grid; place-items: center; margin-bottom: 18px; }
-  .icon-badge img { width: 30px; height: 30px; object-fit: contain; }
-  .icon-badge.on-dark { border-color: #fff; }
-  .icon-badge.on-dark svg { stroke: #fff; }
+  .icon-badge { width: 56px; height: 56px; border-radius: 50%; background: var(--blue); border: 2px solid var(--blue); display: grid; place-items: center; margin-bottom: 18px; }
+  .icon-badge img { width: 30px; height: 30px; object-fit: contain; filter: brightness(0) invert(1); }
+  .icon-badge.on-dark { background: #fff; border-color: #fff; }
+  .icon-badge.on-dark img { filter: none; }
   .section-title { text-transform: uppercase; max-width: 20ch; }
   .section-body { margin-top: 20px; font-size: var(--type-body); line-height: var(--lh-body); max-width: 62ch; }
 
