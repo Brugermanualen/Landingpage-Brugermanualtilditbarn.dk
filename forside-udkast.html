@@ -6,6 +6,7 @@
 <title>Brugermanual til dit barn | En brugerflade til hverdagen</title>
 <meta name="description" content="Brugermanual til dit barn giver dig et enkelt og præcist sprog for det, der sker i dit barn. Af Dorte Rudi Andersen &amp; Niels Rahr, Forlaget Momenta.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%230000ff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles/type-scale.css">
 <style>
   :root { --blue: #000fff; --white: #ffffff; --pale: #eeeeff; }
   * { box-sizing: border-box; }
@@ -16,7 +17,7 @@
   img { max-width: 100%; display: block; }
   a { color: inherit; }
   a:visited { color: inherit; }
-  h1, h2, h3, p { margin: 0; }
+  p { margin: 0; }
   .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
 
   /* Draft banner — remove before this file becomes index.html */
@@ -43,8 +44,9 @@
   .hero { padding: clamp(40px, 8vw, 90px) 0 clamp(50px, 8vw, 100px); }
   .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: clamp(30px, 5vw, 70px); }
   .hero-badge { width: 74px; height: 74px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px; line-height: 1.15; margin-bottom: 22px; }
-  .hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.05; text-transform: uppercase; letter-spacing: .01em; }
-  .hero-sub { margin-top: 22px; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.6; max-width: 46ch; }
+  .hero-copy { container-type: inline-size; }
+  .hero h1 { font-size: clamp(2.75rem, 13cqw, var(--type-hero)); line-height: var(--lh-hero); text-transform: uppercase; letter-spacing: .01em; margin: 0 0 0.4em; }
+  .hero-sub { margin-top: 22px; font-size: var(--type-body); line-height: var(--lh-body); max-width: 60ch; }
   .hero-ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; }
   .btn-primary, .btn-secondary { display: inline-block; font-weight: 700; font-size: 15px; padding: 14px 26px; text-decoration: none; border: 2px solid var(--blue); }
   .btn-primary { background: var(--blue); color: #fff; }
@@ -66,9 +68,9 @@
   /* Section rhythm */
   section { padding: clamp(50px, 8vw, 100px) 0; }
   .section-alt { background: var(--pale); }
-  .kicker-label { font-weight: 700; font-size: 13px; letter-spacing: .08em; margin-bottom: 14px; }
-  .section-title { font-size: clamp(24px, 3.6vw, 38px); line-height: 1.1; text-transform: uppercase; max-width: 20ch; }
-  .section-body { margin-top: 20px; font-size: clamp(14px, 1.2vw, 17px); line-height: 1.7; max-width: 62ch; }
+  .kicker-label { font-weight: 700; font-size: var(--type-small); letter-spacing: .08em; margin-bottom: 14px; }
+  .section-title { text-transform: uppercase; max-width: 20ch; }
+  .section-body { margin-top: 20px; font-size: var(--type-body); line-height: var(--lh-body); max-width: 62ch; }
 
   /* Intro */
   .intro { text-align: center; }
@@ -76,7 +78,7 @@
 
   /* Udbytte */
   .benefits-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; max-width: 780px; }
-  .benefit { display: flex; gap: 12px; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.5; }
+  .benefit { display: flex; gap: 12px; font-size: var(--type-body); line-height: var(--lh-body); }
   .benefit::before { content: "→"; font-weight: 700; flex: none; }
   @media (max-width: 640px) { .benefits-grid { grid-template-columns: 1fr; } }
 
@@ -84,23 +86,23 @@
   .demo-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
   .demo-card { border: 2px solid var(--blue); padding: 26px; background: #fff; }
   .demo-row { margin-bottom: 14px; }
-  .demo-row .demo-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; opacity: .65; margin-bottom: 4px; }
+  .demo-row .demo-label { display: block; font-size: var(--type-small); font-weight: 700; letter-spacing: .08em; opacity: .65; margin-bottom: 4px; }
   .demo-row.old .demo-text { text-decoration: line-through; opacity: .55; }
   .demo-row.system .demo-text { font-weight: 700; }
-  .demo-text { font-size: 15px; line-height: 1.5; }
+  .demo-text { font-size: var(--type-body); line-height: var(--lh-body); }
   .demo-arrow { text-align: center; opacity: .5; margin: 6px 0; }
   @media (max-width: 700px) { .demo-grid { grid-template-columns: 1fr; } }
 
   /* Videnskab teaser */
-  .science-line { margin-top: 22px; font-weight: 700; font-size: clamp(15px, 1.4vw, 19px); }
+  .science-line { margin-top: 22px; font-weight: 700; font-size: var(--type-body); line-height: var(--lh-body); }
 
   /* Testimonials */
   .quotes-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .quote-card { border: 2px solid var(--blue); padding: 24px; background: #fff; display: flex; flex-direction: column; gap: 16px; }
-  .quote-text { font-size: 14px; line-height: 1.6; font-style: normal; }
+  .quote-text { font-size: var(--type-body); line-height: var(--lh-body); font-style: normal; }
   .quote-text::before { content: "\201C"; }
   .quote-text::after { content: "\201D"; }
-  .quote-by { font-size: 12px; font-weight: 700; opacity: .75; }
+  .quote-by { font-size: var(--type-small); line-height: var(--lh-small); font-weight: 700; opacity: .75; }
   @media (max-width: 900px) { .quotes-grid { grid-template-columns: 1fr; } }
 
   /* CTA band */
@@ -113,23 +115,25 @@
   .newsletter { text-align: center; }
   .newsletter form { margin: 28px auto 0; max-width: 420px; display: grid; gap: 12px; text-align: left; }
   .newsletter input[type="text"], .newsletter input[type="email"] { border: 2px solid var(--blue); padding: 12px 14px; background: #fff; color: var(--blue); }
-  .newsletter .consent { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; line-height: 1.4; }
+  .newsletter .consent { display: flex; gap: 8px; align-items: flex-start; font-size: var(--type-small); line-height: var(--lh-small); }
   .newsletter .consent input { margin-top: 3px; flex: none; }
   .newsletter button { border: 2px solid var(--blue); background: var(--blue); color: #fff; font-weight: 700; padding: 13px 18px; cursor: pointer; }
   .newsletter button:hover { background: #fff; color: var(--blue); }
   .honeypot { position: absolute; left: -9999px; }
-  .form-note { margin-top: 14px; font-size: 11px; line-height: 1.5; opacity: .75; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .form-note { margin-top: 14px; font-size: var(--type-small); line-height: var(--lh-small); opacity: .75; max-width: 420px; margin-left: auto; margin-right: auto; }
   .newsletter-success { display: none; font-weight: 700; margin-top: 20px; }
   .newsletter-success.visible { display: block; }
   .newsletter form.hidden { display: none; }
 
   /* Footer */
   footer { border-top: 2px solid var(--blue); padding: 40px 0 60px; }
-  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; font-size: 13px; }
-  .footer-col h3 { font-size: 12px; font-weight: 700; letter-spacing: .06em; margin-bottom: 12px; }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; font-size: var(--type-small); }
+  /* .footer-col h3 er markup, ikke indholdshierarki — bruges kun for struktur/tilgængelighed,
+     så den styles bevidst som lille tekst, ikke som en H3 i den redaktionelle skala. */
+  .footer-col h3 { font-size: var(--type-small); line-height: var(--lh-small); font-weight: 700; letter-spacing: .06em; margin-bottom: 12px; }
   .footer-col a { display: block; text-decoration: none; line-height: 2; opacity: .85; }
   .footer-col a:hover { text-decoration: underline; }
-  .footer-bottom { margin-top: 36px; font-size: 11px; opacity: .6; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+  .footer-bottom { margin-top: 36px; font-size: var(--type-small); line-height: var(--lh-small); opacity: .6; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
   @media (max-width: 700px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
 
   .missing { background: #fff3cd; color: #8a6d00; padding: 1px 6px; font-weight: 700; font-size: .9em; }
@@ -164,7 +168,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
-      <div>
+      <div class="hero-copy">
         <span class="hero-badge">0-5<br>ÅR</span>
         <h1>Dit barn kom uden manual.<br>Derfor har vi skrevet en.</h1>
         <p class="hero-sub">Brugermanual til dit barn giver dig et enkelt og præcist sprog for det, der sker i dit barn. En intuitiv brugerflade til den vigtigste viden om børn, udvikling og relationer.</p>

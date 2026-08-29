@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Brugermanual til dit barn — typografisk skala
+   ==========================================================================
+   Metode: geometrisk skala baseret på det gyldne snit (φ ≈ 1,618).
+   Grundstørrelse (brødtekst): 16px = 1rem.
+   Hvert niveau = forrige niveau × 1,618 (eller ÷ 1,618 for niveauet under).
+
+     Lille tekst        16 ÷ 1,618   =  9,89px  → afrundet 10px  (0.625rem)
+     Brødtekst           16 × 1,618⁰ = 16,00px  →          16px  (1rem)
+     H3 (undersektion)   16 × 1,618¹ = 25,89px  → afrundet 26px  (1.618rem)
+     H2 (hovedsektion)   16 × 1,618² = 41,89px  → afrundet 42px  (2.618rem)
+     H1 (sidetitel)      16 × 1,618³ = 67,78px  → afrundet 68px  (4.236rem)
+     Hero (vigtigste)    16 × 1,618⁴ =109,66px  → afrundet 110px (6.854rem)
+
+   Denne fil er det ene, fælles sted skalaen defineres — alle sider linker
+   til den, så typografien er identisk på tværs af hele hjemmesiden.
+   ========================================================================== */
+
+:root {
+  /* --- Den matematiske skala (faste værdier, brugt som loft/reference) --- */
+  --type-small: 0.625rem;  /* 10px */
+  --type-body:  1rem;      /* 16px */
+  --type-h3:    1.618rem;  /* 26px */
+  --type-h2:    2.618rem;  /* 42px */
+  --type-h1:    4.236rem;  /* 68px */
+  --type-hero:  6.854rem;  /* 110px */
+
+  /* --- Responsive udgaver: fuldt gyldne-snit-udtryk på store skærme,
+     komprimeret på mobil så overskrifter ikke dominerer skærmen eller
+     tvinger uhensigtsmæssige linjeskift. Brødtekst og lille tekst
+     forbliver konstante — kun de store niveauer skaleres. --- */
+  --type-hero-fluid: clamp(3.5rem, 2rem + 7vw, var(--type-hero));   /* 56px → 110px */
+  --type-h1-fluid:   clamp(2.75rem, 1.9rem + 4.2vw, var(--type-h1)); /* 44px → 68px */
+  --type-h2-fluid:   clamp(1.75rem, 1.35rem + 2.1vw, var(--type-h2)); /* 28px → 42px */
+  --type-h3-fluid:   clamp(1.25rem, 1.05rem + 1vw, var(--type-h3));  /* 20px → 26px */
+
+  /* --- Linjeafstand: stram til store overskrifter, luftig til brødtekst --- */
+  --lh-hero: 0.95;
+  --lh-h1: 1;
+  --lh-h2: 1.05;
+  --lh-h3: 1.15;
+  --lh-body: 1.6;
+  --lh-small: 1.4;
+
+  /* --- Læsbar linjelængde til brødtekst (Courier New er monospace,
+     så "ch" svarer præcist til antal tegn) --- */
+  --measure-body: 68ch; /* inden for det ønskede 55–75 tegn-interval */
+}
+
+/* --- Typografiske roller ------------------------------------------------- */
+
+.type-hero,
+.hero-title {
+  font-size: var(--type-hero-fluid);
+  line-height: var(--lh-hero);
+  margin: 0 0 0.4em;
+}
+
+h1, .type-h1 {
+  font-size: var(--type-h1-fluid);
+  line-height: var(--lh-h1);
+  margin: 0 0 0.45em;
+}
+
+h2, .type-h2 {
+  font-size: var(--type-h2-fluid);
+  line-height: var(--lh-h2);
+  margin: 0 0 0.5em;
+}
+
+h3, .type-h3 {
+  font-size: var(--type-h3-fluid);
+  line-height: var(--lh-h3);
+  margin: 0 0 0.55em;
+}
+
+body, .type-body, p {
+  font-size: var(--type-body);
+  line-height: var(--lh-body);
+}
+
+.measure {
+  max-width: var(--measure-body);
+}
+
+.type-small, small, .eyebrow, .caption {
+  font-size: var(--type-small);
+  line-height: var(--lh-small);
+}
