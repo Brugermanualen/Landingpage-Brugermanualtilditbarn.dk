@@ -60,8 +60,24 @@
     .spread-buy { margin-left: auto; margin-right: auto; }
   }
 
+  /* Opslag 1: cover-agtig hero, ligesom bogens eget åbningsopslag */
+  .hero { text-align: center; }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; }
+  .hero-mast { display: flex; flex-direction: column; align-items: center; gap: clamp(10px, 1.6vw, 16px); opacity: 0; transform: translateY(14px); transition: opacity .8s ease, transform .8s ease; }
+  .hero-mast.in-view { opacity: 1; transform: translateY(0); }
+  .hero-badge { display: grid; place-items: center; width: clamp(60px, 7vw, 80px); aspect-ratio: 1; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; font-size: clamp(12px, 1.4vw, 15px); line-height: 1.2; letter-spacing: .02em; }
+  .hero-kicker { font-size: clamp(11px, 1.25vw, 13px); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .hero-wordmark { font-size: clamp(2.1rem, 6.6vw, 4.4rem); line-height: 1.06; font-weight: 700; letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; }
+  .hero-visual { width: 100%; margin: clamp(4px, 1vw, 10px) 0 clamp(18px, 3vw, 30px); }
+  .hero-pitch { container-type: inline-size; width: 100%; max-width: 560px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .hero-pitch .spread-headline, .hero-pitch .spread-body { text-align: center; }
+  .hero-pitch .headline-1 { font-size: clamp(.8125rem, 5.5cqw, 1.8125rem); }
+  @media (max-width: 480px) {
+    .hero-badge { width: 58px; font-size: 11.5px; }
+  }
+
   /* Bamse/raket med lunte-gnister (opslag 1) */
-  .spark-bear { position: relative; width: min(100%, 340px); aspect-ratio: 1247 / 2541; margin: 0 auto; }
+  .spark-bear { position: relative; display: block; width: 100%; max-width: 340px; aspect-ratio: 1247 / 2541; margin: 0 auto; }
   .spark-bear img { width: 100%; height: 100%; display: block; user-select: none; }
   .fuse-spark-anchor { position: absolute; left: 39%; top: 48.5%; width: 0; height: 0; pointer-events: none; }
   .glow-core { position: absolute; width: 7px; height: 7px; background: var(--blue); border-radius: 50%; top: -3.5px; left: -3.5px; animation: corePulse .22s infinite alternate ease-in-out; }
@@ -124,14 +140,14 @@
 <main>
 
   <!-- OPSLAG 1 -->
-  <section class="spread" id="opslag-1">
-    <div class="wrap spread-grid">
-      <div class="spread-text">
-        <h1 class="spread-headline headline-1">Vores børn kom uden manual. Derfor har vi skrevet én.</h1>
-        <p class="spread-body">Til alle, der er så heldige at få ansvar<br>for et helt nyt og vidunderligt lille menneske<br>og gerne vil forstå det lidt bedre.<br><br>En intuitiv brugerflade til vigtig viden<br>om børn, udvikling og relationer.<br>For at sikre den bedste start på livet.</p>
-        <a class="spread-buy" href="https://www.williamdam.dk/brugermanual-til-dit-barn__4393526" target="_blank" rel="noopener noreferrer">KØB BOGEN</a>
+  <section class="spread hero" id="opslag-1">
+    <div class="wrap hero-inner">
+      <div class="hero-mast in-view">
+        <span class="hero-badge" aria-hidden="true">0-5<br>ÅR</span>
+        <p class="hero-kicker">Sådan sikrer du den bedste start på livet</p>
+        <h1 class="hero-wordmark">Brugermanual<br>til dit barn</h1>
       </div>
-      <div class="spread-visual in-view">
+      <div class="hero-visual">
         <span class="spark-bear" aria-hidden="true">
           <img src="images/bamse-raket.png" alt="Illustration: bamsen fastspændt på en raket i en flaske">
           <span class="fuse-spark-anchor">
@@ -145,6 +161,11 @@
           </span>
         </span>
       </div>
+      <div class="hero-pitch">
+        <h2 class="spread-headline headline-1">Vores børn kom uden manual. Derfor har vi skrevet én.</h2>
+        <p class="spread-body">Til alle, der er så heldige at få ansvar<br>for et helt nyt og vidunderligt lille menneske<br>og gerne vil forstå det lidt bedre.<br><br>En intuitiv brugerflade til vigtig viden<br>om børn, udvikling og relationer.<br>For at sikre den bedste start på livet.</p>
+        <a class="spread-buy" href="https://www.williamdam.dk/brugermanual-til-dit-barn__4393526" target="_blank" rel="noopener noreferrer">KØB BOGEN</a>
+      </div>
     </div>
   </section>
 
@@ -152,7 +173,7 @@
   <section class="spread" id="opslag-2">
     <div class="wrap spread-grid">
       <div class="spread-text">
-        <h1 class="spread-headline headline-2">Videnskaben er smuk. Hverdagen kaster med havregrød.</h1>
+        <h2 class="spread-headline headline-2">Videnskaben er smuk. Hverdagen kaster med havregrød.</h2>
         <p class="spread-body">Vi ved mere om børn end nogensinde før.<br>Psykologi, neurobiologi og pædagogik<br>har givet os vigtig viden om børns udvikling.<br><br>Alligevel kan den være svær at få fat i,<br>når barnet skriger, batteriet er lavt,<br>og alle systemer er under pres.<br><br>Brugermanual til dit barn gør den viden<br>lettere at forstå, huske og bruge i virkeligheden.</p>
       </div>
       <div class="spread-visual" data-reveal>
@@ -165,7 +186,7 @@
   <section class="spread" id="opslag-3">
     <div class="wrap spread-grid">
       <div class="spread-text">
-        <h1 class="spread-headline headline-3">Forbindelsen mellem mennesker er verdens vigtigste netværk. Forbind. Forstå. Formidl.</h1>
+        <h2 class="spread-headline headline-3">Forbindelsen mellem mennesker er verdens vigtigste netværk. Forbind. Forstå. Formidl.</h2>
         <p class="spread-body">Tre trin, når situationen spidser til.<br><br><strong>Forbind</strong> — Skab kontakt og ro.<br><strong>Forstå</strong> — Bliv nysgerrig på det, der ligger bag adfærden.<br><strong>Formidl</strong> — Sæt ord på, vis vej eller sæt en tydelig grænse.<br><br>Rækkefølgen er afgørende.<br>Forbindelsen gør det lettere for barnet<br>at lytte, lære og finde tilbage til roen.</p>
       </div>
       <div class="spread-visual" data-reveal>
@@ -180,7 +201,7 @@
   <section class="spread" id="opslag-4">
     <div class="wrap spread-grid">
       <div class="spread-text">
-        <h1 class="spread-headline headline-4">Videnskaben er den samme. Brugerfladen har fået en opgradering.</h1>
+        <h2 class="spread-headline headline-4">Videnskaben er den samme. Brugerfladen har fået en opgradering.</h2>
         <p class="spread-body">Manualen indeholder ingen nye videnskabelige teorier. Den giver vigtig viden om børn, udvikling og relationer et enkelt og intuitivt sprog.<br><br>Sproget er brugerfladen. De ord, vi bruger om barnet, påvirker, hvad vi får øje på, hvordan vi forstår situationen, og hvad vi gør bagefter. Når vi kan afkode, hvad der foregår i barnet, bliver det lettere at handle hjælpsomt.<br><br>Manualen installeres med øjnene<br>direkte i den gode gamle hjerne.<br>Du kan installere det hele på én gang<br>eller tage det i små bidder efter behov.<br><br>Den fungerer også som opslagsværk,<br>når der opstår en situation,<br>du gerne vil forstå bedre.</p>
         <a class="spread-buy" href="https://www.williamdam.dk/brugermanual-til-dit-barn__4393526" target="_blank" rel="noopener noreferrer">KØB BOGEN</a>
       </div>
