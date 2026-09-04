@@ -80,8 +80,9 @@
   .spark-bear { position: relative; display: block; width: 100%; max-width: 340px; aspect-ratio: 1247 / 2541; margin: 0 auto; }
   .spark-bear img { width: 100%; height: 100%; display: block; user-select: none; }
   .fuse-spark-anchor { position: absolute; left: 40.1%; top: 51.75%; width: 0; height: 0; pointer-events: none; }
-  .spark-flash { position: absolute; width: 44px; height: 44px; left: -22px; top: -22px; border-radius: 50%; background: radial-gradient(circle, rgba(0,15,255,.5) 0%, rgba(0,15,255,.16) 45%, rgba(0,15,255,0) 74%); animation: flashBreathe 2.3s infinite ease-in-out; }
-  .glow-core { position: absolute; width: 7px; height: 7px; background: var(--blue); border-radius: 50%; top: -3.5px; left: -3.5px; box-shadow: 0 0 5px 1.5px rgba(0,15,255,.9), 0 0 11px 4px rgba(0,15,255,.35); animation: corePulse .22s infinite alternate ease-in-out; }
+  .spark-cluster { display: block; transform: scale(.58); transform-origin: 0 0; opacity: .7; }
+  .spark-flash { position: absolute; width: 34px; height: 34px; left: -17px; top: -17px; border-radius: 50%; background: radial-gradient(circle, rgba(0,15,255,.28) 0%, rgba(0,15,255,.09) 45%, rgba(0,15,255,0) 74%); animation: flashBreathe 2.3s infinite ease-in-out; }
+  .glow-core { position: absolute; width: 7px; height: 7px; background: var(--blue); border-radius: 50%; top: -3.5px; left: -3.5px; box-shadow: 0 0 3px 1px rgba(0,15,255,.7), 0 0 6px 2px rgba(0,15,255,.22); animation: corePulse .22s infinite alternate ease-in-out; }
   .glow-ring-1 { position: absolute; width: 18px; height: 18px; border: 1.6px solid var(--blue); border-radius: 50%; top: -9px; left: -9px; animation: ringPop .65s infinite cubic-bezier(.1,.7,.1,1); }
   .glow-ring-2 { position: absolute; width: 11px; height: 11px; border: 1.6px solid var(--blue); border-radius: 50%; top: -5.5px; left: -5.5px; animation: ringPop .85s infinite .35s cubic-bezier(.1,.7,.1,1); }
   .glow-ring-3 { position: absolute; width: 27px; height: 27px; border: 1.4px solid var(--blue); border-radius: 50%; top: -13.5px; left: -13.5px; animation: ringPopSoft 1.15s infinite .55s cubic-bezier(.1,.7,.1,1); }
@@ -139,6 +140,12 @@
   .pyramid-reveal img { clip-path: inset(100% 0 0 0); transition: clip-path 1.1s cubic-bezier(.2,.7,.2,1); }
   .spread-visual.in-view .pyramid-reveal img { clip-path: inset(0 0 0 0); }
 
+  /* Opslag 5: stort packshot + køb-knap */
+  .buy-cta { text-align: center; }
+  .buy-cta-inner { width: 100%; display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 4vw, 40px); }
+  .buy-cta-visual { width: 100%; max-width: 640px; margin: 0 auto; }
+  .buy-cta-button { font-size: 16px; padding: 18px 46px; }
+
   footer { border-top: 2px solid var(--blue); padding: 40px 0; background: #f2f3ff; }
   .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: var(--type-small); }
   .footer-title { font-weight: 700; }
@@ -177,19 +184,21 @@
         <span class="spark-bear" aria-hidden="true">
           <img src="images/bamse-raket.png" alt="Illustration: bamsen fastspændt på en raket i en flaske">
           <span class="fuse-spark-anchor">
-            <span class="spark-flash"></span>
-            <span class="smoke sm1"></span><span class="smoke sm2"></span>
-            <span class="glow-ring-3"></span>
-            <span class="glow-ring-2"></span>
-            <span class="glow-ring-1"></span>
-            <span class="glow-core"></span>
-            <span class="spark sp1"></span><span class="spark sp2"></span><span class="spark sp3"></span>
-            <span class="spark sp4"></span><span class="spark sp5"></span><span class="spark sp6"></span>
-            <span class="spark sp7"></span><span class="spark sp8"></span><span class="spark sp9"></span>
-            <span class="spark sp10"></span><span class="spark sp11"></span><span class="spark sp12"></span>
-            <span class="spark sp13"></span><span class="spark sp14"></span><span class="spark sp15"></span>
-            <span class="spark sp16"></span>
-            <span class="spark spark-star st1"></span><span class="spark spark-star st2"></span><span class="spark spark-star st3"></span>
+            <span class="spark-cluster">
+              <span class="spark-flash"></span>
+              <span class="smoke sm1"></span><span class="smoke sm2"></span>
+              <span class="glow-ring-3"></span>
+              <span class="glow-ring-2"></span>
+              <span class="glow-ring-1"></span>
+              <span class="glow-core"></span>
+              <span class="spark sp1"></span><span class="spark sp2"></span><span class="spark sp3"></span>
+              <span class="spark sp4"></span><span class="spark sp5"></span><span class="spark sp6"></span>
+              <span class="spark sp7"></span><span class="spark sp8"></span><span class="spark sp9"></span>
+              <span class="spark sp10"></span><span class="spark sp11"></span><span class="spark sp12"></span>
+              <span class="spark sp13"></span><span class="spark sp14"></span><span class="spark sp15"></span>
+              <span class="spark sp16"></span>
+              <span class="spark spark-star st1"></span><span class="spark spark-star st2"></span><span class="spark spark-star st3"></span>
+            </span>
           </span>
         </span>
       </div>
@@ -240,6 +249,16 @@
       <div class="spread-visual" data-reveal style="max-width:280px; margin-left:auto; margin-right:auto;">
         <img src="images/icons/hjerne.png" alt="Illustration: hjernen — manualens viden installeres gennem øjnene og lagres i hjernen">
       </div>
+    </div>
+  </section>
+
+  <!-- OPSLAG 5: STORT PACKSHOT + KØB BOGEN -->
+  <section class="spread buy-cta" id="opslag-5">
+    <div class="wrap buy-cta-inner">
+      <div class="spread-visual buy-cta-visual" data-reveal>
+        <img src="images/bog-packshot.jpg" alt="Brugermanual til dit barn — forside og bagside af bogen" loading="lazy">
+      </div>
+      <a class="spread-buy buy-cta-button" href="https://www.williamdam.dk/brugermanual-til-dit-barn__4393526" target="_blank" rel="noopener noreferrer">KØB BOGEN</a>
     </div>
   </section>
 
