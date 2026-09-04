@@ -79,11 +79,15 @@
   /* Bamse/raket med lunte-gnister (opslag 1) */
   .spark-bear { position: relative; display: block; width: 100%; max-width: 340px; aspect-ratio: 1247 / 2541; margin: 0 auto; }
   .spark-bear img { width: 100%; height: 100%; display: block; user-select: none; }
-  .fuse-spark-anchor { position: absolute; left: 39%; top: 48.5%; width: 0; height: 0; pointer-events: none; }
-  .glow-core { position: absolute; width: 7px; height: 7px; background: var(--blue); border-radius: 50%; top: -3.5px; left: -3.5px; animation: corePulse .22s infinite alternate ease-in-out; }
+  .fuse-spark-anchor { position: absolute; left: 40.1%; top: 51.75%; width: 0; height: 0; pointer-events: none; }
+  .spark-flash { position: absolute; width: 44px; height: 44px; left: -22px; top: -22px; border-radius: 50%; background: radial-gradient(circle, rgba(0,15,255,.5) 0%, rgba(0,15,255,.16) 45%, rgba(0,15,255,0) 74%); animation: flashBreathe 2.3s infinite ease-in-out; }
+  .glow-core { position: absolute; width: 7px; height: 7px; background: var(--blue); border-radius: 50%; top: -3.5px; left: -3.5px; box-shadow: 0 0 5px 1.5px rgba(0,15,255,.9), 0 0 11px 4px rgba(0,15,255,.35); animation: corePulse .22s infinite alternate ease-in-out; }
   .glow-ring-1 { position: absolute; width: 18px; height: 18px; border: 1.6px solid var(--blue); border-radius: 50%; top: -9px; left: -9px; animation: ringPop .65s infinite cubic-bezier(.1,.7,.1,1); }
   .glow-ring-2 { position: absolute; width: 11px; height: 11px; border: 1.6px solid var(--blue); border-radius: 50%; top: -5.5px; left: -5.5px; animation: ringPop .85s infinite .35s cubic-bezier(.1,.7,.1,1); }
+  .glow-ring-3 { position: absolute; width: 27px; height: 27px; border: 1.4px solid var(--blue); border-radius: 50%; top: -13.5px; left: -13.5px; animation: ringPopSoft 1.15s infinite .55s cubic-bezier(.1,.7,.1,1); }
   .spark { position: absolute; background: var(--blue); transform-origin: 0 0; opacity: 0; }
+  .spark-star { background: var(--blue); clip-path: polygon(50% 0%, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0% 50%, 38% 36%); }
+  .smoke { position: absolute; width: 3px; height: 14px; border-radius: 3px; background: rgba(0,15,255,.26); filter: blur(1px); transform-origin: 50% 100%; opacity: 0; }
   .sp1 { width: 2.4px; height: 11px; border-radius: 2px; animation: sparkFly1 1.15s infinite .05s ease-out; }
   .sp2 { width: 2px; height: 8px; border-radius: 2px; animation: sparkFly2 1.45s infinite .25s ease-out; }
   .sp3 { width: 3px; height: 13px; border-radius: 2px; animation: sparkFly3 1.30s infinite .65s ease-out; }
@@ -94,8 +98,24 @@
   .sp8 { width: 2px; height: 7px; border-radius: 2px; animation: sparkFly6 1.50s infinite .35s ease-out; }
   .sp9 { width: 3.4px; height: 3.4px; border-radius: 50%; animation: sparkPop3 .95s infinite .70s ease-out; }
   .sp10 { width: 2px; height: 9px; border-radius: 2px; animation: sparkFly7 1.35s infinite .95s ease-out; }
+  .sp11 { width: 2px; height: 9px; border-radius: 2px; animation: sparkFly8 1.40s infinite .55s ease-out; }
+  .sp12 { width: 2.6px; height: 2.6px; border-radius: 50%; animation: sparkPop4 1.10s infinite .15s ease-out; }
+  .sp13 { width: 2px; height: 11px; border-radius: 2px; animation: sparkFly9 1.60s infinite 1.05s ease-out; }
+  .sp14 { width: 2.2px; height: 2.2px; border-radius: 50%; animation: sparkPop5 .90s infinite .50s ease-out; }
+  .sp15 { width: 1.8px; height: 8px; border-radius: 2px; animation: sparkFly10 1.20s infinite .30s ease-out; }
+  .sp16 { width: 2px; height: 10px; border-radius: 2px; animation: sparkFly11 1.50s infinite .85s ease-out; }
+  .st1 { left: -14px; top: -10px; width: 7px; height: 7px; animation: sparkTwinkle 1.8s infinite .15s ease-in-out; }
+  .st2 { left: 10px; top: -14px; width: 5px; height: 5px; animation: sparkTwinkle 2.2s infinite .9s ease-in-out; }
+  .st3 { left: -4px; top: 9px; width: 6px; height: 6px; animation: sparkTwinkle 2.6s infinite 1.5s ease-in-out; }
+  .sm1 { left: -2px; top: -6px; animation: smokeRise1 3.4s infinite .4s ease-out; }
+  .sm2 { left: 5px; top: -4px; animation: smokeRise2 3.8s infinite 1.6s ease-out; }
+  @keyframes flashBreathe { 0%,100%{opacity:.3;transform:scale(.85)} 50%{opacity:.8;transform:scale(1.2)} }
   @keyframes corePulse { 0%{transform:scale(.65);opacity:.7} 100%{transform:scale(1.75);opacity:1} }
   @keyframes ringPop { 0%{transform:scale(.2);opacity:1} 65%{transform:scale(1.4);opacity:.35} 100%{transform:scale(2);opacity:0} }
+  @keyframes ringPopSoft { 0%{transform:scale(.2);opacity:.6} 65%{transform:scale(1.6);opacity:.2} 100%{transform:scale(2.3);opacity:0} }
+  @keyframes sparkTwinkle { 0%,100%{opacity:0;transform:scale(.2) rotate(0deg)} 12%{opacity:1;transform:scale(1) rotate(22deg)} 24%{opacity:.55;transform:scale(.7) rotate(38deg)} 36%{opacity:0;transform:scale(.2) rotate(55deg)} }
+  @keyframes smokeRise1 { 0%{transform:translate(0,0) rotate(-8deg) scaleY(.5);opacity:0} 12%{opacity:.45} 100%{transform:translate(-9px,-44px) rotate(12deg) scaleY(1.7);opacity:0} }
+  @keyframes smokeRise2 { 0%{transform:translate(0,0) rotate(6deg) scaleY(.5);opacity:0} 15%{opacity:.35} 100%{transform:translate(8px,-50px) rotate(-10deg) scaleY(1.9);opacity:0} }
   @keyframes sparkFly1 { 0%{transform:translate(0,0) rotate(-45deg) scaleY(.2);opacity:0} 15%{opacity:1} 60%{transform:translate(-16px,-13px) rotate(-45deg) scaleY(1);opacity:.95} 100%{transform:translate(-28px,-23px) rotate(-45deg) scaleY(.1);opacity:0} }
   @keyframes sparkFly2 { 0%{transform:translate(0,0) rotate(35deg) scaleY(.2);opacity:0} 20%{opacity:1} 65%{transform:translate(13px,-14px) rotate(35deg) scaleY(1);opacity:.9} 100%{transform:translate(23px,-24px) rotate(35deg) scaleY(.1);opacity:0} }
   @keyframes sparkFly3 { 0%{transform:translate(0,0) rotate(-120deg) scaleY(.2);opacity:0} 15%{opacity:1} 60%{transform:translate(-18px,11px) rotate(-120deg) scaleY(1);opacity:.95} 100%{transform:translate(-30px,17px) rotate(-120deg) scaleY(.1);opacity:0} }
@@ -103,10 +123,16 @@
   @keyframes sparkFly5 { 0%{transform:translate(0,0) rotate(-80deg) scaleY(.2);opacity:0} 15%{opacity:1} 60%{transform:translate(-20px,-5px) rotate(-80deg) scaleY(1);opacity:.95} 100%{transform:translate(-34px,-8px) rotate(-80deg) scaleY(.1);opacity:0} }
   @keyframes sparkFly6 { 0%{transform:translate(0,0) rotate(115deg) scaleY(.2);opacity:0} 20%{opacity:1} 65%{transform:translate(15px,13px) rotate(115deg) scaleY(1);opacity:.85} 100%{transform:translate(25px,21px) rotate(115deg) scaleY(.1);opacity:0} }
   @keyframes sparkFly7 { 0%{transform:translate(0,0) rotate(-25deg) scaleY(.2);opacity:0} 20%{opacity:1} 60%{transform:translate(-9px,-17px) rotate(-25deg) scaleY(1);opacity:.9} 100%{transform:translate(-16px,-29px) rotate(-25deg) scaleY(.1);opacity:0} }
+  @keyframes sparkFly8 { 0%{transform:translate(0,0) rotate(60deg) scaleY(.2);opacity:0} 18%{opacity:1} 62%{transform:translate(17px,-11px) rotate(60deg) scaleY(1);opacity:.9} 100%{transform:translate(29px,-19px) rotate(60deg) scaleY(.1);opacity:0} }
+  @keyframes sparkFly9 { 0%{transform:translate(0,0) rotate(-150deg) scaleY(.2);opacity:0} 15%{opacity:1} 60%{transform:translate(-14px,16px) rotate(-150deg) scaleY(1);opacity:.9} 100%{transform:translate(-24px,27px) rotate(-150deg) scaleY(.1);opacity:0} }
+  @keyframes sparkFly10 { 0%{transform:translate(0,0) rotate(150deg) scaleY(.2);opacity:0} 20%{opacity:1} 62%{transform:translate(13px,15px) rotate(150deg) scaleY(1);opacity:.85} 100%{transform:translate(22px,25px) rotate(150deg) scaleY(.1);opacity:0} }
+  @keyframes sparkFly11 { 0%{transform:translate(0,0) rotate(8deg) scaleY(.2);opacity:0} 20%{opacity:1} 65%{transform:translate(24px,-3px) rotate(8deg) scaleY(1);opacity:.85} 100%{transform:translate(40px,-5px) rotate(8deg) scaleY(.1);opacity:0} }
   @keyframes sparkPop1 { 0%{transform:translate(0,0) scale(.3);opacity:0} 25%{opacity:1} 65%{transform:translate(12px,-9px) scale(1.4);opacity:.9} 100%{transform:translate(21px,-16px) scale(0);opacity:0} }
   @keyframes sparkPop2 { 0%{transform:translate(0,0) scale(.3);opacity:0} 30%{opacity:1} 70%{transform:translate(-14px,-6px) scale(1.3);opacity:.9} 100%{transform:translate(-23px,-10px) scale(0);opacity:0} }
   @keyframes sparkPop3 { 0%{transform:translate(0,0) scale(.3);opacity:0} 25%{opacity:1} 70%{transform:translate(-9px,13px) scale(1.3);opacity:.95} 100%{transform:translate(-16px,21px) scale(0);opacity:0} }
-  @media (prefers-reduced-motion: reduce) { .glow-core,.glow-ring-1,.glow-ring-2,.spark { animation: none !important; opacity: 0 !important; } .spread-visual img { transition: none !important; opacity: 1 !important; transform: none !important; } }
+  @keyframes sparkPop4 { 0%{transform:translate(0,0) scale(.3);opacity:0} 28%{opacity:1} 68%{transform:translate(-11px,10px) scale(1.3);opacity:.85} 100%{transform:translate(-19px,17px) scale(0);opacity:0} }
+  @keyframes sparkPop5 { 0%{transform:translate(0,0) scale(.3);opacity:0} 30%{opacity:1} 70%{transform:translate(6px,-14px) scale(1.2);opacity:.9} 100%{transform:translate(10px,-24px) scale(0);opacity:0} }
+  @media (prefers-reduced-motion: reduce) { .spark-flash,.glow-core,.glow-ring-1,.glow-ring-2,.glow-ring-3,.spark,.smoke { animation: none !important; opacity: 0 !important; } .spread-visual img { transition: none !important; opacity: 1 !important; transform: none !important; } }
 
   /* Opslag 3: pyramide tegnes nedefra og op */
   .pyramid-reveal { position: relative; max-width: 340px; }
@@ -151,13 +177,19 @@
         <span class="spark-bear" aria-hidden="true">
           <img src="images/bamse-raket.png" alt="Illustration: bamsen fastspændt på en raket i en flaske">
           <span class="fuse-spark-anchor">
+            <span class="spark-flash"></span>
+            <span class="smoke sm1"></span><span class="smoke sm2"></span>
+            <span class="glow-ring-3"></span>
             <span class="glow-ring-2"></span>
             <span class="glow-ring-1"></span>
             <span class="glow-core"></span>
             <span class="spark sp1"></span><span class="spark sp2"></span><span class="spark sp3"></span>
             <span class="spark sp4"></span><span class="spark sp5"></span><span class="spark sp6"></span>
             <span class="spark sp7"></span><span class="spark sp8"></span><span class="spark sp9"></span>
-            <span class="spark sp10"></span>
+            <span class="spark sp10"></span><span class="spark sp11"></span><span class="spark sp12"></span>
+            <span class="spark sp13"></span><span class="spark sp14"></span><span class="spark sp15"></span>
+            <span class="spark sp16"></span>
+            <span class="spark spark-star st1"></span><span class="spark spark-star st2"></span><span class="spark spark-star st3"></span>
           </span>
         </span>
       </div>
