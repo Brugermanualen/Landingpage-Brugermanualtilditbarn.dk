@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Brugermanual til dit barn — En ny brugerflade til et bedre forældreskab</title>
 <meta name="description" content="Brugermanual til dit barn (0–5 år) af Dorte Rudi Andersen og Niels Rahr: en ny brugerflade til et bedre forældreskab. Videnskaben om dit barn, oversat til handling i hverdagen.">
 <link rel="canonical" href="https://brugermanualtilditbarn.dk/">
@@ -12,13 +12,12 @@
 <meta property="og:title" content="Brugermanual til dit barn — En ny brugerflade til et bedre forældreskab">
 <meta property="og:description" content="Brugermanual til dit barn (0–5 år) af Dorte Rudi Andersen og Niels Rahr: en ny brugerflade til et bedre forældreskab. Videnskaben om dit barn, oversat til handling i hverdagen.">
 <meta property="og:url" content="https://brugermanualtilditbarn.dk/">
-<meta property="og:image" content="https://brugermanualtilditbarn.dk/assets/cover/packshot-forside.png">
+<meta property="og:image" content="https://brugermanualtilditbarn.dk/assets/cover/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
 <style>
-  /* Brand: systemblå #000FFF (opdateret fra #0000FF), lavendel #666FFF som
-     60% tint til sekundære felter, ren hvid, og Courier New som eneste
-     skrift i hele det visuelle system — jf. den officielle designguide. */
   :root{
     --blue:#000FFF;
     --blue-rgb:0,15,255;
@@ -42,9 +41,6 @@
     width:100%;
     overflow-x:hidden;
   }
-  /* The viewer may apply its own dark setting. This design is a fixed
-     blue-on-white identity, so the palette is pinned in every theme state
-     rather than inverted, which is what was showing through as black. */
   :root:not([data-theme="light"]),
   :root[data-theme="dark"],
   :root[data-theme="light"]{
@@ -65,8 +61,6 @@
     word-break:keep-all;
     line-height:1.5;
   }
-  /* Every full-bleed band carries its own background so no gap can fall
-     through to the viewer's backdrop. */
   .nav, .hero, .section, footer{ background:var(--white); }
   .section-dark, .closer{ background:var(--blue); }
   img{max-width:100%; display:block;}
@@ -85,8 +79,6 @@
   .section-dark .eyebrow .n, .closer .eyebrow .n{ color:inherit; opacity:.6; }
   h1,h2,h3{font-weight:700; letter-spacing:-.01em; line-height:1.08;}
   p{max-width:52ch;}
-
-  /* ---------- top nav ---------- */
   .nav{
     position:sticky; top:0; z-index:50; background:var(--white);
     border-bottom:var(--line) solid var(--blue);
@@ -104,10 +96,8 @@
   .nav .btn-install{ flex:none; }
   @media (max-width:400px){ .logo span{ display:none; } }
   .nav-links{ display:flex; gap:28px; font-size:12px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
-  .nav-links a{ text-decoration:none; opacity:.75; transition:opacity .15s; }
-  .nav-links a:hover{ opacity:1; }
+  .nav-links a{ text-decoration:none; opacity:.75; transition:opacity .15s; }@media (hover:hover){.nav-links a:hover{opacity:1;}}
   @media (max-width:820px){ .nav-links{ display:none; } }
-
   .btn-install{
     display:inline-flex; align-items:center; gap:8px;
     background:var(--blue); color:var(--white);
@@ -116,28 +106,20 @@
     font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
     text-decoration:none; white-space:nowrap;
     transition:background .15s, color .15s;
-  }
-  .btn-install:hover{ background:var(--white); color:var(--blue); }
+  }@media (hover:hover){.btn-install:hover{background:var(--white); color:var(--blue);}}
   .btn-install svg{ width:14px; height:14px; flex:none; }
-  .section-dark .btn-install{ background:var(--white); color:var(--blue); border-color:var(--white); }
-  .section-dark .btn-install:hover{ background:transparent; color:var(--white); }
-
+  .section-dark .btn-install{ background:var(--white); color:var(--blue); border-color:var(--white); }@media (hover:hover){.section-dark .btn-install:hover{background:transparent; color:var(--white);}}
   .btn-ghost{
     display:inline-flex; align-items:center; gap:6px;
     background:transparent; border:none; color:currentColor;
     font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
     text-decoration:underline; text-underline-offset:3px;
   }
-
-  /* ---------- opslag sections ---------- */
   .section{ border-bottom:var(--line) solid var(--blue); padding:clamp(56px,8vw,96px) 0; }
   .section-dark{ background:var(--blue); color:var(--white); }
   .section-head{ display:flex; align-items:center; gap:14px; margin-bottom:clamp(32px,5vw,56px); }
   .section-head .index{ font-size:clamp(15px,2vw,19px); font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
   .section-head .rule{ flex:1; height:1px; background:currentColor; opacity:.35; }
-
-  /* Blueprint-grid — a discreet tinted grid the guide reserves for blue
-     section pages, kept as texture rather than a loud pattern. */
   .grid-bg{ position:relative; isolation:isolate; }
   .grid-bg::before{
     content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
@@ -148,16 +130,8 @@
   }
   .grid-bg > .wrap{ position:relative; z-index:1; }
   .section:not(.section-dark).grid-bg{ --grid-line:var(--grid-on-white); }
-
-  /* Opslag — landscape: venn left, headline + copy + Søvnig-læser right.
-     Portrait: venn on top, copy and the reader card side by side beneath it. */
   .opslag{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); align-items:center; }
   body.format-portrait .opslag{ grid-template-columns:1fr; }
-
-  /* venn diagram — the words live inside their own circles.
-     Geometry (viewBox 0-440, r=150, centres 168/272): the crescent of each
-     circle is centred 150 units from the middle of the pair, the lens in the
-     middle holds the packshot and nothing else. */
   .venn{
     position:relative; width:100%; max-width:660px; margin:0 auto;
     aspect-ratio:1/.76; container-type:inline-size;
@@ -172,7 +146,6 @@
   }
   body.format-portrait .venn > svg{ width:128%; transform:translate(-50%,-50%) rotate(90deg); }
   .venn-circle{ fill:none; stroke:currentColor; stroke-width:2.4; }
-
   .venn-label{
     position:absolute; top:50%; left:15.9%; z-index:2; transform:translate(-50%,-50%);
     transition:left .6s cubic-bezier(.4,0,.2,1), top .6s cubic-bezier(.4,0,.2,1);
@@ -180,9 +153,6 @@
   .venn-label.right{ left:84.1%; }
   body.format-portrait .venn-label.left{ left:50%; top:14.2%; }
   body.format-portrait .venn-label.right{ left:50%; top:85.8%; }
-  /* Landscape: the letters stand upright, one beneath the other, inside the
-     crescent. Portrait: the same word reads horizontally. --len is set from
-     the word's length so long words shrink to stay inside the stroke. */
   .venn-label h3{
     font-size:clamp(10px,1.7vw,16px); font-size:min(3.1cqw, calc(44cqw / var(--len,12)));
     font-weight:700; letter-spacing:.04em; text-transform:uppercase; line-height:1; white-space:nowrap;
@@ -192,20 +162,13 @@
     font-size:clamp(11px,3.6vw,18px); font-size:min(4.6cqw, calc(70cqw / var(--len,12)));
     letter-spacing:.09em; writing-mode:horizontal-tb; text-orientation:mixed;
   }
-
   .venn-center{
     position:absolute; top:50%; left:50%; z-index:2; width:26%; transform:translate(-50%,-50%);
     transition:width .6s cubic-bezier(.4,0,.2,1);
   }
   body.format-portrait .venn-center{ width:28%; }
-  .venn-packshot-link{ display:block; width:100%; transition:transform .15s ease; }
-  .venn-packshot-link:hover{ transform:scale(1.04); }
+  .venn-packshot-link{ display:block; width:100%; transition:transform .15s ease; }@media (hover:hover){.venn-packshot-link:hover{transform:scale(1.04);}}
   .cover-art-mini{ width:100%; height:auto; display:block; }
-
-  /* copy + reader column */
-  /* Real book illustrations, used as small marginal motifs above each
-     section's heading — brand rule: monokrom lineart, generous negative
-     space, one idea per image, reproducible in a single colour. */
   .motif{ width:clamp(96px,13vw,150px); margin-bottom:18px; }
   .motif-art{ width:100%; height:auto; display:block; color:currentColor; }
   .motif--pyramid-3f{ width:clamp(130px,17vw,200px); }
@@ -220,17 +183,12 @@
   body.format-portrait .opslag-body > p{ grid-column:1; font-size:clamp(12px,3.2vw,15px); margin-bottom:0; }
   body.format-portrait .opslag-body > .people{ grid-column:1 / -1; margin-top:24px; }
   body.format-portrait .opslag-body > .reader{ grid-column:2; grid-row:1 / span 2; align-self:stretch; max-width:none; }
-
   .people{ list-style:none; display:grid; gap:12px; margin:0 0 24px; }
   .people li{ display:flex; align-items:center; gap:12px; }
   .people img{ width:52px; height:52px; border-radius:50%; object-fit:cover; flex:none; border:1.5px solid currentColor; }
   .people span{ font-size:11.5px; line-height:1.5; }
   .people strong{ display:block; font-size:13px; }
   .section:not(.section-dark) .people span{ color:var(--lavender); }
-
-  /* Søvnig-læser entry card — a systemnote with a double contour and a
-     folded corner. The card only teases; reading happens in the shared
-     full-screen instrument below. */
   .reader{
     --sp-1:8px; --sp-2:13px; --sp-3:21px; --sp-5:55px;
     position:relative; max-width:420px; display:flex; flex-direction:column;
@@ -246,7 +204,6 @@
   .reader-head .time{ font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
   .section:not(.section-dark) .reader-head .time{ color:var(--lavender); }
   .section-dark .reader-head .time{ opacity:.7; }
-
   .reader-play-card{
     flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:var(--sp-2);
     width:100%; padding:var(--sp-3); background:none; border:none; color:currentColor; font-family:var(--mono);
@@ -256,18 +213,13 @@
     display:flex; align-items:center; justify-content:center;
     transition:background .15s, color .15s, transform .15s;
   }
-  .reader-play-icon svg{ width:20px; height:20px; margin-left:3px; }
-  .reader-play-card:hover .reader-play-icon{ background:currentColor; transform:scale(1.04); }
-  .reader-play-card:hover .reader-play-icon svg{ color:var(--blue); }
-  .section-dark .reader-play-card:hover .reader-play-icon svg{ color:var(--blue); }
+  .reader-play-icon svg{ width:20px; height:20px; margin-left:3px; }@media (hover:hover){.reader-play-card:hover .reader-play-icon{background:currentColor; transform:scale(1.04);}}@media (hover:hover){.reader-play-card:hover .reader-play-icon svg{color:var(--blue);}}@media (hover:hover){.section-dark .reader-play-card:hover .reader-play-icon svg{color:var(--blue);}}
   .reader-teaser{ font-size:12.5px; line-height:1.55; max-width:34ch; opacity:.85; }
   .section:not(.section-dark) .reader-teaser{ color:var(--lavender); opacity:1; }
   body.format-portrait .reader-head{ margin:0 12px; padding-top:14px; }
   body.format-portrait .reader-head .lbl{ font-size:9px; letter-spacing:.1em; }
   body.format-portrait .reader-head .time, body.format-portrait .reader-teaser{ display:none; }
   body.format-portrait .reader-play-card{ padding:12px; }
-
-  /* ---------- shared full-screen instrument ---------- */
   body.reader-locked{ overflow:hidden; }
   .reader-overlay{
     position:fixed; inset:0; z-index:200; background:var(--white); color:var(--blue);
@@ -294,24 +246,19 @@
   .lvl{
     border:1.6px solid currentColor; background:transparent; color:currentColor; font-family:var(--mono);
     padding:7px 11px; font-size:11px; font-weight:700; letter-spacing:.05em; transition:background .12s, color .12s;
-  }
-  .lvl:hover{ background:rgba(var(--blue-rgb),.08); }
+  }@media (hover:hover){.lvl:hover{background:rgba(var(--blue-rgb),.08);}}
   .lvl[aria-pressed="true"]{ background:var(--blue); color:var(--white); }
   .reader-ov-close{
     flex:none; width:32px; height:32px; border-radius:50%; border:1.6px solid currentColor; background:none; color:currentColor;
     display:flex; align-items:center; justify-content:center; transition:background .12s, color .12s;
   }
-  .reader-ov-close svg{ width:15px; height:15px; }
-  .reader-ov-close:hover{ background:var(--blue); color:var(--white); }
-
+  .reader-ov-close svg{ width:15px; height:15px; }@media (hover:hover){.reader-ov-close:hover{background:var(--blue); color:var(--white);}}
   .reader-ov-stage{ flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:20px 0; overflow:hidden; }
   .reader-ov-stage .orp{ font-size:clamp(26px,6.5vw,80px); }
-
   .reader-ov-progress{ flex:none; height:2px; background:rgba(var(--blue-rgb),.12); cursor:pointer; }
   .reader-ov-progress .fill{ height:100%; width:0%; background:currentColor; }
   .reader-ov-meta{ flex:none; display:flex; justify-content:space-between; gap:12px; padding:10px 0 18px; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; opacity:.6; }
   .reader-ov-meta .status{ opacity:1; font-weight:700; }
-
   .reader-ov-controls{ flex:none; display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding-top:16px; border-top:2px solid currentColor; }
   .reader-ov-controls .toggle{ padding:11px 24px; font-size:12px; }
   .reader-ov-controls .prev, .reader-ov-controls .next{ padding:11px 15px; }
@@ -319,8 +266,6 @@
   .reader-ov-normaltext{ display:none; flex:none; font-size:13px; line-height:1.75; white-space:pre-wrap; max-height:30vh; overflow-y:auto; border-top:2px solid currentColor; padding-top:14px; margin-top:14px; }
   .reader-ov-normaltext.show{ display:block; }
   @media (max-width:640px){ .reader-ov-topic{ display:none; } .lvl{ padding:6px 8px; font-size:10px; } }
-
-  /* ---------- shared building blocks (entry card + overlay both use these) ---------- */
   .orp{ display:flex; align-items:baseline; justify-content:center; white-space:pre; font-weight:700; letter-spacing:.02em; }
   .orp .l{ flex:1 1 0; text-align:right; }
   .orp .f{ flex:0 0 auto; width:1ch; text-align:center; opacity:.45; }
@@ -331,13 +276,10 @@
     font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
     transition:background .12s, color .12s;
     clip-path:polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
-  }
-  .rbtn:hover{ background:currentColor; color:var(--white); }
+  }@media (hover:hover){.rbtn:hover{background:currentColor; color:var(--white);}}
   .reader-speed{ display:flex; align-items:center; gap:8px; }
   .reader-speed input[type=range]{ width:88px; accent-color:currentColor; }
   .reader-speed .wpm{ font-size:9.5px; letter-spacing:.06em; min-width:58px; text-align:right; }
-
-  /* ---------- udtalelser (third colour: lavender fuldflade) ---------- */
   .section-lavender{ background:var(--lavender); color:var(--white); }
   .quote-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(28px,4vw,48px); }
   @media (max-width:860px){ .quote-grid{ grid-template-columns:1fr; gap:40px; } }
@@ -346,11 +288,7 @@
   .quote-text{ font-size:15px; line-height:1.6; max-width:38ch; }
   .quote-attr{ font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-top:4px; }
   .quote-attr span{ display:block; font-weight:500; text-transform:none; letter-spacing:0; opacity:.8; font-size:11.5px; margin-top:3px; }
-
-  /* ---------- medieomtale (clickable press/podcast cards) ---------- */
   .media-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(24px,4vw,40px); }
-  /* Berlingske's masthead is a black wordmark, so it sits on a white tile —
-     its natural colours, like the DR marks, for instant recognition. */
   .press-tile{ flex:none; display:flex; align-items:center; height:26px; padding:0 10px; background:#FFFFFF; }
   .press-tile img{ height:13px; width:auto; display:block; }
   @media (max-width:860px){ .media-grid{ grid-template-columns:1fr; gap:28px; } }
@@ -359,23 +297,14 @@
     padding:20px; border:1.4px solid rgba(255,255,255,.45); border-radius:4px;
     text-decoration:none; color:inherit;
     transition:border-color .15s, transform .15s;
-  }
-  .media-card:hover{ border-color:var(--white); transform:translateY(-3px); }
-  /* Kept in DR's own real colours (not the site's blue) on purpose — the
-     point of showing press logos is instant public recognition, which a
-     brand recolour would work against. */
+  }@media (hover:hover){.media-card:hover{border-color:var(--white); transform:translateY(-3px);}}
   .media-logo-wrap{ display:inline-flex; flex:none; }
   .media-logo{ width:52px; height:auto; display:block; }
   .media-logo rect{ fill:#000000; }
   .media-logo-mark{ fill:#FFFFFF; }
   .media-brand-row{ display:flex; align-items:center; gap:8px; }
-  /* The real, current (2020-) DR P1 logo — public-domain per its own simple
-     geometry — kept in its own orange/white, same reasoning as the DR mark. */
   .p1-logo-wrap{ display:inline-flex; flex:none; }
   .p1-logo{ width:26px; height:26px; display:block; }
-  /* No standalone "Kultur" mark exists on dr.dk (it's shown as plain text
-     there), so it's rendered as a companion text badge in DR's own
-     black/white rather than left out or recoloured into our blue. */
   .dept-badge{
     flex:none; display:flex; align-items:center; justify-content:center;
     height:26px; padding:0 8px; background:#000000; color:#FFFFFF;
@@ -394,8 +323,6 @@
     margin-top:auto; padding-top:12px; border-top:1.4px solid rgba(255,255,255,.35);
   }
   .media-meta span:first-child{ opacity:.75; font-weight:500; }
-
-  /* ---------- closing CTA ---------- */
   .closer{ background:var(--blue); color:var(--white); padding:clamp(48px,7vw,80px) 0; border-bottom:var(--line) solid var(--blue); }
   .closer .wrap{ display:grid; grid-template-columns:1.3fr .7fr; gap:var(--gap); align-items:center; }
   @media (max-width:860px){ .closer .wrap{ grid-template-columns:1fr; } }
@@ -408,18 +335,13 @@
     width:20px; height:20px; padding:5px; box-sizing:border-box; flex:none;
     border:1.4px solid currentColor; border-radius:50%;
   }
-
-  /* ---------- footer ---------- */
   footer{ padding:32px 0; }
   footer .wrap{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; }
   footer .flinks{ display:flex; gap:22px; font-size:11px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; opacity:.75; list-style:none; }
   footer .fine{ font-size:10.5px; color:var(--lavender); }
-
   @media (prefers-reduced-motion: reduce){
     *{ transition:none !important; }
   }
-
-  /* ---------- sproget: interactive teknologisk glossary ---------- */
   .glossary{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:currentColor; border:1.4px solid currentColor; }
   @media (max-width:780px){ .glossary{ grid-template-columns:repeat(2,1fr); } }
   .term{
@@ -431,11 +353,8 @@
   .term .word svg{ width:14px; height:14px; flex:none; transition:transform .2s; }
   .term[aria-expanded="true"] .word svg{ transform:rotate(45deg); }
   .term .gloss{ font-size:11.5px; line-height:1.55; opacity:.85; max-height:0; overflow:hidden; transition:max-height .25s ease, opacity .2s; }
-  .term[aria-expanded="true"] .gloss{ max-height:180px; opacity:1; margin-top:4px; }
-  .term:hover{ background:var(--lavender); }
+  .term[aria-expanded="true"] .gloss{ max-height:180px; opacity:1; margin-top:4px; }@media (hover:hover){.term:hover{background:var(--lavender);}}
   .glossary-note{ margin-top:18px; font-size:12px; opacity:.7; max-width:56ch; }
-
-  /* ---------- historisk timeline ---------- */
   .timeline{ display:flex; flex-direction:column; }
   .timeline-item{
     display:grid; grid-template-columns:120px 1fr; gap:clamp(16px,3vw,32px);
@@ -447,8 +366,6 @@
   .timeline-body h3{ font-size:15.5px; margin-bottom:5px; }
   .timeline-body p{ font-size:12.5px; line-height:1.6; opacity:.85; max-width:56ch; }
   .section:not(.section-dark) .timeline-body p{ color:var(--lavender); opacity:1; }
-
-  /* ---------- FAQ accordion ---------- */
   .accordion{ border-top:1.4px solid currentColor; }
   .accordion-item{ border-bottom:1.4px solid currentColor; }
   .accordion-q{
@@ -461,8 +378,6 @@
   .accordion-a{ max-height:0; overflow:hidden; transition:max-height .25s ease; }
   .accordion-item[data-open="true"] .accordion-a{ max-height:260px; }
   .accordion-a p{ font-size:13.5px; line-height:1.65; opacity:.85; max-width:62ch; padding-bottom:clamp(16px,2.4vw,22px); }
-
-  /* ---------- presse ---------- */
   .presse-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,3vw,32px); margin-bottom:clamp(28px,4vw,40px); }
   @media (max-width:780px){ .presse-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:520px){ .presse-grid{ grid-template-columns:1fr; } }
@@ -470,12 +385,6 @@
   .presse-item svg{ width:16px; height:16px; flex:none; opacity:.7; }
   .presse-contact{ font-size:13px; line-height:1.7; opacity:.85; max-width:52ch; }
   .presse-contact a{ text-decoration:underline; text-underline-offset:3px; }
-
-
-  /* =====================================================================
-     NY KOPI — packshot + citater, medie-karrusel, nervesystemet, udbytte,
-     fejlkoder (blå side, hvide kapsler) og foredrag
-     ===================================================================== */
   .nav-links{ gap:clamp(10px,1.3vw,20px); font-size:11px; letter-spacing:.02em; }
   .nav-links a{ white-space:nowrap; }
   footer .flinks{ flex-wrap:wrap; gap:10px 20px; }
@@ -506,10 +415,7 @@
   }
   body.format-portrait .venn-label br{ display:none; }
   .section-dark .lead-p{ color:var(--white); opacity:1; font-size:15px; }
-  .btn-on-light{ background:var(--white); color:var(--blue); border-color:var(--white); }
-  .btn-on-light:hover{ background:transparent; color:var(--white); }
-
-  /* ---------- 1 · packshot + citater ---------- */
+  .btn-on-light{ background:var(--white); color:var(--blue); border-color:var(--white); }@media (hover:hover){.btn-on-light:hover{background:transparent; color:var(--white);}}
   .hero-quotes{
     background:var(--white); color:var(--blue); border-bottom:var(--line) solid var(--blue);
     padding:clamp(32px,4.4vw,64px) 0 clamp(40px,5vw,72px);
@@ -523,13 +429,10 @@
       width:min(300px, calc((100vw - var(--maxw)) / 2 + var(--gap) - 40px)); font-size:clamp(26px,1.7vw,36px); }
   }
   @media (max-width:900px){ .hero-tagline{ align-self:center; text-align:center; max-width:22ch; } }
-  .hero-pack a{ display:block; max-width:100%; transition:transform .25s ease; }
-  .hero-pack a:hover{ transform:translateY(-4px) rotate(-.6deg); }
+  .hero-pack a{ display:block; max-width:100%; transition:transform .25s ease; }@media (hover:hover){.hero-pack a:hover{transform:translateY(-4px) rotate(-.6deg);}}
   .hero-pack img{ width:auto; max-width:100%; height:min(calc(100vh - 90px), 860px); min-height:380px; display:block; filter:drop-shadow(0 22px 28px rgba(0,15,255,.2)); }
   @media (max-width:900px){ .hero-pack img{ height:auto; width:min(74vw,430px); min-height:0; } }
   .hq{ display:flex; flex-direction:column; justify-content:space-between; gap:clamp(24px,3.4vw,40px); }
-  /* the right column runs the full height of the left one: buy button level with the foot of the book */
-
   .hq figure{ margin:0; }
   .hq blockquote{ font-style:italic; }
   .hq-main blockquote{ font-size:clamp(22px,2.9vw,40px); font-weight:700; line-height:1.15; letter-spacing:-.015em; text-wrap:balance; }
@@ -540,12 +443,7 @@
   .hq-pair blockquote{ font-size:clamp(14px,1.25vw,16px); line-height:1.65; font-weight:700; }
   .hq-cta{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
   .hero-quotes .btn-ghost{ font-size:12px; }
-
-  /* ---------- 2 · medie-karrusel ---------- */
   #omtale, #laer{ --cpad:max(var(--gap), calc((100vw - var(--maxw)) / 2 + var(--gap))); padding-bottom:clamp(40px,6vw,72px); }
-  /* The strip is endless in both directions (cloned sets before and after), so
-     cards are always present at the left edge as well as the right. It is moved
-     with the Web Animations API on a compositor layer — no layout, no repaint. */
   .carousel{
     overflow:hidden; touch-action:pan-y; cursor:grab;
     -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 clamp(20px,5vw,80px),#000 calc(100% - clamp(20px,5vw,80px)),transparent 100%);
@@ -570,8 +468,7 @@
   .carousel .dept-badge, .carousel .press-tile{ height:33px; font-size:13px; }
   .carousel .press-tile img{ height:16px; }
   .carousel .press-tile--nsp{ height:auto; padding:0 4px 0 0; }
-  .carousel .press-tile--nsp img{ height:62px; width:auto; margin:-14px 0 -4px; }
-  .carousel .media-card:hover{ border-color:var(--blue); background:var(--blue-softer); }
+  .carousel .press-tile--nsp img{ height:62px; width:auto; margin:-14px 0 -4px; }@media (hover:hover){.carousel .media-card:hover{border-color:var(--blue); background:var(--blue-softer);}}
   .carousel .media-desc{ color:var(--lavender); opacity:1; }
   .carousel .media-meta{ border-top-color:var(--blue); }
   .carousel .klive-thumb{ border-color:var(--blue); }
@@ -582,16 +479,13 @@
   }
   .carousel-dots i::after{ content:''; position:absolute; inset:0; background:var(--blue); transform:scaleX(0); transform-origin:left; }
   .carousel-dots i.on{ width:34px; }
-  .carousel-dots i.on::after{ animation:dotfill var(--cycle,2800ms) linear forwards; }
-  .carousel:hover + .carousel-dots i.on::after, .carousel:focus-within + .carousel-dots i.on::after{ animation-play-state:paused; }
+  .carousel-dots i.on::after{ animation:dotfill var(--cycle,2800ms) linear forwards; }@media (hover:hover){.carousel:hover + .carousel-dots i.on::after, .carousel:focus-within + .carousel-dots i.on::after{animation-play-state:paused;}}
   @keyframes dotfill{ to{ transform:scaleX(1); } }
   @media (prefers-reduced-motion: reduce){
     .carousel{ overflow-x:auto; cursor:auto; -webkit-mask-image:none; mask-image:none; }
     .carousel-track{ transform:none !important; }
     .carousel-dots i.on::after{ animation:none; transform:scaleX(1); }
   }
-
-  /* ---------- 3 · lær at (karrusel på blå) ---------- */
   #laer{ padding-bottom:clamp(40px,6vw,72px); }
   .learn-h2{ font-size:clamp(24px,3.6vw,48px); line-height:1.12; letter-spacing:-.015em; text-wrap:balance; max-width:26ch; margin-bottom:clamp(32px,4.4vw,60px); }
   #laer .carousel{ margin-top:0; }
@@ -607,31 +501,19 @@
   .lcard-num{ margin-top:auto; padding-top:16px; border-top:1.4px solid rgba(255,255,255,.55); display:flex; justify-content:space-between; gap:12px; font-size:12px; letter-spacing:.08em; }
   .lcard--final{ background:var(--white); color:var(--blue); }
   .lcard--final .lcard-kicker{ opacity:1; }
-  .lcard--final .lcard-num{ border-top-color:var(--blue); font-weight:700; }
-  .lcard--final:hover{ background:var(--blue-softer); }
+  .lcard--final .lcard-num{ border-top-color:var(--blue); font-weight:700; }@media (hover:hover){.lcard--final:hover{background:var(--blue-softer);}}
   #laer .carousel-dots i{ border-color:var(--white); }
   #laer .carousel-dots i::after{ background:var(--white); }
-
-  /* opslag 02: the line break falls after "teknologi"; the heading shrinks to its column so each line stays whole */
   #opslag-02 .opslag-body, #opslag-03 .opslag-body, #opslag-04 .opslag-body{ container-type:inline-size; }
   #opslag-02 .opslag-body h2, #opslag-03 .opslag-body h2{ font-size:min(38px,6.9cqw); text-wrap:nowrap; }
   #opslag-04 .opslag-body h2{ font-size:min(38px,6.4cqw); text-wrap:nowrap; }
-
-  /* linkedin icon: sits under the author's name inside its circle, without moving the (centred) name */
   .in-link{ display:block; width:28px; height:28px; color:var(--blue); transition:transform .2s ease, opacity .2s ease; }
-  .in-link svg{ display:block; width:100%; height:100%; }
-  .in-link:hover, .in-link:focus-visible{ opacity:.8; }
+  .in-link svg{ display:block; width:100%; height:100%; }@media (hover:hover){.in-link:hover, .in-link:focus-visible{opacity:.8;}}
   .in-link:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
-  /* opslag 05: the authors' names read horizontally, one name part per line */
   #opslag-05 .venn-label h3{ writing-mode:horizontal-tb; text-orientation:mixed; text-align:center; letter-spacing:.06em; line-height:1.3; font-size:min(4.2cqw, 40cqw / var(--lw,6)); }
-  .venn-label .in-link{ position:absolute; top:100%; left:50%; margin:clamp(12px,1.6cqw,20px) 0 0 -14px; }
-  .venn-label .in-link:hover{ transform:translateY(-2px); }
-
-  /* opslag 06: the whole connection pyramid replaces the venn */
+  .venn-label .in-link{ position:absolute; top:100%; left:50%; margin:clamp(12px,1.6cqw,20px) 0 0 -14px; }@media (hover:hover){.venn-label .in-link:hover{transform:translateY(-2px);}}
   .pyr-art{ display:flex; align-items:center; justify-content:center; }
   .pyr-art img{ width:min(100%,560px); height:auto; }
-
-  /* ---------- fundamentet ---------- */
   .found-h2{ font-size:clamp(30px,5vw,68px); line-height:1.04; letter-spacing:-.02em; text-wrap:balance; max-width:16ch; }
   .found-p{ margin-top:clamp(18px,2.4vw,30px); max-width:52ch; font-size:clamp(15px,1.5vw,19px); line-height:1.6; font-weight:700; }
   .found-p--next{ margin-top:clamp(10px,1.4vw,18px); }
@@ -640,10 +522,7 @@
     display:flex; align-items:center; justify-content:center; text-align:center; min-height:48px; padding:.5em 1em;
     border:1.4px solid var(--blue); border-radius:999px; font-size:clamp(13px,1.15vw,15px); font-weight:700; background:var(--blue); color:var(--white);
     transition:background .25s, color .25s;
-  }
-  .found-pills li:hover{ background:var(--white); color:var(--blue); }
-
-  /* ---------- 4 · det får du ---------- */
+  }@media (hover:hover){.found-pills li:hover{background:var(--white); color:var(--blue);}}
   .lead-h2{ font-size:clamp(28px,4.4vw,56px); line-height:1.05; letter-spacing:-.015em; text-wrap:balance; max-width:18ch; }
   .lead-p{ margin-top:16px; font-size:14px; line-height:1.7; color:var(--lavender); max-width:56ch; margin-bottom:clamp(28px,4vw,48px); }
   .benefit-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.4px; background:var(--blue); border:1.4px solid var(--blue); }
@@ -654,8 +533,6 @@
   .benefit h3{ font-size:clamp(16px,1.6vw,19px); line-height:1.25; margin-bottom:10px; }
   .benefit p{ font-size:13px; line-height:1.65; color:var(--lavender); max-width:38ch; }
   .benefit-cta{ margin-top:clamp(28px,4vw,44px); }
-
-  /* ---------- 5 · fejlkoder (blå side, hvide kapsler) ---------- */
   .fk-head h2{ font-size:clamp(30px,4.6vw,60px); line-height:1.05; letter-spacing:-.015em; max-width:18ch; text-wrap:balance; }
   .fk-lede{ margin-top:18px; font-size:14px; line-height:1.7; opacity:.92; max-width:60ch; }
   .fk-steps{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
@@ -684,8 +561,6 @@
   @media (max-width:620px){ .fk-wall{ grid-template-columns:1fr; } }
   .fk-item p{ margin-top:8px; padding-left:20px; font-size:12.5px; line-height:1.55; opacity:.92; max-width:none; }
   .fk-note{ margin-top:30px; font-size:12px; line-height:1.6; opacity:.85; max-width:72ch; }
-
-  /* ---------- 6 · foredrag ---------- */
   .talk{ background:var(--lavender); color:var(--white); }
   .talk-grid{ display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(28px,5vw,72px); align-items:center; }
   @media (max-width:860px){ .talk-grid{ grid-template-columns:1fr; } }
@@ -701,7 +576,6 @@
   .speaker img{ width:100%; aspect-ratio:1; border-radius:50%; object-fit:cover; border:2px solid var(--white); }
   .speaker strong{ display:block; margin-top:14px; font-size:14px; }
   .speaker span{ display:block; margin-top:4px; font-size:11.5px; line-height:1.5; font-weight:700; }
-  /* ---------- sticky mobile buy bar ---------- */
   .sticky-buy{
     position:fixed; left:0; right:0; bottom:0; z-index:60;
     background:var(--blue); color:var(--white); border-top:2px solid var(--white);
@@ -711,6 +585,33 @@
   .sticky-buy.show{ transform:translateY(0); }
   .sticky-buy span{ font-size:11.5px; font-weight:600; opacity:.85; }
   @media (max-width:820px){ .sticky-buy{ display:flex; } body{ padding-bottom:0; } }
+  html{ scroll-padding-top:76px; }
+  @media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
+  body{ overflow-x:clip; }
+  @supports (padding:max(0px)){
+    .wrap{ padding-left:max(var(--gap), env(safe-area-inset-left)); padding-right:max(var(--gap), env(safe-area-inset-right)); }
+    .sticky-buy{ padding-left:max(var(--gap), env(safe-area-inset-left)); padding-right:max(var(--gap), env(safe-area-inset-right)); padding-bottom:calc(10px + env(safe-area-inset-bottom)); }
+  }
+  @media (max-width:820px){ body{ padding-bottom:calc(60px + env(safe-area-inset-bottom)); } }
+  @supports (height:100dvh){
+    .hero-pack img{ height:min(calc(100dvh - 90px), 860px); }
+    .reader-overlay{ height:100dvh; }
+  }
+  @media (orientation:landscape) and (max-height:520px) and (max-width:900px){
+    .hero-quotes{ padding-top:20px; }
+    .hero-pack img{ width:auto; height:min(76dvh, 300px); min-height:0; }
+  }
+  .nav-badge{ font-size:9px; }
+  footer .fine{ font-size:11px; }
+  body.format-portrait .reader-head .lbl{ font-size:10.5px; }
+  @media (pointer:coarse){
+    footer .flinks a, .hq-cta a:not(.btn-install), .closer a:not(.btn-install), .presse-contact a{ display:inline-block; padding:12px 6px; margin:-12px -6px; }
+    .in-link{ position:relative; }
+    .in-link::after{ content:''; position:absolute; inset:-10px; }
+    .carousel-dots i{ position:relative; }
+    .carousel-dots i::before{ content:''; position:absolute; inset:-10px -4px; }
+    .nav .btn-install{ min-height:44px; }
+  }
 </style>
 </head>
 <body>
@@ -785,7 +686,7 @@
     <div class="hero-pack">
       <p class="hero-tagline">En ny brugerflade til et bedre forældreskab</p>
       <a href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-        <img src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — forsiden af manualen">
+        <img src="assets/cover/packshot-forside.webp" srcset="assets/cover/packshot-forside-640.webp 640w, assets/cover/packshot-forside.webp 859w" sizes="(max-width:900px) 74vw, 45vw" width="859" height="1265" alt="Brugermanual til dit barn — forsiden af manualen" fetchpriority="high" decoding="async">
       </a>
     </div>
     <div class="hq">
@@ -833,7 +734,7 @@
       </a>
 <a class="media-card" href="https://www.berlingske.dk/vores-liv/hun-ser-foraeldre-gaa-i-den-klassiske-faelde-selv-bruger-terapeut-tre-simple-trin-til-hverdagens-konflikter" target="_blank" rel="noopener noreferrer">
         <div class="media-brand-row">
-          <span class="press-tile"><img src="assets/logos/berlingske.svg" alt="Berlingske"></span>
+          <span class="press-tile"><img src="assets/logos/berlingske.svg" alt="Berlingske" loading="lazy" decoding="async"></span>
           <span class="dept-badge">VORES LIV</span>
         </div>
         <div class="media-kicker">Artikel · Berlingske Vores Liv</div>
@@ -845,7 +746,7 @@
         <div class="media-brand-row">
           <span class="media-logo-wrap"><svg class="media-logo" viewBox="0 0 134 40" aria-label="DR"><rect width="134" height="40"/><g class="media-logo-mark" transform="translate(24,9)"><path d="M21.8199,17.0835 L12.8819,17.0835 C12.6279,17.0835 12.5779,16.9815 12.5779,16.7795 L12.5779,4.7535 C12.5779,4.5525 12.6279,4.4505 12.8819,4.4505 L21.8199,4.4505 C27.1349,4.4505 29.2619,5.9685 29.2619,10.7535 C29.2619,15.5395 27.1349,17.0835 21.8199,17.0835 M29.2079,0.7795 L0.6759,0.7795 C0.4229,0.7795 0.2969,0.9305 0.2969,1.1585 L0.2969,20.3745 C0.2969,20.6025 0.4229,20.7545 0.6759,20.7545 L29.2079,20.7545 C37.5889,20.7545 41.8169,17.9695 41.8169,10.7045 C41.8169,3.4885 37.5889,0.7795 29.2079,0.7795"/><path d="M68.9093,11.9438 L58.9343,11.9438 C58.7053,11.9438 58.6303,11.8668 58.6303,11.6408 L58.6303,4.7538 C58.6303,4.5268 58.7053,4.4498 58.9343,4.4498 L68.9093,4.4498 C72.2513,4.4498 73.6693,5.3618 73.6693,8.1208 C73.6693,10.9058 72.2513,11.9438 68.9093,11.9438 M86.8303,19.9438 L78.5773,14.1218 C78.3743,13.9688 78.2483,13.8938 78.2483,13.7918 C78.2483,13.6918 78.3243,13.6398 78.5023,13.6398 C82.6783,13.6398 85.9193,11.6918 85.9193,7.3878 C85.9193,3.1098 83.1343,0.7788 77.9953,0.7788 L46.7283,0.7788 C46.4753,0.7788 46.3483,0.9308 46.3483,1.1578 L46.3483,20.3738 C46.3483,20.6028 46.4753,20.7548 46.7283,20.7548 L58.2343,20.7548 C58.4873,20.7548 58.6143,20.6028 58.6143,20.3738 L58.6143,15.8178 C58.6143,15.5898 58.6893,15.5148 58.9173,15.5148 L65.5383,15.5148 C65.8683,15.5148 65.9943,15.5398 66.2213,15.7168 L71.9703,20.4758 C72.2493,20.7038 72.4513,20.7548 72.7793,20.7548 L87.0843,20.7548 C87.2873,20.7548 87.3883,20.6778 87.3883,20.5258 C87.3883,20.3238 87.0343,20.0958 86.8303,19.9438"/></g></svg></span>
           <span class="p1-logo-wrap"><svg class="p1-logo" viewBox="0 0 800 800" aria-label="DR P1"><title>DRP1_logo_primaer_RGB</title><defs><style>.p1-cls-1{fill:#ff6400;}.p1-cls-2{fill:#fff;}</style></defs><g><rect class="p1-cls-1" width="800" height="800"/></g><g><rect y="560" width="800" height="240"/><path class="p1-cls-2" d="M319.27,618.67H148.07a2.07,2.07,0,0,0-2.28,2.27v115.3a2.09,2.09,0,0,0,2.28,2.29h171.2c50.29,0,75.67-16.71,75.67-60.31C394.94,634.92,369.56,618.67,319.27,618.67ZM274.94,716.5H221.31c-1.52,0-1.83-.61-1.83-1.83V642.51c0-1.2.31-1.82,1.83-1.82h53.63c31.89,0,44.66,9.11,44.66,37.83S306.83,716.5,274.94,716.5Z"/><path class="p1-cls-2" d="M665,733.67l-49.52-34.94c-1.22-.92-2-1.37-2-2s.46-.92,1.53-.92c25,0,44.5-11.69,44.5-37.51S642.86,618.67,612,618.67H424.4a2.06,2.06,0,0,0-2.27,2.27v115.3a2.08,2.08,0,0,0,2.27,2.29h69a2.08,2.08,0,0,0,2.28-2.29V708.9c0-1.37.46-1.82,1.83-1.82h39.73c2,0,2.73.15,4.1,1.22l34.49,28.56a6.6,6.6,0,0,0,4.85,1.67h85.84q1.83,0,1.83-1.38C668.39,735.94,666.26,734.58,665,733.67Zm-107.54-48H497.65c-1.37,0-1.83-.46-1.83-1.82V642.51c0-1.36.46-1.82,1.83-1.82H557.5c20.06,0,28.56,5.48,28.56,22C586.06,679.43,577.56,685.66,557.5,685.66Z"/></g><g><path class="p1-cls-2" d="M404.05,240.85c0,56.29-40.74,93.69-104.06,93.69h-43.7v70H186.67V149H300C362.57,149,404.05,184.93,404.05,240.85ZM333.32,242c0-20.37-13.71-31.11-38.52-31.11H256.29v62.22H294.8C319.61,273.07,333.32,262.7,333.32,242Z"/><path class="p1-cls-2" d="M630,342.69v61.84H427.38V342.69h68.88V206.78h-53.7V149h123V342.69Z"/></g></svg></span>
-          <span class="klive-thumb"><img src="assets/photos/klive.jpg" alt="K-Live"></span>
+          <span class="klive-thumb"><img src="assets/photos/klive.jpg" alt="K-Live" loading="lazy" decoding="async"></span>
         </div>
         <div class="media-kicker">Podcast · K-Live, DR P1</div>
         <h3 class="media-title">Småbørns fejlkoder</h3>
@@ -856,7 +757,7 @@
         <div class="media-brand-row">
           <span class="media-logo-wrap"><svg class="media-logo" viewBox="0 0 134 40" aria-label="DR"><rect width="134" height="40"/><g class="media-logo-mark" transform="translate(24,9)"><path d="M21.8199,17.0835 L12.8819,17.0835 C12.6279,17.0835 12.5779,16.9815 12.5779,16.7795 L12.5779,4.7535 C12.5779,4.5525 12.6279,4.4505 12.8819,4.4505 L21.8199,4.4505 C27.1349,4.4505 29.2619,5.9685 29.2619,10.7535 C29.2619,15.5395 27.1349,17.0835 21.8199,17.0835 M29.2079,0.7795 L0.6759,0.7795 C0.4229,0.7795 0.2969,0.9305 0.2969,1.1585 L0.2969,20.3745 C0.2969,20.6025 0.4229,20.7545 0.6759,20.7545 L29.2079,20.7545 C37.5889,20.7545 41.8169,17.9695 41.8169,10.7045 C41.8169,3.4885 37.5889,0.7795 29.2079,0.7795"/><path d="M68.9093,11.9438 L58.9343,11.9438 C58.7053,11.9438 58.6303,11.8668 58.6303,11.6408 L58.6303,4.7538 C58.6303,4.5268 58.7053,4.4498 58.9343,4.4498 L68.9093,4.4498 C72.2513,4.4498 73.6693,5.3618 73.6693,8.1208 C73.6693,10.9058 72.2513,11.9438 68.9093,11.9438 M86.8303,19.9438 L78.5773,14.1218 C78.3743,13.9688 78.2483,13.8938 78.2483,13.7918 C78.2483,13.6918 78.3243,13.6398 78.5023,13.6398 C82.6783,13.6398 85.9193,11.6918 85.9193,7.3878 C85.9193,3.1098 83.1343,0.7788 77.9953,0.7788 L46.7283,0.7788 C46.4753,0.7788 46.3483,0.9308 46.3483,1.1578 L46.3483,20.3738 C46.3483,20.6028 46.4753,20.7548 46.7283,20.7548 L58.2343,20.7548 C58.4873,20.7548 58.6143,20.6028 58.6143,20.3738 L58.6143,15.8178 C58.6143,15.5898 58.6893,15.5148 58.9173,15.5148 L65.5383,15.5148 C65.8683,15.5148 65.9943,15.5398 66.2213,15.7168 L71.9703,20.4758 C72.2493,20.7038 72.4513,20.7548 72.7793,20.7548 L87.0843,20.7548 C87.2873,20.7548 87.3883,20.6778 87.3883,20.5258 C87.3883,20.3238 87.0343,20.0958 86.8303,19.9438"/></g></svg></span>
           <span class="p1-logo-wrap"><svg class="p1-logo" viewBox="0 0 800 800" aria-label="DR P1"><title>DRP1_logo_primaer_RGB</title><defs><style>.p1-cls-1{fill:#ff6400;}.p1-cls-2{fill:#fff;}</style></defs><g><rect class="p1-cls-1" width="800" height="800"/></g><g><rect y="560" width="800" height="240"/><path class="p1-cls-2" d="M319.27,618.67H148.07a2.07,2.07,0,0,0-2.28,2.27v115.3a2.09,2.09,0,0,0,2.28,2.29h171.2c50.29,0,75.67-16.71,75.67-60.31C394.94,634.92,369.56,618.67,319.27,618.67ZM274.94,716.5H221.31c-1.52,0-1.83-.61-1.83-1.83V642.51c0-1.2.31-1.82,1.83-1.82h53.63c31.89,0,44.66,9.11,44.66,37.83S306.83,716.5,274.94,716.5Z"/><path class="p1-cls-2" d="M665,733.67l-49.52-34.94c-1.22-.92-2-1.37-2-2s.46-.92,1.53-.92c25,0,44.5-11.69,44.5-37.51S642.86,618.67,612,618.67H424.4a2.06,2.06,0,0,0-2.27,2.27v115.3a2.08,2.08,0,0,0,2.27,2.29h69a2.08,2.08,0,0,0,2.28-2.29V708.9c0-1.37.46-1.82,1.83-1.82h39.73c2,0,2.73.15,4.1,1.22l34.49,28.56a6.6,6.6,0,0,0,4.85,1.67h85.84q1.83,0,1.83-1.38C668.39,735.94,666.26,734.58,665,733.67Zm-107.54-48H497.65c-1.37,0-1.83-.46-1.83-1.82V642.51c0-1.36.46-1.82,1.83-1.82H557.5c20.06,0,28.56,5.48,28.56,22C586.06,679.43,577.56,685.66,557.5,685.66Z"/></g><g><path class="p1-cls-2" d="M404.05,240.85c0,56.29-40.74,93.69-104.06,93.69h-43.7v70H186.67V149H300C362.57,149,404.05,184.93,404.05,240.85ZM333.32,242c0-20.37-13.71-31.11-38.52-31.11H256.29v62.22H294.8C319.61,273.07,333.32,262.7,333.32,242Z"/><path class="p1-cls-2" d="M630,342.69v61.84H427.38V342.69h68.88V206.78h-53.7V149h123V342.69Z"/></g></svg></span>
-          <span class="klive-thumb"><img src="assets/photos/klive.jpg" alt="K-Live"></span>
+          <span class="klive-thumb"><img src="assets/photos/klive.jpg" alt="K-Live" loading="lazy" decoding="async"></span>
         </div>
         <div class="media-kicker">Podcast · K-Live, DR P1</div>
         <h3 class="media-title">Hver tidsalder har sin børnebibel</h3>
@@ -865,7 +766,7 @@
       </a>
 <a class="media-card" href="https://www.netsundhedsplejerske.dk/bogguide/index.php?option=laes&amp;kat=B%D8RNEOPDRAGELSE&amp;id=882" target="_blank" rel="noopener noreferrer">
         <div class="media-brand-row">
-          <span class="press-tile press-tile--nsp"><img src="assets/logos/netsundhedsplejerske.png" alt="Netsundhedsplejerske.dk" width="900" height="421"></span>
+          <span class="press-tile press-tile--nsp"><img src="assets/logos/netsundhedsplejerske.webp" alt="Netsundhedsplejerske.dk" width="900" height="421" loading="lazy" decoding="async"></span>
           <span class="dept-badge">BOGGUIDE</span>
         </div>
         <div class="media-kicker">Anmeldelse · Bogguide</div>
@@ -970,7 +871,7 @@
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="venn-label right">
@@ -1015,7 +916,7 @@ Når viden om psykologi oversættes til et sprog, vi allerede taler hver dag, bl
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="venn-label right">
@@ -1082,7 +983,7 @@ Brugermanual til dit barn er et forsøg på en ny indre folkeoplysning. Ikke fle
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="venn-label right">
@@ -1130,7 +1031,7 @@ Når sproget bliver mere neutralt — systemet er overbelastet, ikke barnet er b
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="venn-label right">
@@ -1184,7 +1085,7 @@ Når et raserianfald forstås som en systemnedsmeltning i stedet for trods, ænd
         <div class="fk-field"><h4>Hvad sker der i systemet?</h4><p>Systemet er aktivt, men har lukket for direkte kontakt. Ved øget pres lukker systemet yderligere ned for adgang.</p></div>
       </div>
       <div class="fk-protocol">
-        <div class="pyr" role="img" aria-label="Forbindelsespyramiden: Forbind nederst, Forstå i midten, Formidl øverst"><img src="assets/pyramid-3f.processed.svg" alt=""></div>
+        <div class="pyr" role="img" aria-label="Forbindelsespyramiden: Forbind nederst, Forstå i midten, Formidl øverst"><img src="assets/pyramid-3f.processed.svg" alt="" loading="lazy" decoding="async"></div>
         <div><strong>Forbind</strong><p>Sænk din signalstyrke. Vær fysisk tilgængelig uden krav om respons. Hvis muligt, så læg en hånd på ryggen af barnet.</p></div>
         <div><strong>Forstå</strong><p>Læs tavsheden som en lydløs alarm. “Det er helt ok bare at sidde stille et øjeblik. Jeg sidder her også bare lidt.”</p></div>
         <div><strong>Formidl</strong><p>Vent på, at barnet sender signal om, at det er klar: et blik, en finger, der rører din arm. Svar med lav intensitet.</p></div>
@@ -1231,7 +1132,7 @@ Når et raserianfald forstås som en systemnedsmeltning i stedet for trods, ænd
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
           </a>
         </div>
         <div class="venn-label right">
@@ -1245,8 +1146,8 @@ Når et raserianfald forstås som en systemnedsmeltning i stedet for trods, ænd
         <p>Vores børn kom uden manual.<br>Derfor har vi skrevet én.</p>
 
         <ul class="people">
-          <li><img src="assets/photos/dorte.jpg" alt="Dorte Rudi Andersen"><span><strong>Dorte Rudi Andersen</strong>Psykoterapeut · Cand.mag. · 25+ års erfaring · Børns udvikling</span></li>
-          <li><img src="assets/photos/niels.jpg" alt="Niels Rahr"><span><strong>Niels Rahr</strong>Kreativ strateg · Kommunikation · Teknologi · Prisvindende</span></li>
+          <li><img src="assets/photos/dorte.jpg" alt="Dorte Rudi Andersen" loading="lazy" decoding="async"><span><strong>Dorte Rudi Andersen</strong>Psykoterapeut · Cand.mag. · 25+ års erfaring · Børns udvikling</span></li>
+          <li><img src="assets/photos/niels.jpg" alt="Niels Rahr" loading="lazy" decoding="async"><span><strong>Niels Rahr</strong>Kreativ strateg · Kommunikation · Teknologi · Prisvindende</span></li>
         </ul>
 
         <div class="reader" data-topic="To fagligheder. Én brugerflade.">
@@ -1295,8 +1196,8 @@ To fagligheder. Én brugerflade. Bygget af to mennesker, der stadig ikke er blev
         <p class="talk-note">Skriv til Dorte og Niels med jeres anledning og målgruppe — så finder vi formatet sammen.</p>
       </div>
       <div class="speakers">
-        <div class="speaker"><img src="assets/photos/dorte.jpg" alt="Dorte Rudi Andersen"><strong>Dorte Rudi Andersen</strong><span>Psykoterapeut · Cand.mag.<br>25+ års erfaring med børns udvikling</span></div>
-        <div class="speaker"><img src="assets/photos/niels.jpg" alt="Niels Rahr"><strong>Niels Rahr</strong><span>Kreativ strateg<br>Kommunikation · Teknologi</span></div>
+        <div class="speaker"><img src="assets/photos/dorte.jpg" alt="Dorte Rudi Andersen" loading="lazy" decoding="async"><strong>Dorte Rudi Andersen</strong><span>Psykoterapeut · Cand.mag.<br>25+ års erfaring med børns udvikling</span></div>
+        <div class="speaker"><img src="assets/photos/niels.jpg" alt="Niels Rahr" loading="lazy" decoding="async"><strong>Niels Rahr</strong><span>Kreativ strateg<br>Kommunikation · Teknologi</span></div>
       </div>
     </div>
   </div>
@@ -1306,7 +1207,7 @@ To fagligheder. Én brugerflade. Bygget af to mennesker, der stadig ikke er blev
   <div class="wrap">
     <div class="section-head"><span class="index">06 · En varig forskel</span><span class="rule"></span></div>
     <div class="opslag">
-      <div class="pyr-art"><img src="assets/forbindelsespyramide-blaa.svg" alt="Forbindelsespyramiden: Forbind nederst, Forstå i midten, Formidl øverst" width="746" height="642"></div>
+      <div class="pyr-art"><img src="assets/forbindelsespyramide-blaa.svg" alt="Forbindelsespyramiden: Forbind nederst, Forstå i midten, Formidl øverst" width="746" height="642" loading="lazy" decoding="async"></div>
 
       <div class="opslag-body">
         
@@ -1773,23 +1674,25 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
       pos += dir;
       markDot(((pos % n) + n) % n);
       carousel.classList.add('moving');
-      anim = track.animate(
+      var a = anim = track.animate(
         [{ transform: 'translate3d(' + from + 'px,0,0)' }, { transform: 'translate3d(' + to + 'px,0,0)' }],
         { duration: SLIDE, easing: EASE, fill: 'forwards' }
       );
-      anim.onfinish = function(){
+      a.onfinish = function(){
+        if(anim !== a) return;                       // cancelled by a resize in the meantime
         pos = ((pos % n) + n) % n;                   // identical clone sets: jump back unseen
-        place(); anim.cancel(); anim = null;
+        place(); a.cancel(); anim = null;
         carousel.classList.remove('moving');
         schedule();
       };
     }
 
     measure(); place(); schedule();
-    window.addEventListener('resize', function(){ if(anim){ anim.cancel(); anim = null; carousel.classList.remove('moving'); } measure(); place(); schedule(); });
+    var lastW = window.innerWidth;
+    window.addEventListener('resize', function(){ if(window.innerWidth === lastW) return; lastW = window.innerWidth; if(anim){ anim.cancel(); anim = null; carousel.classList.remove('moving'); } measure(); place(); schedule(); });
     document.addEventListener('visibilitychange', schedule);
     function hold(v){ return function(){ paused = v; if(v) clearTimeout(timer); else schedule(); }; }
-    carousel.addEventListener('mouseenter', hold(true));  carousel.addEventListener('mouseleave', hold(false));
+    carousel.addEventListener('pointerenter', function(e){ if(e.pointerType === 'mouse') hold(true)(); });  carousel.addEventListener('pointerleave', function(e){ if(e.pointerType === 'mouse') hold(false)(); });
     carousel.addEventListener('focusin', hold(true));     carousel.addEventListener('focusout', hold(false));
 
     // swipe / drag one card at a time
