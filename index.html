@@ -604,7 +604,8 @@
   }
   .nav-badge{ font-size:9px; }
   footer .fine{ font-size:11px; }
-  body.format-portrait .reader-head .lbl{ font-size:10.5px; }
+  body.format-portrait .reader-head .lbl{ font-size:clamp(9px,2.7vw,10.5px); letter-spacing:.08em; white-space:normal; min-width:0; }
+  body.format-portrait .reader-head{ min-width:0; }
   @media (pointer:coarse){
     footer .flinks a, .hq-cta a:not(.btn-install), .closer a:not(.btn-install), .presse-contact a{ display:inline-block; padding:12px 6px; margin:-12px -6px; }
     .in-link{ position:relative; }
@@ -872,7 +873,7 @@
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" width="640" height="942" loading="eager" alt="Brugermanual til dit barn — bogomslag">
           </a>
         </div>
         <div class="venn-label right">
@@ -917,7 +918,7 @@ Når viden om psykologi oversættes til et sprog, vi allerede taler hver dag, bl
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" width="640" height="942" loading="eager" alt="Brugermanual til dit barn — bogomslag">
           </a>
         </div>
         <div class="venn-label right">
@@ -984,7 +985,7 @@ Brugermanual til dit barn er et forsøg på en ny indre folkeoplysning. Ikke fle
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" width="640" height="942" loading="eager" alt="Brugermanual til dit barn — bogomslag">
           </a>
         </div>
         <div class="venn-label right">
@@ -1032,7 +1033,7 @@ Når sproget bliver mere neutralt — systemet er overbelastet, ikke barnet er b
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" width="640" height="942" loading="eager" alt="Brugermanual til dit barn — bogomslag">
           </a>
         </div>
         <div class="venn-label right">
@@ -1133,7 +1134,7 @@ Når et raserianfald forstås som en systemnedsmeltning i stedet for trods, ænd
         </div>
         <div class="venn-center">
           <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
-            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" alt="Brugermanual til dit barn — bogomslag" loading="lazy" decoding="async">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside-640.webp" width="640" height="942" loading="eager" alt="Brugermanual til dit barn — bogomslag">
           </a>
         </div>
         <div class="venn-label right">
@@ -1504,8 +1505,9 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
     var isPortrait = window.innerWidth / window.innerHeight < 1;
     document.body.classList.toggle('format-portrait', isPortrait);
   }
+  var coarsePtr = window.matchMedia('(pointer:coarse)').matches;
   var vw = window.innerWidth, vh = window.innerHeight, realResize = true;
-  window.addEventListener('resize', function(){ var w = window.innerWidth, h = window.innerHeight; realResize = !(w === vw && Math.abs(h - vh) < 160); if(realResize){ vw = w; vh = h; } }, true);
+  window.addEventListener('resize', function(){ var w = window.innerWidth, h = window.innerHeight; realResize = (w !== vw) || (!coarsePtr && h !== vh); if(realResize){ vw = w; vh = h; } }, true);
   updateFormat();
   window.addEventListener('resize', function(){ if(realResize) updateFormat(); });
   window.addEventListener('orientationchange', updateFormat);
@@ -1525,15 +1527,17 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
   });
   var flipRects = new WeakMap();
   var flipHandlers = new WeakMap();
+  function pageRect(el){ var r = el.getBoundingClientRect(); return { left: r.left + window.pageXOffset, top: r.top + window.pageYOffset }; }
   function recordRects(){
-    flipEls.forEach(function(el){ flipRects.set(el, el.getBoundingClientRect()); });
+    flipEls.forEach(function(el){ flipRects.set(el, pageRect(el)); });
   }
   function playFlip(){
+    if(coarsePtr){ return; }
     if(reduceMotion){ recordRects(); return; }
     flipEls.forEach(function(el){
       var before = flipRects.get(el);
       if(!before) return;
-      var after = el.getBoundingClientRect();
+      var after = pageRect(el);
       var dx = before.left - after.left, dy = before.top - after.top;
       if(Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
       // A flip already in flight on this element (e.g. a mid-drag resize)
@@ -1563,6 +1567,7 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
     recordRects();
   }
   recordRects();
+  window.addEventListener('load', recordRects);
   var flipRaf = null;
   window.addEventListener('resize', function(){
     if(!realResize || flipRaf) return;
