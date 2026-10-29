@@ -608,6 +608,9 @@
     .fk-item{ container-type:inline-size; }
     .fk-item .fk-pill{ white-space:nowrap; font-size:clamp(10.5px, calc((100cqw - 40px) / 21.6), 16px); }
   }
+  .author-cta{ margin:0 0 24px; }
+  .author-cta .btn-install{ min-height:44px; }
+  body.format-portrait .opslag-body > .author-cta{ grid-column:1 / -1; margin-top:0; }
   .nav-badge{ font-size:9px; }
   footer .fine{ font-size:11px; }
   body.format-portrait .reader-head .lbl{ font-size:clamp(9px,2.7vw,10.5px); letter-spacing:.08em; white-space:normal; min-width:0; }
@@ -1158,6 +1161,13 @@ Når et raserianfald forstås som en systemnedsmeltning i stedet for trods, ænd
           <li><img src="assets/photos/niels.jpg" alt="Niels Rahr" loading="lazy" decoding="async"><span><strong>Niels Rahr</strong>Kreativ strateg · Kommunikation · Teknologi · Prisvindende</span></li>
         </ul>
 
+        <div class="author-cta">
+          <a class="btn-install" href="mailto:Brugermanualen@gmail.com?subject=Kontakt%20-%20Brugermanual%20til%20dit%20barn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            Skriv til Dorte og Niels
+          </a>
+        </div>
+
         <div class="reader" data-topic="To fagligheder. Én brugerflade.">
           <div class="reader-head"><span class="lbl">Søvnig-læser</span><span class="time">20 sek · 1 min · 3 min</span></div>
           <button class="reader-play-card" type="button">
@@ -1275,7 +1285,7 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
     </div>
   </div>
 </section>
-<section class="section" id="presse">
+<section class="section" id="presse" hidden>
   <div class="wrap">
     <div class="section-head"><span class="index">Presse, interviews &amp; samarbejde</span><span class="rule"></span></div>
     <div class="presse-grid">
@@ -1352,7 +1362,6 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
       <li><a href="#opslag-05">Forfatterne</a></li>
       <li><a href="#foredrag">Foredrag</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#presse">Presse</a></li>
       <li><a href="mailto:Brugermanualen@gmail.com">Kontakt</a></li>
     </ul>
     <div class="fine">© 2026 Brugermanual til dit barn. Alle rettigheder forbeholdes.</div>
