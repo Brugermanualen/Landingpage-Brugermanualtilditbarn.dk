@@ -3,497 +3,1817 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brugermanual til dit barn | Manual-reception</title>
-<meta name="description" content="Invitation til Manual-reception den 1. september 2026 i Kødbyen.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%230000ff'/%3E%3C/svg%3E">
+<title>Brugermanual til dit barn — En ny brugerflade til et bedre forældreskab</title>
+<meta name="description" content="Brugermanual til dit barn (0–5 år) af Dorte Rudi Andersen og Niels Rahr: en ny brugerflade til et bedre forældreskab. Videnskaben om dit barn, oversat til handling i hverdagen.">
+<link rel="canonical" href="https://brugermanualtilditbarn.dk/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Brugermanual til dit barn">
+<meta property="og:title" content="Brugermanual til dit barn — En ny brugerflade til et bedre forældreskab">
+<meta property="og:description" content="Brugermanual til dit barn (0–5 år) af Dorte Rudi Andersen og Niels Rahr: en ny brugerflade til et bedre forældreskab. Videnskaben om dit barn, oversat til handling i hverdagen.">
+<meta property="og:url" content="https://brugermanualtilditbarn.dk/">
+<meta property="og:image" content="https://brugermanualtilditbarn.dk/assets/cover/packshot-forside.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
 <style>
-  :root { --blue: #0000ff; --white: #ffffff; }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; min-height: 100%; background: var(--white); }
-  body { font-family: "Courier New", Courier, monospace; color: var(--blue); }
-  button, input, select { font: inherit; }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  a:visited { color: inherit; }
+  /* Brand: systemblå #000FFF (opdateret fra #0000FF), lavendel #666FFF som
+     60% tint til sekundære felter, ren hvid, og Courier New som eneste
+     skrift i hele det visuelle system — jf. den officielle designguide. */
+  :root{
+    --blue:#000FFF;
+    --blue-rgb:0,15,255;
+    --blue-soft:rgba(0,15,255,.08);
+    --blue-softer:rgba(0,15,255,.04);
+    --lavender:#666FFF;
+    --lavender-rgb:102,111,255;
+    --white:#FFFFFF;
+    --grid-on-blue:rgba(255,255,255,.09);
+    --grid-on-white:rgba(0,15,255,.07);
+    --line:1px;
+    --radius-pill:999px;
+    --gap:clamp(24px,4vw,64px);
+    --maxw:1240px;
+    --mono:'Courier New', Courier, monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box; margin:0; padding:0;}
+  html{
+    -webkit-text-size-adjust:100%;
+    background:var(--white);
+    width:100%;
+    overflow-x:hidden;
+  }
+  /* The viewer may apply its own dark setting. This design is a fixed
+     blue-on-white identity, so the palette is pinned in every theme state
+     rather than inverted, which is what was showing through as black. */
+  :root:not([data-theme="light"]),
+  :root[data-theme="dark"],
+  :root[data-theme="light"]{
+    --blue:#000FFF;
+    --white:#FFFFFF;
+    color-scheme:light;
+  }
+  body{
+    font-family:var(--mono);
+    color:var(--blue);
+    background:var(--white);
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    hyphens:none;
+    overflow-wrap:normal;
+    word-break:keep-all;
+    line-height:1.5;
+  }
+  /* Every full-bleed band carries its own background so no gap can fall
+     through to the viewer's backdrop. */
+  .nav, .hero, .section, footer{ background:var(--white); }
+  .section-dark, .closer{ background:var(--blue); }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  button{font-family:inherit; cursor:pointer;}
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2.5px solid currentColor; outline-offset:3px; border-radius:2px;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; width:100%; padding-left:var(--gap); padding-right:var(--gap);}
+  @media (max-width:640px){ :root{ --gap:20px; } }
+  .eyebrow{
+    font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .eyebrow .n{ color:var(--lavender); }
+  .section-dark .eyebrow .n, .closer .eyebrow .n{ color:inherit; opacity:.6; }
+  h1,h2,h3{font-weight:700; letter-spacing:-.01em; line-height:1.08;}
+  p{max-width:52ch;}
 
-  .stage {
-    min-height: 100vh; width: 100%; background: var(--white);
-    display: flex; align-items: center; justify-content: center;
-    padding: clamp(16px, 4vw, 48px);
+  /* ---------- top nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50; background:var(--white);
+    border-bottom:var(--line) solid var(--blue);
   }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px; }
+  .logo-group{ display:flex; align-items:center; gap:12px; min-width:0; flex:1 1 auto; overflow:hidden; }
+  .nav-badge{
+    flex:none; width:32px; height:32px; border-radius:50%;
+    background:var(--lavender); color:var(--white);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-size:8px; font-weight:700; line-height:1.15; letter-spacing:.02em;
+  }
+  .logo{ font-size:13px; font-weight:700; letter-spacing:.04em; white-space:nowrap; min-width:0; overflow:hidden; text-overflow:ellipsis; }
+  .logo span{ display:block; font-size:10px; font-weight:500; letter-spacing:.14em; opacity:.6; overflow:hidden; text-overflow:ellipsis; }
+  .nav .btn-install{ flex:none; }
+  @media (max-width:400px){ .logo span{ display:none; } }
+  .nav-links{ display:flex; gap:28px; font-size:12px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
+  .nav-links a{ text-decoration:none; opacity:.75; transition:opacity .15s; }
+  .nav-links a:hover{ opacity:1; }
+  @media (max-width:820px){ .nav-links{ display:none; } }
 
-  .layout {
-    width: 100%;
-    max-width: 1360px;
-    display: grid;
-    grid-template-columns: 1fr minmax(280px, 520px) 1fr;
-    align-items: center;
-    column-gap: clamp(20px, 3.5vw, 56px);
+  .btn-install{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--blue); color:var(--white);
+    border:2px solid var(--blue);
+    padding:9px 18px 9px 16px; border-radius:var(--radius-pill);
+    font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    text-decoration:none; white-space:nowrap;
+    transition:background .15s, color .15s;
   }
+  .btn-install:hover{ background:var(--white); color:var(--blue); }
+  .btn-install svg{ width:14px; height:14px; flex:none; }
+  .section-dark .btn-install{ background:var(--white); color:var(--blue); border-color:var(--white); }
+  .section-dark .btn-install:hover{ background:transparent; color:var(--white); }
 
-  .book-wrap {
-    position: relative;
-    display: flex; flex-direction: column; align-items: center;
-    order: -1;
-    justify-self: end;
-    width: 100%;
-    max-width: 560px;
-    min-width: 200px;
-  }
-
-  .book-link {
-    display: block; width: 100%;
-    border: 0; background: none; padding: 0; margin: 0; cursor: pointer;
-  }
-  .book-link img { width: 100%; display: block; pointer-events: none; }
-
-  .zoom-hint {
-    display: block; position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%);
-    width: clamp(40px, 4.5vw, 54px); height: clamp(40px, 4.5vw, 54px);
-    border: 0; background: none; padding: 0; cursor: pointer;
-  }
-  .zoom-hint img { width: 100%; height: 100%; display: block; pointer-events: none; }
-
-  .content {
-    width: 100%;
-    container-type: inline-size;
-    display: flex; flex-direction: column; align-items: center; text-align: center;
-  }
-
-  .action {
-    justify-self: start;
-    width: 100%;
-    max-width: 300px;
-    min-width: 170px;
-    container-type: inline-size;
-    display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 9cqw, 26px);
-  }
-
-  .badge {
-    width: clamp(70px, 7vw, 84px); height: clamp(70px, 7vw, 84px); border-radius: 50%; background: var(--blue); color: white;
-    display: grid; place-items: center; font-weight: 700; line-height: 1.15; font-size: clamp(14px, 1.4vw, 17px); flex: none;
-  }
-  .kicker { margin: clamp(11px, 5.5cqw, 27px) 0 0; font-weight: 700; font-size: clamp(8px, 3.6cqw, 16px); letter-spacing: -0.01em; white-space: nowrap; }
-  h1 { margin: clamp(8px, 4cqw, 20px) 0 0; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.05; letter-spacing: .012em; text-transform: uppercase; white-space: nowrap; }
-  .subtitle { margin: clamp(14px, 7.4cqw, 36px) 0 0; font-weight: 700; font-size: clamp(15px, 1.5vw, 19px); letter-spacing: .015em; white-space: nowrap; position: relative; left: clamp(3px, 1.4cqw, 9px); }
-  .body-text { margin: clamp(14px, 7.4cqw, 36px) 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); letter-spacing: -.03em; white-space: nowrap; }
-  .event-heading { margin: clamp(12px, 6cqw, 30px) 0 0; font-weight: 700; font-size: clamp(13px, 1.25vw, 16px); letter-spacing: -.03em; white-space: nowrap; }
-  .event-info { margin: clamp(10px, 5cqw, 24px) 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); letter-spacing: -.03em; white-space: nowrap; }
-  .event-info + .body-text { margin-top: clamp(10px, 5cqw, 24px); }
-  .signature { margin: 6px 0 0; line-height: 1.6; font-size: clamp(12px, 1.15vw, 15px); letter-spacing: -.03em; white-space: nowrap; }
-  .momenta-link { width: clamp(110px, 12vw, 150px); margin-top: clamp(20px, 10.3cqw, 50px); }
-
-  .bear-button {
-    position: relative; border: 0; background: none; padding: 0; margin: 0;
-    cursor: pointer; width: 100%; max-width: 245px; display: block;
-    aspect-ratio: 241 / 369;
-  }
-  .bear-button img {
-    position: absolute; pointer-events: none; display: block;
-    left: 40.66%; top: 19.24%; width: 59.34%; height: 80.76%;
-  }
-  .speech-bubble {
-    position: absolute; left: 0; top: 0; width: 65.98%; height: 31.98%;
-    pointer-events: none;
-  }
-  .speech-bubble text { font-family: "Courier New", Courier, monospace; font-weight: 700; text-anchor: middle; letter-spacing: -.025em; }
-
-  .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(8px, 1.4vw, 14px); width: 100%; }
-  .countdown-unit { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .countdown-unit span {
-    width: clamp(40px, 4.5vw, 54px); height: clamp(40px, 4.5vw, 54px); border-radius: 50%; background: var(--blue); color: white;
-    display: grid; place-items: center; font-weight: 700; font-size: clamp(13px, 1.5vw, 18px); letter-spacing: -.025em;
-  }
-  .countdown-unit strong { font-size: clamp(9px, 1vw, 12px); font-weight: 700; letter-spacing: -.025em; white-space: nowrap; }
-
-  @media (orientation: portrait) {
-    .layout { grid-template-columns: 1fr; max-width: 480px; row-gap: clamp(10px, 3vw, 22px); }
-    .book-wrap { order: 0; justify-self: center; max-width: 300px; width: 68%; }
-    .zoom-hint { display: none; }
-    .content { order: 1; }
-    .action { order: 2; justify-self: center; max-width: 240px; }
-    h1 { font-size: clamp(28px, 9vw, 38px); white-space: normal; }
-    .kicker, h1, .subtitle, .body-text, .event-heading, .event-info, .signature { text-wrap: balance; }
-    .body-text, .event-info, .signature { white-space: normal; }
-    .body-text, .event-info { font-size: clamp(10px, 3.6cqw, 15px); }
-    .event-heading { font-size: clamp(10px, 3.6cqw, 16px); }
-    .signature { font-size: clamp(10px, 3.6cqw, 15px); }
-  }
-
-  @media (orientation: portrait) and (min-width: 600px) {
-    .layout { max-width: 680px; }
-    .book-wrap { max-width: 420px; }
-    .action { max-width: 320px; }
-    h1 { font-size: clamp(38px, 6.5vw, 64px); }
-    .badge { width: clamp(84px, 9vw, 110px); height: clamp(84px, 9vw, 110px); font-size: clamp(17px, 1.8vw, 22px); }
+  .btn-ghost{
+    display:inline-flex; align-items:center; gap:6px;
+    background:transparent; border:none; color:currentColor;
+    font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    text-decoration:underline; text-underline-offset:3px;
   }
 
-  .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgb(0 0 255 / 12%); backdrop-filter: blur(4px); }
-  .modal-backdrop.hidden { display: none; }
-  .rsvp-modal { position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; border: 4px solid var(--blue); border-radius: 34px; padding: 42px; background: white; box-shadow: 14px 14px 0 var(--blue); text-align: left; font-size: 16px; transform: translateZ(0); container-type: inline-size; }
-  .book-modal {
-    position: relative; width: min(640px, 90vw);
-    border: 4px solid var(--blue); border-radius: 34px; padding: 40px 40px 56px; background: white;
-    box-shadow: 14px 14px 0 var(--blue); text-align: center; transform: translateZ(0);
-  }
-  .book-modal-scroll { max-height: calc(100vh - 160px); overflow: auto; }
-  .book-modal-img { width: 100%; display: block; }
-  .buy-circle {
-    position: absolute; left: 50%; bottom: -48px; transform: translateX(-50%);
-    width: 100px; height: 100px; border-radius: 50%; background: var(--blue); color: white;
-    text-align: center;
-    font-weight: 700; font-size: 18px; letter-spacing: .25em;
-    text-decoration: none; border: 4px solid white; box-shadow: 0 8px 18px rgb(0 0 255 / 0.35);
-    outline: none; -webkit-tap-highlight-color: transparent;
-  }
-  .buy-circle:hover { background: var(--blue); opacity: .88; }
-  .buy-circle-label {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    display: flex; flex-direction: column; align-items: center;
-  }
-  .buy-circle-label span { display: block; height: 18px; line-height: 18px; overflow: hidden; color: #ffffff; }
-  .close-button { position: absolute; top: 12px; right: 16px; width: 38px; height: 38px; border: 0; background: transparent; color: var(--blue); font-size: 32px; cursor: pointer; }
-  .system-label { margin: 0 0 12px; font-weight: 700; font-size: 14px; }
-  .rsvp-modal h2 { margin: 0 0 12px; font-size: clamp(34px, 8vw, 52px); line-height: .95; text-transform: uppercase; }
-  .modal-intro { margin: 0 0 28px; line-height: 1.5; font-size: clamp(12px, 4.4cqw, 16px); }
-  .rsvp-modal .field { display: grid; gap: 7px; margin: 0 0 18px; }
-  .rsvp-modal label, .rsvp-modal .field-label { font-weight: 700; margin: 0; }
-  .rsvp-modal input, .rsvp-modal select { width: 100%; min-height: 48px; border: 2px solid var(--blue); border-radius: 0; padding: 10px 12px; background: white; color: var(--blue); outline: none; }
-  #rsvp-adults, #rsvp-children { font-size: clamp(8.5px, 3.4cqw, 16px); letter-spacing: -.03em; font-weight: 700; }
-  .rsvp-modal input:focus, .rsvp-modal select:focus { box-shadow: 0 0 0 3px rgb(0 0 255 / 20%); }
-  .primary-button { width: 100%; min-height: 52px; border: 2px solid var(--blue); padding: 12px 18px; background: var(--blue); color: white; font-weight: 700; cursor: pointer; }
-  .primary-button:hover { background: white; color: var(--blue); }
-  .primary-button:disabled { opacity: .6; cursor: wait; }
-  .privacy-note { margin: 14px 0 0; font-size: 11px; line-height: 1.4; }
-  .form-error { font-weight: 700; display: none; }
-  .form-error.visible { display: block; }
-  .honeypot { position: absolute; left: -9999px; }
-  .success-message { text-align: center; padding: 24px 0 8px; display: none; container-type: inline-size; }
-  .success-message.visible { display: block; }
-  .success-message .primary-button { margin-top: 22px; }
-  .success-bear-icon { width: clamp(34px, 15cqw, 48px); height: auto; margin: 0 auto 14px; display: block; }
-  .success-message h2 { margin: 0 0 16px; font-size: clamp(12.5px, 5.4cqw, 22px); line-height: 1.15; text-transform: none; letter-spacing: -.02em; white-space: nowrap; }
-  .success-body { margin: 0 0 22px; line-height: 1.5; font-size: clamp(13px, 5.9cqw, 17px); text-wrap: balance; }
-  .success-message .countdown { margin: 0 0 8px; }
-  .rsvp-form.hidden { display: none; }
+  /* ---------- opslag sections ---------- */
+  .section{ border-bottom:var(--line) solid var(--blue); padding:clamp(56px,8vw,96px) 0; }
+  .section-dark{ background:var(--blue); color:var(--white); }
+  .section-head{ display:flex; align-items:center; gap:14px; margin-bottom:clamp(32px,5vw,56px); }
+  .section-head .index{ font-size:clamp(15px,2vw,19px); font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .section-head .rule{ flex:1; height:1px; background:currentColor; opacity:.35; }
 
-  @media (max-width: 480px) {
-    .rsvp-modal { padding: 34px 24px 26px; border-radius: 24px; box-shadow: 8px 8px 0 var(--blue); }
+  /* Blueprint-grid — a discreet tinted grid the guide reserves for blue
+     section pages, kept as texture rather than a loud pattern. */
+  .grid-bg{ position:relative; isolation:isolate; }
+  .grid-bg::before{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--grid-line,var(--grid-on-blue)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line,var(--grid-on-blue)) 1px, transparent 1px);
+    background-size:32px 32px;
   }
-  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+  .grid-bg > .wrap{ position:relative; z-index:1; }
+  .section:not(.section-dark).grid-bg{ --grid-line:var(--grid-on-white); }
+
+  /* Opslag — landscape: venn left, headline + copy + Søvnig-læser right.
+     Portrait: venn on top, copy and the reader card side by side beneath it. */
+  .opslag{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); align-items:center; }
+  body.format-portrait .opslag{ grid-template-columns:1fr; }
+
+  /* venn diagram — the words live inside their own circles.
+     Geometry (viewBox 0-440, r=150, centres 168/272): the crescent of each
+     circle is centred 150 units from the middle of the pair, the lens in the
+     middle holds the packshot and nothing else. */
+  .venn{
+    position:relative; width:100%; max-width:660px; margin:0 auto;
+    aspect-ratio:1/.76; container-type:inline-size;
+    transition:aspect-ratio .6s cubic-bezier(.4,0,.2,1);
+  }
+  body.format-portrait .venn{ aspect-ratio:1/1.22; max-width:520px; }
+  .venn > svg{
+    position:absolute; top:50%; left:50%; pointer-events:none;
+    width:100%; height:auto; aspect-ratio:1/1; overflow:visible;
+    transform:translate(-50%,-50%) rotate(0deg);
+    transition:transform .6s cubic-bezier(.4,0,.2,1), width .6s cubic-bezier(.4,0,.2,1);
+  }
+  body.format-portrait .venn > svg{ width:128%; transform:translate(-50%,-50%) rotate(90deg); }
+  .venn-circle{ fill:none; stroke:currentColor; stroke-width:2.4; }
+
+  .venn-label{
+    position:absolute; top:50%; left:15.9%; z-index:2; transform:translate(-50%,-50%);
+    transition:left .6s cubic-bezier(.4,0,.2,1), top .6s cubic-bezier(.4,0,.2,1);
+  }
+  .venn-label.right{ left:84.1%; }
+  body.format-portrait .venn-label.left{ left:50%; top:14.2%; }
+  body.format-portrait .venn-label.right{ left:50%; top:85.8%; }
+  /* Landscape: the letters stand upright, one beneath the other, inside the
+     crescent. Portrait: the same word reads horizontally. --len is set from
+     the word's length so long words shrink to stay inside the stroke. */
+  .venn-label h3{
+    font-size:clamp(10px,1.7vw,16px); font-size:min(3.1cqw, calc(44cqw / var(--len,12)));
+    font-weight:700; letter-spacing:.04em; text-transform:uppercase; line-height:1; white-space:nowrap;
+    writing-mode:vertical-rl; text-orientation:upright;
+  }
+  body.format-portrait .venn-label h3{
+    font-size:clamp(11px,3.6vw,18px); font-size:min(4.6cqw, calc(70cqw / var(--len,12)));
+    letter-spacing:.09em; writing-mode:horizontal-tb; text-orientation:mixed;
+  }
+
+  .venn-center{
+    position:absolute; top:50%; left:50%; z-index:2; width:26%; transform:translate(-50%,-50%);
+    transition:width .6s cubic-bezier(.4,0,.2,1);
+  }
+  body.format-portrait .venn-center{ width:28%; }
+  .venn-packshot-link{ display:block; width:100%; transition:transform .15s ease; }
+  .venn-packshot-link:hover{ transform:scale(1.04); }
+  .cover-art-mini{ width:100%; height:auto; display:block; }
+
+  /* copy + reader column */
+  /* Real book illustrations, used as small marginal motifs above each
+     section's heading — brand rule: monokrom lineart, generous negative
+     space, one idea per image, reproducible in a single colour. */
+  .motif{ width:clamp(96px,13vw,150px); margin-bottom:18px; }
+  .motif-art{ width:100%; height:auto; display:block; color:currentColor; }
+  .motif--pyramid-3f{ width:clamp(130px,17vw,200px); }
+  body.format-portrait .motif{ display:none; }
+  .opslag-body h2{ font-size:clamp(24px,3vw,38px); line-height:1.1; margin-bottom:14px; text-wrap:balance; }
+  .opslag-body > p{ font-size:clamp(13px,1.15vw,15px); line-height:1.65; opacity:.85; margin-bottom:24px; max-width:46ch; }
+  body.format-portrait .opslag-body{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,36%);
+    column-gap:clamp(16px,4vw,32px); align-items:start;
+  }
+  body.format-portrait .opslag-body h2{ grid-column:1; font-size:clamp(19px,5.2vw,34px); }
+  body.format-portrait .opslag-body > p{ grid-column:1; font-size:clamp(12px,3.2vw,15px); margin-bottom:0; }
+  body.format-portrait .opslag-body > .people{ grid-column:1 / -1; margin-top:24px; }
+  body.format-portrait .opslag-body > .reader{ grid-column:2; grid-row:1 / span 2; align-self:stretch; max-width:none; }
+
+  .people{ list-style:none; display:grid; gap:12px; margin:0 0 24px; }
+  .people li{ display:flex; align-items:center; gap:12px; }
+  .people img{ width:52px; height:52px; border-radius:50%; object-fit:cover; flex:none; border:1.5px solid currentColor; }
+  .people span{ font-size:11.5px; line-height:1.5; }
+  .people strong{ display:block; font-size:13px; }
+  .section:not(.section-dark) .people span{ color:var(--lavender); }
+
+  /* Søvnig-læser entry card — a systemnote with a double contour and a
+     folded corner. The card only teases; reading happens in the shared
+     full-screen instrument below. */
+  .reader{
+    --sp-1:8px; --sp-2:13px; --sp-3:21px; --sp-5:55px;
+    position:relative; max-width:420px; display:flex; flex-direction:column;
+    border:2px solid currentColor; outline:1.5px solid currentColor; outline-offset:-7px;
+  }
+  .reader::after{
+    content:''; position:absolute; top:0; right:0; pointer-events:none;
+    width:0; height:0; border-style:solid; border-width:0 17px 17px 0;
+    border-color:transparent currentColor transparent transparent; opacity:.3;
+  }
+  .reader-head{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; padding:var(--sp-3) var(--sp-3) var(--sp-1); border-bottom:1.5px solid currentColor; margin:0 var(--sp-3); padding-left:0; padding-right:0; }
+  .reader-head .lbl{ font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; white-space:nowrap; }
+  .reader-head .time{ font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+  .section:not(.section-dark) .reader-head .time{ color:var(--lavender); }
+  .section-dark .reader-head .time{ opacity:.7; }
+
+  .reader-play-card{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:var(--sp-2);
+    width:100%; padding:var(--sp-3); background:none; border:none; color:currentColor; font-family:var(--mono);
+  }
+  .reader-play-icon{
+    flex:none; width:var(--sp-5); height:var(--sp-5); border-radius:50%; border:2.5px solid currentColor;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .15s, color .15s, transform .15s;
+  }
+  .reader-play-icon svg{ width:20px; height:20px; margin-left:3px; }
+  .reader-play-card:hover .reader-play-icon{ background:currentColor; transform:scale(1.04); }
+  .reader-play-card:hover .reader-play-icon svg{ color:var(--blue); }
+  .section-dark .reader-play-card:hover .reader-play-icon svg{ color:var(--blue); }
+  .reader-teaser{ font-size:12.5px; line-height:1.55; max-width:34ch; opacity:.85; }
+  .section:not(.section-dark) .reader-teaser{ color:var(--lavender); opacity:1; }
+  body.format-portrait .reader-head{ margin:0 12px; padding-top:14px; }
+  body.format-portrait .reader-head .lbl{ font-size:9px; letter-spacing:.1em; }
+  body.format-portrait .reader-head .time, body.format-portrait .reader-teaser{ display:none; }
+  body.format-portrait .reader-play-card{ padding:12px; }
+
+  /* ---------- shared full-screen instrument ---------- */
+  body.reader-locked{ overflow:hidden; }
+  .reader-overlay{
+    position:fixed; inset:0; z-index:200; background:var(--white); color:var(--blue);
+    display:flex; flex-direction:column;
+  }
+  .reader-overlay[hidden]{ display:none; }
+  .reader-overlay::before{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--grid-on-white) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-on-white) 1px, transparent 1px);
+    background-size:32px 32px;
+  }
+  .reader-ov-inner{
+    position:relative; z-index:1; flex:1; display:flex; flex-direction:column; min-height:0;
+    max-width:920px; width:100%; margin:0 auto;
+    padding:clamp(16px,3vw,28px) var(--gap) calc(env(safe-area-inset-bottom,0px) + clamp(16px,3vw,28px));
+  }
+  .reader-ov-head{ flex:none; display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:16px; border-bottom:2px solid currentColor; }
+  .reader-ov-id{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .reader-ov-label{ font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+  .reader-ov-topic{ font-size:11px; opacity:.6; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .reader-ov-levels{ display:flex; gap:6px; flex:none; }
+  .lvl{
+    border:1.6px solid currentColor; background:transparent; color:currentColor; font-family:var(--mono);
+    padding:7px 11px; font-size:11px; font-weight:700; letter-spacing:.05em; transition:background .12s, color .12s;
+  }
+  .lvl:hover{ background:rgba(var(--blue-rgb),.08); }
+  .lvl[aria-pressed="true"]{ background:var(--blue); color:var(--white); }
+  .reader-ov-close{
+    flex:none; width:32px; height:32px; border-radius:50%; border:1.6px solid currentColor; background:none; color:currentColor;
+    display:flex; align-items:center; justify-content:center; transition:background .12s, color .12s;
+  }
+  .reader-ov-close svg{ width:15px; height:15px; }
+  .reader-ov-close:hover{ background:var(--blue); color:var(--white); }
+
+  .reader-ov-stage{ flex:1; display:flex; align-items:center; justify-content:center; min-height:0; padding:20px 0; overflow:hidden; }
+  .reader-ov-stage .orp{ font-size:clamp(26px,6.5vw,80px); }
+
+  .reader-ov-progress{ flex:none; height:2px; background:rgba(var(--blue-rgb),.12); cursor:pointer; }
+  .reader-ov-progress .fill{ height:100%; width:0%; background:currentColor; }
+  .reader-ov-meta{ flex:none; display:flex; justify-content:space-between; gap:12px; padding:10px 0 18px; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; opacity:.6; }
+  .reader-ov-meta .status{ opacity:1; font-weight:700; }
+
+  .reader-ov-controls{ flex:none; display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding-top:16px; border-top:2px solid currentColor; }
+  .reader-ov-controls .toggle{ padding:11px 24px; font-size:12px; }
+  .reader-ov-controls .prev, .reader-ov-controls .next{ padding:11px 15px; }
+  .reader-ov-controls .reader-normal-link{ margin-left:auto; margin-top:0; }
+  .reader-ov-normaltext{ display:none; flex:none; font-size:13px; line-height:1.75; white-space:pre-wrap; max-height:30vh; overflow-y:auto; border-top:2px solid currentColor; padding-top:14px; margin-top:14px; }
+  .reader-ov-normaltext.show{ display:block; }
+  @media (max-width:640px){ .reader-ov-topic{ display:none; } .lvl{ padding:6px 8px; font-size:10px; } }
+
+  /* ---------- shared building blocks (entry card + overlay both use these) ---------- */
+  .orp{ display:flex; align-items:baseline; justify-content:center; white-space:pre; font-weight:700; letter-spacing:.02em; }
+  .orp .l{ flex:1 1 0; text-align:right; }
+  .orp .f{ flex:0 0 auto; width:1ch; text-align:center; opacity:.45; }
+  .orp .r{ flex:1 1 0; text-align:left; }
+  .reader-normal-link{ display:block; background:none; border:none; color:currentColor; font-size:10.5px; }
+  .rbtn{
+    border:2px solid currentColor; background:transparent; color:currentColor;
+    font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    transition:background .12s, color .12s;
+    clip-path:polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+  }
+  .rbtn:hover{ background:currentColor; color:var(--white); }
+  .reader-speed{ display:flex; align-items:center; gap:8px; }
+  .reader-speed input[type=range]{ width:88px; accent-color:currentColor; }
+  .reader-speed .wpm{ font-size:9.5px; letter-spacing:.06em; min-width:58px; text-align:right; }
+
+  /* ---------- udtalelser (third colour: lavender fuldflade) ---------- */
+  .section-lavender{ background:var(--lavender); color:var(--white); }
+  .quote-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(28px,4vw,48px); }
+  @media (max-width:860px){ .quote-grid{ grid-template-columns:1fr; gap:40px; } }
+  .quote-card{ display:flex; flex-direction:column; gap:12px; }
+  .quote-mark{ font-size:42px; font-weight:700; line-height:.6; opacity:.55; }
+  .quote-text{ font-size:15px; line-height:1.6; max-width:38ch; }
+  .quote-attr{ font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-top:4px; }
+  .quote-attr span{ display:block; font-weight:500; text-transform:none; letter-spacing:0; opacity:.8; font-size:11.5px; margin-top:3px; }
+
+  /* ---------- medieomtale (clickable press/podcast cards) ---------- */
+  .media-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(24px,4vw,40px); }
+  /* Berlingske's masthead is a black wordmark, so it sits on a white tile —
+     its natural colours, like the DR marks, for instant recognition. */
+  .press-tile{ flex:none; display:flex; align-items:center; height:26px; padding:0 10px; background:#FFFFFF; }
+  .press-tile img{ height:13px; width:auto; display:block; }
+  @media (max-width:860px){ .media-grid{ grid-template-columns:1fr; gap:28px; } }
+  .media-card{
+    display:flex; flex-direction:column; gap:12px; text-align:left;
+    padding:20px; border:1.4px solid rgba(255,255,255,.45); border-radius:4px;
+    text-decoration:none; color:inherit;
+    transition:border-color .15s, transform .15s;
+  }
+  .media-card:hover{ border-color:var(--white); transform:translateY(-3px); }
+  /* Kept in DR's own real colours (not the site's blue) on purpose — the
+     point of showing press logos is instant public recognition, which a
+     brand recolour would work against. */
+  .media-logo-wrap{ display:inline-flex; flex:none; }
+  .media-logo{ width:52px; height:auto; display:block; }
+  .media-logo rect{ fill:#000000; }
+  .media-logo-mark{ fill:#FFFFFF; }
+  .media-brand-row{ display:flex; align-items:center; gap:8px; }
+  /* The real, current (2020-) DR P1 logo — public-domain per its own simple
+     geometry — kept in its own orange/white, same reasoning as the DR mark. */
+  .p1-logo-wrap{ display:inline-flex; flex:none; }
+  .p1-logo{ width:26px; height:26px; display:block; }
+  /* No standalone "Kultur" mark exists on dr.dk (it's shown as plain text
+     there), so it's rendered as a companion text badge in DR's own
+     black/white rather than left out or recoloured into our blue. */
+  .dept-badge{
+    flex:none; display:flex; align-items:center; justify-content:center;
+    height:26px; padding:0 8px; background:#000000; color:#FFFFFF;
+    font-size:12px; font-weight:700; letter-spacing:.02em;
+  }
+  .klive-thumb{
+    flex:none; width:26px; height:26px; overflow:hidden; border:1.4px solid var(--white);
+  }
+  .klive-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .media-kicker{ font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.75; }
+  .media-title{ font-size:15px; font-weight:700; line-height:1.35; }
+  .media-desc{ font-size:12.5px; line-height:1.55; opacity:.85; }
+  .media-meta{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    margin-top:auto; padding-top:12px; border-top:1.4px solid rgba(255,255,255,.35);
+  }
+  .media-meta span:first-child{ opacity:.75; font-weight:500; }
+
+  /* ---------- closing CTA ---------- */
+  .closer{ background:var(--blue); color:var(--white); padding:clamp(48px,7vw,80px) 0; border-bottom:var(--line) solid var(--blue); }
+  .closer .wrap{ display:grid; grid-template-columns:1.3fr .7fr; gap:var(--gap); align-items:center; }
+  @media (max-width:860px){ .closer .wrap{ grid-template-columns:1fr; } }
+  .closer .eyebrow{ opacity:.7; margin-bottom:14px; }
+  .closer h2{ font-size:clamp(26px,3.6vw,40px); margin-bottom:22px; text-wrap:balance; }
+  .closer-ctas{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .closer-list{ list-style:none; font-size:12.5px; font-weight:600; letter-spacing:.03em; display:flex; flex-direction:column; gap:10px; }
+  .closer-list li{ display:flex; align-items:center; gap:10px; }
+  .closer-list svg{
+    width:20px; height:20px; padding:5px; box-sizing:border-box; flex:none;
+    border:1.4px solid currentColor; border-radius:50%;
+  }
+
+  /* ---------- footer ---------- */
+  footer{ padding:32px 0; }
+  footer .wrap{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; }
+  footer .flinks{ display:flex; gap:22px; font-size:11px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; opacity:.75; list-style:none; }
+  footer .fine{ font-size:10.5px; color:var(--lavender); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+
+  /* ---------- sproget: interactive teknologisk glossary ---------- */
+  .glossary{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:currentColor; border:1.4px solid currentColor; }
+  @media (max-width:780px){ .glossary{ grid-template-columns:repeat(2,1fr); } }
+  .term{
+    background:var(--blue); color:var(--white); border:none; text-align:left;
+    padding:18px; font-family:var(--mono); cursor:pointer;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .term .word{ font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  .term .word svg{ width:14px; height:14px; flex:none; transition:transform .2s; }
+  .term[aria-expanded="true"] .word svg{ transform:rotate(45deg); }
+  .term .gloss{ font-size:11.5px; line-height:1.55; opacity:.85; max-height:0; overflow:hidden; transition:max-height .25s ease, opacity .2s; }
+  .term[aria-expanded="true"] .gloss{ max-height:180px; opacity:1; margin-top:4px; }
+  .term:hover{ background:var(--lavender); }
+  .glossary-note{ margin-top:18px; font-size:12px; opacity:.7; max-width:56ch; }
+
+  /* ---------- historisk timeline ---------- */
+  .timeline{ display:flex; flex-direction:column; }
+  .timeline-item{
+    display:grid; grid-template-columns:120px 1fr; gap:clamp(16px,3vw,32px);
+    padding:clamp(16px,2.4vw,22px) 0; border-top:1.4px solid currentColor;
+  }
+  .timeline-item:last-child{ border-bottom:1.4px solid currentColor; }
+  @media (max-width:640px){ .timeline-item{ grid-template-columns:1fr; gap:6px; } }
+  .timeline-when{ font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.6; }
+  .timeline-body h3{ font-size:15.5px; margin-bottom:5px; }
+  .timeline-body p{ font-size:12.5px; line-height:1.6; opacity:.85; max-width:56ch; }
+  .section:not(.section-dark) .timeline-body p{ color:var(--lavender); opacity:1; }
+
+  /* ---------- FAQ accordion ---------- */
+  .accordion{ border-top:1.4px solid currentColor; }
+  .accordion-item{ border-bottom:1.4px solid currentColor; }
+  .accordion-q{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:none; border:none; color:currentColor; font-family:var(--mono); text-align:left;
+    padding:clamp(16px,2.4vw,22px) 0; font-size:clamp(14px,1.8vw,17px); font-weight:700;
+  }
+  .accordion-q svg{ width:18px; height:18px; flex:none; transition:transform .2s; }
+  .accordion-item[data-open="true"] .accordion-q svg{ transform:rotate(45deg); }
+  .accordion-a{ max-height:0; overflow:hidden; transition:max-height .25s ease; }
+  .accordion-item[data-open="true"] .accordion-a{ max-height:260px; }
+  .accordion-a p{ font-size:13.5px; line-height:1.65; opacity:.85; max-width:62ch; padding-bottom:clamp(16px,2.4vw,22px); }
+
+  /* ---------- presse ---------- */
+  .presse-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,3vw,32px); margin-bottom:clamp(28px,4vw,40px); }
+  @media (max-width:780px){ .presse-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .presse-grid{ grid-template-columns:1fr; } }
+  .presse-item{ display:flex; align-items:center; gap:10px; font-size:12.5px; font-weight:600; }
+  .presse-item svg{ width:16px; height:16px; flex:none; opacity:.7; }
+  .presse-contact{ font-size:13px; line-height:1.7; opacity:.85; max-width:52ch; }
+  .presse-contact a{ text-decoration:underline; text-underline-offset:3px; }
+
+
+  /* =====================================================================
+     NY KOPI — packshot + citater, medie-karrusel, nervesystemet, udbytte,
+     fejlkoder (blå side, hvide kapsler) og foredrag
+     ===================================================================== */
+  .nav-links{ gap:clamp(10px,1.3vw,20px); font-size:11px; letter-spacing:.02em; }
+  .nav-links a{ white-space:nowrap; }
+  footer .flinks{ flex-wrap:wrap; gap:10px 20px; }
+  .logo-group{ flex:none; overflow:visible; }
+  .logo, .logo span{ overflow:visible; text-overflow:clip; }
+  .logo{ font-size:clamp(14px,1.45vw,19px); }
+  @media (max-width:1180px){ .nav-links{ display:none; } }
+  .lbl-short{ display:none; }
+  @media (max-width:520px){
+    .lbl-full{ display:none; } .lbl-short{ display:inline; }
+    .nav .wrap{ gap:10px; } .logo-group{ gap:8px; }
+    .logo{ font-size:11.5px; letter-spacing:.02em; }
+    .nav .btn-install{ padding:8px 14px 8px 12px; }
+  }
+  @media (max-width:640px){
+    .logo-group{ flex:1 1 auto; overflow:hidden; }
+    .logo, .logo span{ overflow:hidden; text-overflow:ellipsis; }
+  }
+  .opslag{ grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); }
+  .venn{ max-width:760px; }
+  .venn-label h3{
+    font-size:clamp(10px,1.7vw,16px); font-size:min(3.2cqw, calc(32cqw / var(--lw,9)));
+    writing-mode:vertical-lr; letter-spacing:.03em; line-height:1.15; text-align:center;
+  }
+  body.format-portrait .venn-label h3{
+    font-size:clamp(11px,3.6vw,18px); font-size:min(4.6cqw, calc(70cqw / var(--len,12)));
+    writing-mode:horizontal-tb; letter-spacing:.09em; line-height:1;
+  }
+  body.format-portrait .venn-label br{ display:none; }
+  .section-dark .lead-p{ color:var(--white); opacity:1; font-size:15px; }
+  .btn-on-light{ background:var(--white); color:var(--blue); border-color:var(--white); }
+  .btn-on-light:hover{ background:transparent; color:var(--white); }
+
+  /* ---------- 1 · packshot + citater ---------- */
+  .hero-quotes{
+    background:var(--white); color:var(--blue); border-bottom:var(--line) solid var(--blue);
+    padding:clamp(32px,4.4vw,64px) 0 clamp(40px,5vw,72px);
+  }
+  .hero-quotes .wrap{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,5vw,72px); align-items:stretch; }
+  @media (max-width:900px){ .hero-quotes .wrap{ grid-template-columns:1fr; } }
+  .hero-pack{ position:relative; display:flex; flex-direction:column; align-items:center; gap:clamp(14px,2vw,26px); }
+  .hero-tagline{ align-self:flex-start; max-width:22ch; font-size:clamp(20px,2.2vw,30px); font-weight:700; line-height:1.18; letter-spacing:-.01em; text-wrap:balance; }
+  @media (min-width:1700px){
+    .hero-tagline{ position:absolute; right:100%; margin-right:40px; top:10%; max-width:none;
+      width:min(300px, calc((100vw - var(--maxw)) / 2 + var(--gap) - 40px)); font-size:clamp(26px,1.7vw,36px); }
+  }
+  @media (max-width:900px){ .hero-tagline{ align-self:center; text-align:center; max-width:22ch; } }
+  .hero-pack a{ display:block; max-width:100%; transition:transform .25s ease; }
+  .hero-pack a:hover{ transform:translateY(-4px) rotate(-.6deg); }
+  .hero-pack img{ width:auto; max-width:100%; height:min(calc(100vh - 90px), 860px); min-height:380px; display:block; filter:drop-shadow(0 22px 28px rgba(0,15,255,.2)); }
+  @media (max-width:900px){ .hero-pack img{ height:auto; width:min(74vw,430px); min-height:0; } }
+  .hq{ display:flex; flex-direction:column; justify-content:space-between; gap:clamp(24px,3.4vw,40px); }
+  /* the right column runs the full height of the left one: buy button level with the foot of the book */
+
+  .hq figure{ margin:0; }
+  .hq blockquote{ font-style:italic; }
+  .hq-main blockquote{ font-size:clamp(22px,2.9vw,40px); font-weight:700; line-height:1.15; letter-spacing:-.015em; text-wrap:balance; }
+  .hq-attr{ margin-top:16px; font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  .hq-attr span{ display:block; margin-top:4px; font-size:12px; font-weight:400; letter-spacing:0; text-transform:none; color:var(--lavender); }
+  .hq-pair{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(22px,3vw,40px); padding-top:clamp(20px,2.6vw,32px); border-top:1.4px solid var(--blue); }
+  @media (max-width:640px){ .hq-pair{ grid-template-columns:1fr; } }
+  .hq-pair blockquote{ font-size:clamp(14px,1.25vw,16px); line-height:1.65; font-weight:700; }
+  .hq-cta{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .hero-quotes .btn-ghost{ font-size:12px; }
+
+  /* ---------- 2 · medie-karrusel ---------- */
+  #omtale, #laer{ --cpad:max(var(--gap), calc((100vw - var(--maxw)) / 2 + var(--gap))); padding-bottom:clamp(40px,6vw,72px); }
+  /* The strip is endless in both directions (cloned sets before and after), so
+     cards are always present at the left edge as well as the right. It is moved
+     with the Web Animations API on a compositor layer — no layout, no repaint. */
+  .carousel{
+    overflow:hidden; touch-action:pan-y; cursor:grab;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 clamp(20px,5vw,80px),#000 calc(100% - clamp(20px,5vw,80px)),transparent 100%);
+            mask-image:linear-gradient(90deg,transparent 0,#000 clamp(20px,5vw,80px),#000 calc(100% - clamp(20px,5vw,80px)),transparent 100%);
+  }
+  .carousel.dragging{ cursor:grabbing; }
+  .carousel-track{
+    display:flex; gap:clamp(16px,2vw,24px); width:max-content; padding:6px 0 10px var(--cpad);
+    will-change:transform; backface-visibility:hidden; transform:translate3d(0,0,0);
+  }
+  .carousel .media-card{ contain:layout style; user-select:none; -webkit-user-drag:none; }
+  .carousel.moving .media-card{ pointer-events:none; }
+  .carousel .media-card{
+    flex:0 0 clamp(300px,36vw,500px); padding:clamp(22px,2.4vw,32px); gap:16px;
+    background:var(--white); color:var(--blue); border-color:var(--blue);
+  }
+  .carousel .media-title{ font-size:clamp(16px,1.6vw,21px); }
+  .carousel .media-desc{ font-size:clamp(13px,1.2vw,15px); }
+  .carousel .media-kicker, .carousel .media-meta{ font-size:12px; }
+  .carousel .media-logo{ width:66px; }
+  .carousel .p1-logo, .carousel .klive-thumb{ width:33px; height:33px; }
+  .carousel .dept-badge, .carousel .press-tile{ height:33px; font-size:13px; }
+  .carousel .press-tile img{ height:16px; }
+  .carousel .press-tile--nsp{ height:auto; padding:0 4px 0 0; }
+  .carousel .press-tile--nsp img{ height:62px; width:auto; margin:-14px 0 -4px; }
+  .carousel .media-card:hover{ border-color:var(--blue); background:var(--blue-softer); }
+  .carousel .media-desc{ color:var(--lavender); opacity:1; }
+  .carousel .media-meta{ border-top-color:var(--blue); }
+  .carousel .klive-thumb{ border-color:var(--blue); }
+  .carousel-dots{ display:flex; justify-content:center; align-items:center; gap:8px; margin-top:22px; }
+  .carousel-dots i{
+    position:relative; display:block; width:8px; height:8px; border-radius:999px; border:1.4px solid var(--blue);
+    overflow:hidden; transition:width .45s cubic-bezier(.65,0,.35,1);
+  }
+  .carousel-dots i::after{ content:''; position:absolute; inset:0; background:var(--blue); transform:scaleX(0); transform-origin:left; }
+  .carousel-dots i.on{ width:34px; }
+  .carousel-dots i.on::after{ animation:dotfill var(--cycle,2800ms) linear forwards; }
+  .carousel:hover + .carousel-dots i.on::after, .carousel:focus-within + .carousel-dots i.on::after{ animation-play-state:paused; }
+  @keyframes dotfill{ to{ transform:scaleX(1); } }
+  @media (prefers-reduced-motion: reduce){
+    .carousel{ overflow-x:auto; cursor:auto; -webkit-mask-image:none; mask-image:none; }
+    .carousel-track{ transform:none !important; }
+    .carousel-dots i.on::after{ animation:none; transform:scaleX(1); }
+  }
+
+  /* ---------- 3 · lær at (karrusel på blå) ---------- */
+  #laer{ padding-bottom:clamp(40px,6vw,72px); }
+  .learn-h2{ font-size:clamp(24px,3.6vw,48px); line-height:1.12; letter-spacing:-.015em; text-wrap:balance; max-width:26ch; margin-bottom:clamp(32px,4.4vw,60px); }
+  #laer .carousel{ margin-top:0; }
+  .lcard{
+    flex:0 0 clamp(290px,31vw,430px); display:flex; flex-direction:column; gap:14px; text-decoration:none;
+    padding:clamp(22px,2.4vw,32px); border:1.4px solid var(--white); color:var(--white);
+    contain:layout style; user-select:none; -webkit-user-drag:none;
+  }
+  .carousel.moving .lcard{ pointer-events:none; }
+  .lcard-kicker{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.8; }
+  .lcard-title{ margin:0; font-size:clamp(20px,2vw,27px); line-height:1.18; letter-spacing:-.01em; text-wrap:balance; }
+  .lcard-desc{ margin:0; font-size:clamp(13px,1.2vw,15px); line-height:1.6; opacity:.92; }
+  .lcard-num{ margin-top:auto; padding-top:16px; border-top:1.4px solid rgba(255,255,255,.55); display:flex; justify-content:space-between; gap:12px; font-size:12px; letter-spacing:.08em; }
+  .lcard--final{ background:var(--white); color:var(--blue); }
+  .lcard--final .lcard-kicker{ opacity:1; }
+  .lcard--final .lcard-num{ border-top-color:var(--blue); font-weight:700; }
+  .lcard--final:hover{ background:var(--blue-softer); }
+  #laer .carousel-dots i{ border-color:var(--white); }
+  #laer .carousel-dots i::after{ background:var(--white); }
+
+  /* opslag 02: the line break falls after "teknologi"; the heading shrinks to its column so each line stays whole */
+  #opslag-02 .opslag-body, #opslag-03 .opslag-body, #opslag-04 .opslag-body{ container-type:inline-size; }
+  #opslag-02 .opslag-body h2, #opslag-03 .opslag-body h2{ font-size:min(38px,6.9cqw); text-wrap:nowrap; }
+  #opslag-04 .opslag-body h2{ font-size:min(38px,6.4cqw); text-wrap:nowrap; }
+
+  /* linkedin icon: sits under the author's name inside its circle, without moving the (centred) name */
+  .in-link{ display:block; width:28px; height:28px; color:var(--blue); transition:transform .2s ease, opacity .2s ease; }
+  .in-link svg{ display:block; width:100%; height:100%; }
+  .in-link:hover, .in-link:focus-visible{ opacity:.8; }
+  .in-link:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
+  /* opslag 05: the authors' names read horizontally, one name part per line */
+  #opslag-05 .venn-label h3{ writing-mode:horizontal-tb; text-orientation:mixed; text-align:center; letter-spacing:.06em; line-height:1.3; font-size:min(4.2cqw, 40cqw / var(--lw,6)); }
+  .venn-label .in-link{ position:absolute; top:100%; left:50%; margin:clamp(12px,1.6cqw,20px) 0 0 -14px; }
+  .venn-label .in-link:hover{ transform:translateY(-2px); }
+
+  /* opslag 06: the whole connection pyramid replaces the venn */
+  .pyr-art{ display:flex; align-items:center; justify-content:center; }
+  .pyr-art img{ width:min(100%,560px); height:auto; }
+
+  /* ---------- fundamentet ---------- */
+  .found-h2{ font-size:clamp(30px,5vw,68px); line-height:1.04; letter-spacing:-.02em; text-wrap:balance; max-width:16ch; }
+  .found-p{ margin-top:clamp(18px,2.4vw,30px); max-width:52ch; font-size:clamp(15px,1.5vw,19px); line-height:1.6; font-weight:700; }
+  .found-p--next{ margin-top:clamp(10px,1.4vw,18px); }
+  .found-pills{ list-style:none; margin:clamp(32px,4.4vw,60px) 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(clamp(190px,17vw,228px),1fr)); gap:12px; }
+  .found-pills li{
+    display:flex; align-items:center; justify-content:center; text-align:center; min-height:48px; padding:.5em 1em;
+    border:1.4px solid var(--blue); border-radius:999px; font-size:clamp(13px,1.15vw,15px); font-weight:700; background:var(--blue); color:var(--white);
+    transition:background .25s, color .25s;
+  }
+  .found-pills li:hover{ background:var(--white); color:var(--blue); }
+
+  /* ---------- 4 · det får du ---------- */
+  .lead-h2{ font-size:clamp(28px,4.4vw,56px); line-height:1.05; letter-spacing:-.015em; text-wrap:balance; max-width:18ch; }
+  .lead-p{ margin-top:16px; font-size:14px; line-height:1.7; color:var(--lavender); max-width:56ch; margin-bottom:clamp(28px,4vw,48px); }
+  .benefit-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.4px; background:var(--blue); border:1.4px solid var(--blue); }
+  @media (max-width:980px){ .benefit-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:620px){ .benefit-grid{ grid-template-columns:1fr; } }
+  .benefit{ background:var(--white); padding:clamp(22px,2.6vw,34px); }
+  .benefit .num{ display:inline-flex; width:34px; height:34px; border-radius:50%; background:var(--blue); color:var(--white); align-items:center; justify-content:center; font-size:12px; font-weight:700; margin-bottom:16px; }
+  .benefit h3{ font-size:clamp(16px,1.6vw,19px); line-height:1.25; margin-bottom:10px; }
+  .benefit p{ font-size:13px; line-height:1.65; color:var(--lavender); max-width:38ch; }
+  .benefit-cta{ margin-top:clamp(28px,4vw,44px); }
+
+  /* ---------- 5 · fejlkoder (blå side, hvide kapsler) ---------- */
+  .fk-head h2{ font-size:clamp(30px,4.6vw,60px); line-height:1.05; letter-spacing:-.015em; max-width:18ch; text-wrap:balance; }
+  .fk-lede{ margin-top:18px; font-size:14px; line-height:1.7; opacity:.92; max-width:60ch; }
+  .fk-steps{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+  .fk-steps span{ border:1.4px solid rgba(255,255,255,.7); border-radius:999px; padding:6px 13px; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+  .fk-pill{
+    display:inline-block; max-width:100%; background:var(--white); color:var(--blue); border-radius:24px;
+    padding:9px 20px; font-size:clamp(12.5px,1.3vw,16px); font-weight:700; letter-spacing:.015em; line-height:1.25;
+  }
+  .fk-example{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(20px,3vw,40px); margin:clamp(36px,5vw,56px) 0; align-items:start; }
+  @media (max-width:860px){ .fk-example{ grid-template-columns:1fr; } }
+  .fk-example .label{ font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; opacity:.8; margin-bottom:12px; }
+  .fk-sub{ margin-top:12px; font-size:13px; font-weight:700; }
+  .fk-field{ background:var(--lavender); padding:16px 18px; margin-top:12px; border-radius:6px; }
+  .fk-field h4{ font-size:13px; margin-bottom:8px; }
+  .fk-field p{ font-size:12.5px; line-height:1.65; max-width:none; }
+  .pyr{ position:relative; width:min(100%,360px); aspect-ratio:800/700; overflow:hidden; margin:0 auto 10px; }
+  .pyr img{ position:absolute; width:135%; max-width:none; left:-18.75%; top:-64.29%; filter:invert(1); }
+  .fk-protocol{ display:grid; gap:12px; }
+  .fk-protocol > div:not(.pyr){ border:1.4px solid rgba(255,255,255,.65); border-radius:6px; padding:14px 16px; }
+  .fk-protocol strong{ display:block; font-size:12px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:6px; }
+  .fk-protocol p{ font-size:12.5px; line-height:1.6; max-width:none; }
+  .fk-status{ font-size:12px; line-height:1.7; padding:2px 2px 0; }
+  .fk-status b{ display:inline-block; min-width:78px; letter-spacing:.08em; }
+  .fk-wall{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(22px,2.6vw,34px) clamp(20px,3vw,40px); }
+  @media (max-width:980px){ .fk-wall{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:620px){ .fk-wall{ grid-template-columns:1fr; } }
+  .fk-item p{ margin-top:8px; padding-left:20px; font-size:12.5px; line-height:1.55; opacity:.92; max-width:none; }
+  .fk-note{ margin-top:30px; font-size:12px; line-height:1.6; opacity:.85; max-width:72ch; }
+
+  /* ---------- 6 · foredrag ---------- */
+  .talk{ background:var(--lavender); color:var(--white); }
+  .talk-grid{ display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(28px,5vw,72px); align-items:center; }
+  @media (max-width:860px){ .talk-grid{ grid-template-columns:1fr; } }
+  .talk h2{ font-size:clamp(28px,4.2vw,54px); line-height:1.05; letter-spacing:-.015em; text-wrap:balance; max-width:16ch; }
+  .talk .lead-p{ color:var(--white); font-size:15px; font-weight:700; }
+  .talk ul{ list-style:none; display:grid; gap:12px; margin:0 0 clamp(24px,3vw,36px); }
+  .talk li{ position:relative; padding-left:26px; font-size:14px; line-height:1.55; font-weight:700; max-width:52ch; }
+  .talk li::before{ content:'→'; position:absolute; left:0; top:0; }
+  .talk-cta{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .talk-note{ margin-top:16px; font-size:12.5px; font-weight:700; max-width:50ch; }
+  .speakers{ display:flex; gap:clamp(16px,3vw,32px); justify-content:center; }
+  .speaker{ text-align:center; flex:1; max-width:230px; }
+  .speaker img{ width:100%; aspect-ratio:1; border-radius:50%; object-fit:cover; border:2px solid var(--white); }
+  .speaker strong{ display:block; margin-top:14px; font-size:14px; }
+  .speaker span{ display:block; margin-top:4px; font-size:11.5px; line-height:1.5; font-weight:700; }
+  /* ---------- sticky mobile buy bar ---------- */
+  .sticky-buy{
+    position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:var(--blue); color:var(--white); border-top:2px solid var(--white);
+    padding:10px var(--gap); display:none; align-items:center; justify-content:space-between; gap:12px;
+    transform:translateY(100%); transition:transform .25s ease;
+  }
+  .sticky-buy.show{ transform:translateY(0); }
+  .sticky-buy span{ font-size:11.5px; font-weight:600; opacity:.85; }
+  @media (max-width:820px){ .sticky-buy{ display:flex; } body{ padding-bottom:0; } }
 </style>
 </head>
 <body>
 
-<main class="stage">
-  <div class="layout">
+<nav class="nav">
+  <div class="wrap">
+    <div class="logo-group">
+      <div class="nav-badge">0–5<br>ÅR</div>
+      <div class="logo">Brugermanual til dit barn</div>
+    </div>
+    <div class="nav-links">
+      <a href="#omtale">Omtale</a>
+      <a href="#laer">Det får du</a>
+      <a href="#sovnig-laeser-info">Søvnig-læser</a>
+      <a href="#fejlkoder">Fejlkoder</a>
+      <a href="#opslag-05">Forfatterne</a>
+      <a href="#foredrag">Foredrag</a>
+      <a href="#faq">FAQ</a>
+      <a href="#sproget">Sproget</a>
+    </div>
+    <a class="btn-install btn-buy" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
+      <span class="lbl-full">Køb manualen</span><span class="lbl-short">Køb</span>
+    </a>
+  </div>
+</nav>
 
-    <div class="content">
-      <span class="badge">0-5<br>ÅR</span>
-      <p class="kicker">SÅDAN SIKRER DU DEN BEDSTE START PÅ LIVET</p>
-      <h1>Brugermanual<br>til dit barn</h1>
-      <p class="subtitle">Vores børn kom uden manual...</p>
-      <p class="body-text">Derfor har vi skrevet én:<br>Til alle, der er så heldige at få ansvar<br>for helt nye og vidunderlige små&nbsp;mennesker<br>– og gerne vil forstå dem lidt bedre.</p>
-      <p class="event-heading">Kom til Manual-reception på udgivelsesdagen</p>
-      <p class="event-info">1. september 2026 – Kl. 16.00-18.00,<br>Slagtehusgade 5e, Kødbyen, KBH V</p>
-      <p class="body-text">Hvis du tilmelder dig, byder vi på<br>lidt til hjernen, hjertet og ganen.</p>
-      <p class="signature">Vi glæder os til at se dig.<br>Dorte &amp; Niels</p>
-      <a class="momenta-link" href="http://forlagetmomenta.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Forlaget Momenta">
-        <img src="images/momenta-logo.png" alt="Forlaget Momenta">
+<div class="sticky-buy" id="sticky-buy">
+  <span>Brugermanual til dit barn · 0-5 år</span>
+  <a class="btn-install btn-buy" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
+    Køb manualen
+  </a>
+</div>
+
+<!-- ============ SØVNIG-LÆSER — shared full-screen instrument ============ -->
+<div class="reader-overlay" id="reader-overlay" hidden>
+  <div class="reader-ov-inner">
+    <div class="reader-ov-head">
+      <div class="reader-ov-id">
+        <span class="reader-ov-label">Søvnig-læser</span>
+        <span class="reader-ov-topic" id="reader-ov-topic"></span>
+      </div>
+      <div class="reader-ov-levels" role="group" aria-label="Vælg læsetid">
+        <button class="lvl" data-level="20s" aria-pressed="false">20 SEK</button>
+        <button class="lvl" data-level="1m" aria-pressed="false">1 MIN</button>
+        <button class="lvl" data-level="3m" aria-pressed="false">3 MIN</button>
+      </div>
+      <button class="reader-ov-close" aria-label="Luk søvnig-læser"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="reader-ov-stage"><div class="orp"><span class="l"></span><span class="f"></span><span class="r"></span></div></div>
+    <div class="reader-ov-progress"><div class="fill"></div></div>
+    <div class="reader-ov-meta">
+      <span><span class="status">Klar</span> · <span class="count">0 / 0</span> · <span class="pct">0 %</span></span>
+      <span>Est. tid · <span class="eta">00:00</span></span>
+    </div>
+    <div class="reader-ov-controls">
+      <button class="rbtn prev" aria-label="Forrige ord">◀</button>
+      <button class="rbtn toggle">Start</button>
+      <button class="rbtn next" aria-label="Næste ord">▶</button>
+      <div class="reader-speed"><input type="range" class="wpm-slider" min="150" max="600" step="25" value="300"><span class="wpm">300 wpm</span></div>
+      <button class="reader-normal-link btn-ghost">Læs som almindelig tekst →</button>
+    </div>
+    <div class="reader-ov-normaltext" id="reader-ov-normaltext"></div>
+  </div>
+</div>
+
+
+<!-- ============ 1 · PACKSHOT + CITATER ============ -->
+<header class="hero-quotes" id="citater">
+  <div class="wrap">
+    <div class="hero-pack">
+      <p class="hero-tagline">En ny brugerflade til et bedre forældreskab</p>
+      <a href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
+        <img src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — forsiden af manualen">
       </a>
     </div>
+    <div class="hq">
+      <figure class="hq-main">
+        <blockquote>“Idéen om at gøre psykologisk viden mere forståelig og anvendelig i hverdagen er både vigtig, sjov og original.”</blockquote>
+        <figcaption class="hq-attr">Lene Tanggaard<span>Ph.d. og professor i psykologi</span></figcaption>
+      </figure>
+      <div class="hq-pair">
+        <figure>
+          <blockquote>“Manualen er sjov, varm og indsigtsfuld, den oversætter børnepsykologi til noget, jeg som far til en treårig med store følelser faktisk forstår og kan bruge. Og så er den enormt brugervenlig.”</blockquote>
+          <figcaption class="hq-attr">Mike Wittrup<span>Kreativ direktør</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“Et tiltrængt og mere intuitivt sprog til forbindelsen mellem børn og voksne, både i hverdagens gyldne øjeblikke og svære stunder.”</blockquote>
+          <figcaption class="hq-attr">Kasper Janus Jensen<span>Vuggestuepædagog og familieterapeut</span></figcaption>
+        </figure>
+      </div>
+      <div class="hq-cta">
+        <a class="btn-install btn-buy " href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
+            Køb manualen
+          </a>
+        <a class="btn-ghost" href="#fejlkoder">Se fejlkoderne →</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <div class="book-wrap">
-      <button class="book-link" type="button" data-open-book aria-label="Se bogomslag i stort format">
-        <img src="images/book.png" alt="Bogomslag: Brugermanual til dit barn">
-      </button>
-      <button class="zoom-hint" type="button" data-open-book aria-label="Forstør bogomslag">
-        <img src="images/zoom-plus.png" alt="">
-      </button>
+<!-- ============ 2 · MEDIEOMTALE (karrusel) ============ -->
+<section class="section" id="omtale">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Medieomtale · Hørt og læst</span><span class="rule"></span></div>
+  </div>
+  <div class="carousel" id="carousel" role="region" aria-label="Medieomtale">
+    <div class="carousel-track" id="carousel-track">
+<a class="media-card" href="https://www.dr.dk/nyheder/kultur/det-er-den-vigtigste-opgave-vi-har-og-der-er-ikke-nogen-brugermanual-derfor-har-vi-skrevet-den" target="_blank" rel="noopener noreferrer">
+        <div class="media-brand-row">
+          <span class="media-logo-wrap"><svg class="media-logo" viewBox="0 0 134 40" aria-label="DR"><rect width="134" height="40"/><g class="media-logo-mark" transform="translate(24,9)"><path d="M21.8199,17.0835 L12.8819,17.0835 C12.6279,17.0835 12.5779,16.9815 12.5779,16.7795 L12.5779,4.7535 C12.5779,4.5525 12.6279,4.4505 12.8819,4.4505 L21.8199,4.4505 C27.1349,4.4505 29.2619,5.9685 29.2619,10.7535 C29.2619,15.5395 27.1349,17.0835 21.8199,17.0835 M29.2079,0.7795 L0.6759,0.7795 C0.4229,0.7795 0.2969,0.9305 0.2969,1.1585 L0.2969,20.3745 C0.2969,20.6025 0.4229,20.7545 0.6759,20.7545 L29.2079,20.7545 C37.5889,20.7545 41.8169,17.9695 41.8169,10.7045 C41.8169,3.4885 37.5889,0.7795 29.2079,0.7795"/><path d="M68.9093,11.9438 L58.9343,11.9438 C58.7053,11.9438 58.6303,11.8668 58.6303,11.6408 L58.6303,4.7538 C58.6303,4.5268 58.7053,4.4498 58.9343,4.4498 L68.9093,4.4498 C72.2513,4.4498 73.6693,5.3618 73.6693,8.1208 C73.6693,10.9058 72.2513,11.9438 68.9093,11.9438 M86.8303,19.9438 L78.5773,14.1218 C78.3743,13.9688 78.2483,13.8938 78.2483,13.7918 C78.2483,13.6918 78.3243,13.6398 78.5023,13.6398 C82.6783,13.6398 85.9193,11.6918 85.9193,7.3878 C85.9193,3.1098 83.1343,0.7788 77.9953,0.7788 L46.7283,0.7788 C46.4753,0.7788 46.3483,0.9308 46.3483,1.1578 L46.3483,20.3738 C46.3483,20.6028 46.4753,20.7548 46.7283,20.7548 L58.2343,20.7548 C58.4873,20.7548 58.6143,20.6028 58.6143,20.3738 L58.6143,15.8178 C58.6143,15.5898 58.6893,15.5148 58.9173,15.5148 L65.5383,15.5148 C65.8683,15.5148 65.9943,15.5398 66.2213,15.7168 L71.9703,20.4758 C72.2493,20.7038 72.4513,20.7548 72.7793,20.7548 L87.0843,20.7548 C87.2873,20.7548 87.3883,20.6778 87.3883,20.5258 C87.3883,20.3238 87.0343,20.0958 86.8303,19.9438"/></g></svg></span>
+          <span class="dept-badge">KULTUR</span>
+        </div>
+        <div class="media-kicker">Artikel · DR Nyheder Kultur</div>
+        <h3 class="media-title">Det er den vigtigste opgave, vi har, og der er ikke nogen brugermanual. Derfor har vi skrevet den</h3>
+        <p class="media-desc">Teis Jeppe Gørtz om manualen, der oversætter forældreskabets vigtigste opgave til et sprog, forældre allerede taler.</p>
+        <div class="media-meta"><span>12. sep. 2026</span><span>Læs artiklen →</span></div>
+      </a>
+<a class="media-card" href="https://www.berlingske.dk/vores-liv/hun-ser-foraeldre-gaa-i-den-klassiske-faelde-selv-bruger-terapeut-tre-simple-trin-til-hverdagens-konflikter" target="_blank" rel="noopener noreferrer">
+        <div class="media-brand-row">
+          <span class="press-tile"><img src="assets/logos/berlingske.svg" alt="Berlingske"></span>
+          <span class="dept-badge">VORES LIV</span>
+        </div>
+        <div class="media-kicker">Artikel · Berlingske Vores Liv</div>
+        <h3 class="media-title">Hun ser forældre gå i den klassiske fælde. Selv bruger terapeut tre simple trin til hverdagens konflikter</h3>
+        <p class="media-desc">Psykoterapeut Dorte Rudi Andersen om forældres klassiske fælde — og de tre trin, hun selv bruger til hverdagens konflikter.</p>
+        <div class="media-meta"><span>Med Dorte Rudi Andersen</span><span>Læs artiklen →</span></div>
+      </a>
+<a class="media-card" href="https://www.dr.dk/lyd/p1/k-live/k-live-2026/smaaboerns-fejlkoder-11032601364" target="_blank" rel="noopener noreferrer">
+        <div class="media-brand-row">
+          <span class="media-logo-wrap"><svg class="media-logo" viewBox="0 0 134 40" aria-label="DR"><rect width="134" height="40"/><g class="media-logo-mark" transform="translate(24,9)"><path d="M21.8199,17.0835 L12.8819,17.0835 C12.6279,17.0835 12.5779,16.9815 12.5779,16.7795 L12.5779,4.7535 C12.5779,4.5525 12.6279,4.4505 12.8819,4.4505 L21.8199,4.4505 C27.1349,4.4505 29.2619,5.9685 29.2619,10.7535 C29.2619,15.5395 27.1349,17.0835 21.8199,17.0835 M29.2079,0.7795 L0.6759,0.7795 C0.4229,0.7795 0.2969,0.9305 0.2969,1.1585 L0.2969,20.3745 C0.2969,20.6025 0.4229,20.7545 0.6759,20.7545 L29.2079,20.7545 C37.5889,20.7545 41.8169,17.9695 41.8169,10.7045 C41.8169,3.4885 37.5889,0.7795 29.2079,0.7795"/><path d="M68.9093,11.9438 L58.9343,11.9438 C58.7053,11.9438 58.6303,11.8668 58.6303,11.6408 L58.6303,4.7538 C58.6303,4.5268 58.7053,4.4498 58.9343,4.4498 L68.9093,4.4498 C72.2513,4.4498 73.6693,5.3618 73.6693,8.1208 C73.6693,10.9058 72.2513,11.9438 68.9093,11.9438 M86.8303,19.9438 L78.5773,14.1218 C78.3743,13.9688 78.2483,13.8938 78.2483,13.7918 C78.2483,13.6918 78.3243,13.6398 78.5023,13.6398 C82.6783,13.6398 85.9193,11.6918 85.9193,7.3878 C85.9193,3.1098 83.1343,0.7788 77.9953,0.7788 L46.7283,0.7788 C46.4753,0.7788 46.3483,0.9308 46.3483,1.1578 L46.3483,20.3738 C46.3483,20.6028 46.4753,20.7548 46.7283,20.7548 L58.2343,20.7548 C58.4873,20.7548 58.6143,20.6028 58.6143,20.3738 L58.6143,15.8178 C58.6143,15.5898 58.6893,15.5148 58.9173,15.5148 L65.5383,15.5148 C65.8683,15.5148 65.9943,15.5398 66.2213,15.7168 L71.9703,20.4758 C72.2493,20.7038 72.4513,20.7548 72.7793,20.7548 L87.0843,20.7548 C87.2873,20.7548 87.3883,20.6778 87.3883,20.5258 C87.3883,20.3238 87.0343,20.0958 86.8303,19.9438"/></g></svg></span>
+          <span class="p1-logo-wrap"><svg class="p1-logo" viewBox="0 0 800 800" aria-label="DR P1"><title>DRP1_logo_primaer_RGB</title><defs><style>.p1-cls-1{fill:#ff6400;}.p1-cls-2{fill:#fff;}</style></defs><g><rect class="p1-cls-1" width="800" height="800"/></g><g><rect y="560" width="800" height="240"/><path class="p1-cls-2" d="M319.27,618.67H148.07a2.07,2.07,0,0,0-2.28,2.27v115.3a2.09,2.09,0,0,0,2.28,2.29h171.2c50.29,0,75.67-16.71,75.67-60.31C394.94,634.92,369.56,618.67,319.27,618.67ZM274.94,716.5H221.31c-1.52,0-1.83-.61-1.83-1.83V642.51c0-1.2.31-1.82,1.83-1.82h53.63c31.89,0,44.66,9.11,44.66,37.83S306.83,716.5,274.94,716.5Z"/><path class="p1-cls-2" d="M665,733.67l-49.52-34.94c-1.22-.92-2-1.37-2-2s.46-.92,1.53-.92c25,0,44.5-11.69,44.5-37.51S642.86,618.67,612,618.67H424.4a2.06,2.06,0,0,0-2.27,2.27v115.3a2.08,2.08,0,0,0,2.27,2.29h69a2.08,2.08,0,0,0,2.28-2.29V708.9c0-1.37.46-1.82,1.83-1.82h39.73c2,0,2.73.15,4.1,1.22l34.49,28.56a6.6,6.6,0,0,0,4.85,1.67h85.84q1.83,0,1.83-1.38C668.39,735.94,666.26,734.58,665,733.67Zm-107.54-48H497.65c-1.37,0-1.83-.46-1.83-1.82V642.51c0-1.36.46-1.82,1.83-1.82H557.5c20.06,0,28.56,5.48,28.56,22C586.06,679.43,577.56,685.66,557.5,685.66Z"/></g><g><path class="p1-cls-2" d="M404.05,240.85c0,56.29-40.74,93.69-104.06,93.69h-43.7v70H186.67V149H300C362.57,149,404.05,184.93,404.05,240.85ZM333.32,242c0-20.37-13.71-31.11-38.52-31.11H256.29v62.22H294.8C319.61,273.07,333.32,262.7,333.32,242Z"/><path class="p1-cls-2" d="M630,342.69v61.84H427.38V342.69h68.88V206.78h-53.7V149h123V342.69Z"/></g></svg></span>
+          <span class="klive-thumb"><img src="assets/photos/klive.jpg" alt="K-Live"></span>
+        </div>
+        <div class="media-kicker">Podcast · K-Live, DR P1</div>
+        <h3 class="media-title">Småbørns fejlkoder</h3>
+        <p class="media-desc">Om at bruge computersprog til at forstå børneopdragelse — og hvad det sprog siger om vores syn på børn.</p>
+        <div class="media-meta"><span>3. sep. 2026 · 57 min</span><span>Hør afsnittet →</span></div>
+      </a>
+<a class="media-card" href="https://www.dr.dk/lyd/p1/k-live/k-live-2026/hver-tidsalder-har-sin-boernebibel-11032617364" target="_blank" rel="noopener noreferrer">
+        <div class="media-brand-row">
+          <span class="media-logo-wrap"><svg class="media-logo" viewBox="0 0 134 40" aria-label="DR"><rect width="134" height="40"/><g class="media-logo-mark" transform="translate(24,9)"><path d="M21.8199,17.0835 L12.8819,17.0835 C12.6279,17.0835 12.5779,16.9815 12.5779,16.7795 L12.5779,4.7535 C12.5779,4.5525 12.6279,4.4505 12.8819,4.4505 L21.8199,4.4505 C27.1349,4.4505 29.2619,5.9685 29.2619,10.7535 C29.2619,15.5395 27.1349,17.0835 21.8199,17.0835 M29.2079,0.7795 L0.6759,0.7795 C0.4229,0.7795 0.2969,0.9305 0.2969,1.1585 L0.2969,20.3745 C0.2969,20.6025 0.4229,20.7545 0.6759,20.7545 L29.2079,20.7545 C37.5889,20.7545 41.8169,17.9695 41.8169,10.7045 C41.8169,3.4885 37.5889,0.7795 29.2079,0.7795"/><path d="M68.9093,11.9438 L58.9343,11.9438 C58.7053,11.9438 58.6303,11.8668 58.6303,11.6408 L58.6303,4.7538 C58.6303,4.5268 58.7053,4.4498 58.9343,4.4498 L68.9093,4.4498 C72.2513,4.4498 73.6693,5.3618 73.6693,8.1208 C73.6693,10.9058 72.2513,11.9438 68.9093,11.9438 M86.8303,19.9438 L78.5773,14.1218 C78.3743,13.9688 78.2483,13.8938 78.2483,13.7918 C78.2483,13.6918 78.3243,13.6398 78.5023,13.6398 C82.6783,13.6398 85.9193,11.6918 85.9193,7.3878 C85.9193,3.1098 83.1343,0.7788 77.9953,0.7788 L46.7283,0.7788 C46.4753,0.7788 46.3483,0.9308 46.3483,1.1578 L46.3483,20.3738 C46.3483,20.6028 46.4753,20.7548 46.7283,20.7548 L58.2343,20.7548 C58.4873,20.7548 58.6143,20.6028 58.6143,20.3738 L58.6143,15.8178 C58.6143,15.5898 58.6893,15.5148 58.9173,15.5148 L65.5383,15.5148 C65.8683,15.5148 65.9943,15.5398 66.2213,15.7168 L71.9703,20.4758 C72.2493,20.7038 72.4513,20.7548 72.7793,20.7548 L87.0843,20.7548 C87.2873,20.7548 87.3883,20.6778 87.3883,20.5258 C87.3883,20.3238 87.0343,20.0958 86.8303,19.9438"/></g></svg></span>
+          <span class="p1-logo-wrap"><svg class="p1-logo" viewBox="0 0 800 800" aria-label="DR P1"><title>DRP1_logo_primaer_RGB</title><defs><style>.p1-cls-1{fill:#ff6400;}.p1-cls-2{fill:#fff;}</style></defs><g><rect class="p1-cls-1" width="800" height="800"/></g><g><rect y="560" width="800" height="240"/><path class="p1-cls-2" d="M319.27,618.67H148.07a2.07,2.07,0,0,0-2.28,2.27v115.3a2.09,2.09,0,0,0,2.28,2.29h171.2c50.29,0,75.67-16.71,75.67-60.31C394.94,634.92,369.56,618.67,319.27,618.67ZM274.94,716.5H221.31c-1.52,0-1.83-.61-1.83-1.83V642.51c0-1.2.31-1.82,1.83-1.82h53.63c31.89,0,44.66,9.11,44.66,37.83S306.83,716.5,274.94,716.5Z"/><path class="p1-cls-2" d="M665,733.67l-49.52-34.94c-1.22-.92-2-1.37-2-2s.46-.92,1.53-.92c25,0,44.5-11.69,44.5-37.51S642.86,618.67,612,618.67H424.4a2.06,2.06,0,0,0-2.27,2.27v115.3a2.08,2.08,0,0,0,2.27,2.29h69a2.08,2.08,0,0,0,2.28-2.29V708.9c0-1.37.46-1.82,1.83-1.82h39.73c2,0,2.73.15,4.1,1.22l34.49,28.56a6.6,6.6,0,0,0,4.85,1.67h85.84q1.83,0,1.83-1.38C668.39,735.94,666.26,734.58,665,733.67Zm-107.54-48H497.65c-1.37,0-1.83-.46-1.83-1.82V642.51c0-1.36.46-1.82,1.83-1.82H557.5c20.06,0,28.56,5.48,28.56,22C586.06,679.43,577.56,685.66,557.5,685.66Z"/></g><g><path class="p1-cls-2" d="M404.05,240.85c0,56.29-40.74,93.69-104.06,93.69h-43.7v70H186.67V149H300C362.57,149,404.05,184.93,404.05,240.85ZM333.32,242c0-20.37-13.71-31.11-38.52-31.11H256.29v62.22H294.8C319.61,273.07,333.32,262.7,333.32,242Z"/><path class="p1-cls-2" d="M630,342.69v61.84H427.38V342.69h68.88V206.78h-53.7V149h123V342.69Z"/></g></svg></span>
+          <span class="klive-thumb"><img src="assets/photos/klive.jpg" alt="K-Live"></span>
+        </div>
+        <div class="media-kicker">Podcast · K-Live, DR P1</div>
+        <h3 class="media-title">Hver tidsalder har sin børnebibel</h3>
+        <p class="media-desc">Om hvordan opdragelsesråd har ændret sig gennem generationer — fra Anna Wahlgren og Jesper Juul til i dag.</p>
+        <div class="media-meta"><span>3. sep. 2026</span><span>Hør afsnittet →</span></div>
+      </a>
+<a class="media-card" href="https://www.netsundhedsplejerske.dk/bogguide/index.php?option=laes&amp;kat=B%D8RNEOPDRAGELSE&amp;id=882" target="_blank" rel="noopener noreferrer">
+        <div class="media-brand-row">
+          <span class="press-tile press-tile--nsp"><img src="assets/logos/netsundhedsplejerske.png" alt="Netsundhedsplejerske.dk" width="900" height="421"></span>
+          <span class="dept-badge">BOGGUIDE</span>
+        </div>
+        <div class="media-kicker">Anmeldelse · Bogguide</div>
+        <h3 class="media-title">Brugermanual til dit barn</h3>
+        <p class="media-desc">Bogguiden om manualen, der gør udviklingspsykologi og viden om hjernen konkret og genkendelig med billeder fra teknologiens verden.</p>
+        <div class="media-meta"><span>Børneopdragelse</span><span>Læs omtalen →</span></div>
+      </a>
+    </div>
+  </div>
+  <div class="carousel-dots" id="carousel-dots" aria-hidden="true"></div>
+</section>
+
+<!-- ============ 3 · LÆR AT (karrusel på blå) ============ -->
+<section class="section section-dark" id="laer">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Det får du · Lær at …</span><span class="rule"></span></div>
+    <h2 class="learn-h2">Lær at bruge al den vigtige viden, forskningen allerede har givet os, i de situationer, hvor du har allermest brug for den.</h2>
+  </div>
+  <div class="carousel" id="learn-carousel" role="region" aria-label="Lær at …">
+    <div class="carousel-track" id="learn-track">
+      <article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Forstå hvorfor perfektion er en systemfejl.</h3>
+        <p class="lcard-desc">Fejl er fantastiske og giver dig uundværlig input.</p>
+        <div class="lcard-num"><span>01 / 09</span></div>
+      </article>
+<article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Forstå, hvad der sker, når dit barn reagerer voldsomt.</h3>
+        <p class="lcard-desc">Få øje på, hvad der kan ligge bag gråd, vrede, modstand og nedsmeltninger.</p>
+        <div class="lcard-num"><span>02 / 09</span></div>
+      </article>
+<article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Se dit barns reaktioner i et nyt lys.</h3>
+        <p class="lcard-desc">Forstå, hvordan barnets udvikling, følelser og nervesystem påvirker dets adfærd.</p>
+        <div class="lcard-num"><span>03 / 09</span></div>
+      </article>
+<article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Forstå, hvorfor børn ikke gør som vi siger, men som vi gør.</h3>
+        <p class="lcard-desc">Lær om sammenhængen mellem barnets udvikling, følelsesmæssige tilstande og evne til at samarbejde.</p>
+        <div class="lcard-num"><span>04 / 09</span></div>
+      </article>
+<article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Afkode, hvad der sker mellem jer.</h3>
+        <p class="lcard-desc">Se, hvordan jeres følelsesmæssige tilstande påvirker hinanden, og hvorfor din egen ro kan gøre en forskel.</p>
+        <div class="lcard-num"><span>05 / 09</span></div>
+      </article>
+<article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Håndtere de svære situationer med større forståelse</h3>
+        <p class="lcard-desc">Brug din viden om barnets udvikling og følelsesmæssige behov til at finde en vej gennem hverdagens konflikter.</p>
+        <div class="lcard-num"><span>06 / 09</span></div>
+      </article>
+<article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Reparere efter de øjeblikke, når det først er gået galt.</h3>
+        <p class="lcard-desc">Forstå betydningen af at genstarte forbindelsen efter konflikter og finde tilbage til hinanden.</p>
+        <div class="lcard-num"><span>07 / 09</span></div>
+      </article>
+<article class="lcard">
+        <div class="lcard-kicker">Lær at …</div>
+        <h3 class="lcard-title">Få en ny forståelse af forældreskabet.</h3>
+        <p class="lcard-desc">Flyt opmærksomheden fra spørgsmålet »Hvad skal jeg gøre?« til »Hvad sker der mellem os?«</p>
+        <div class="lcard-num"><span>08 / 09</span></div>
+      </article>
+<a class="lcard lcard--final" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer">
+        <div class="lcard-kicker">Brugermanual til dit barn</div>
+        <h3 class="lcard-title">Brugermanual til dit barn.</h3>
+        <p class="lcard-desc">Videnskaben om dit barn, oversat til handling i virkeligheden.</p>
+        <div class="lcard-num"><span>09 / 09</span><span>Køb manualen →</span></div>
+      </a>
+    </div>
+  </div>
+  <div class="carousel-dots" id="learn-dots" aria-hidden="true"></div>
+</section>
+
+<!-- ============ FUNDAMENTET ============ -->
+<section class="section" id="fundamentet">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Fundamentet · Videnskaben bag manualen</span><span class="rule"></span></div>
+    <h2 class="found-h2">Vi opfinder ikke ny videnskab.</h2>
+    <p class="found-p">Absolut ingen nye psykologiske teorier eller videnskabelige gennembrud.</p>
+    <p class="found-p found-p--next">Vi har skabt en ny intuitiv brugerflade, der bygger bro mellem videnskaben og hverdagen.<br>Manualen er baseret på etableret forskning inden for:</p>
+    <ul class="found-pills">
+      <li>Neurobiologi</li><li>Udviklingspsykologi</li><li>Tilknytning</li><li>Mentalisering</li><li>Affektregulering</li>
+      <li>Co-regulering</li><li>Nervesystemet</li><li>Pædagogik</li><li>Relationer</li><li>Selvregulering</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="opslag-01">
+  <div class="wrap">
+    <div class="section-head"><span class="index">01 · Viden der virker</span><span class="rule"></span></div>
+    <div class="opslag">
+      <div class="venn">
+        <svg viewBox="0 0 440 440" class="venn-circles"><circle class="venn-circle" cx="168" cy="220" r="150"/><circle class="venn-circle" cx="272" cy="220" r="150"/></svg>
+        <div class="venn-label left">
+          <h3>Videnskaben</h3>
+        </div>
+        <div class="venn-center">
+          <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+          </a>
+        </div>
+        <div class="venn-label right">
+          <h3>Hverdagen</h3>
+        </div>
+      </div>
+
+      <div class="opslag-body">
+        <h2>Nutidens forældre ved alt for meget.<br>Ikke for lidt.</h2>
+        <p>Udfordringen i dag er ikke mangel på viden. Det er adgang til den, når vi har brug for den.</p>
+
+        <div class="reader" id="sovnig-laeser-info" data-topic="Nutidens forældre ved alt for meget. Ikke for lidt.">
+          <div class="reader-head"><span class="lbl">Søvnig-læser</span><span class="time">20 sek · 1 min · 3 min</span></div>
+          <button class="reader-play-card" type="button">
+            <span class="reader-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="reader-teaser">Få essensen — på 20 sekunder, 1 minut eller 3.</span>
+          </button>
+          <script type="text/plain" class="reader-source" data-level="20s">Vi mangler ikke viden om børn. Vi mangler adgang til den, når det gælder. Brugermanual til dit barn oversætter psykologi til et sprog, du allerede taler: teknologiens. Ikke fordi børn er maskiner — men fordi du har brug for svar med det samme.</script>
+          <script type="text/plain" class="reader-source" data-level="1m">En travl hverdag kan føles som at have for mange faner åbne på samme tid. Du ved, musikken spiller et sted — du kan bare ikke finde ud af hvor.
+Jo mere kompleks verden bliver, jo mere har forældre brug for et sprog, der virker med det samme. Ikke endnu en teori. Et interface.
+Brugermanual til dit barn bruger teknologiens sprog til at finde tilbage til mennesket. Det kan lyde kontroversielt — børn er ikke maskiner, de er levende, følsomme, uforudsigelige mennesker. Men netop derfor har vi brug for et sprog, der kan skabe ro og retning, når hverdagen larmer.
+Når psykologi oversættes til ord, vi allerede taler, bliver det lettere at forstå, hvad der faktisk sker — og hvad du kan gøre ved det.</script>
+          <script type="text/plain" class="reader-source" data-level="3m">En travl hverdag kan føles som at have for mange faner åbne på samme tid, i en browser der aldrig lukker ned. Du ved, musikken spiller et sted i baggrunden — du kan bare ikke længere finde ud af, hvilken fane den kommer fra.
+Jo hurtigere og mere komplekst verden bliver, jo mere har forældre brug for et intuitivt sprog for det menneskelige. Ikke en ny teori om børn. Et interface til den viden, der allerede findes.
+Brugermanual til dit barn bruger teknologiens sprog til at finde tilbage til mennesket. Ved første øjekast kan det lyde kontroversielt. Børn er levende, følsomme, uforudsigelige mennesker. De er ikke maskiner. Og netop derfor har vi brug for et sprog, der kan give ro, overblik og retning, når hverdagen larmer for højt til, at nogen kan tænke klart.
+Forestil dig en helt almindelig tirsdag. Barnet vælter om på gulvet midt i køen i Netto, med et hyl, der får hele butikken til at kigge. Du ved teoretisk godt, at følelser skal rummes, ikke undertrykkes. Men lige nu har du ikke adgang til den viden. Du har travlt, du er træt, og skammen presser sig på.
+Det er her, et fælles sprog gør en forskel. Ikke fordi det ændrer barnets følelser. Men fordi det giver dig, den voksne, et sted at placere blikket: Systemet er overbelastet. Ikke: Mit barn er forkælet. Ikke: Jeg er en dårlig forælder.
+Når viden om psykologi oversættes til et sprog, vi allerede taler hver dag, bliver det markant lettere at forstå, hvad der sker inde i barnet — og hvad du selv kan gøre ved det, mens gulvet stadig er koldt, og køen stadig venter.</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="opslag-02">
+  <div class="wrap">
+    <div class="section-head"><span class="index">02 · Mennesket først</span><span class="rule"></span></div>
+    <div class="opslag">
+      <div class="venn">
+        <svg viewBox="0 0 440 440" class="venn-circles"><circle class="venn-circle" cx="168" cy="220" r="150"/><circle class="venn-circle" cx="272" cy="220" r="150"/></svg>
+        <div class="venn-label left">
+          <h3>Ydre <br>teknologi</h3>
+        </div>
+        <div class="venn-center">
+          <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+          </a>
+        </div>
+        <div class="venn-label right">
+          <h3>Indre <br>teknologi</h3>
+        </div>
+      </div>
+
+      <div class="opslag-body">
+        
+        <h2>Den vigtigste teknologi<br>er stadig mennesket.</h2>
+        <p>Vi opgraderer alt omkring os. Måske er tiden kommet til at forstå systemet inden i os selv.</p>
+
+        <div class="reader" data-topic="Den vigtigste teknologi er stadig mennesket.">
+          <div class="reader-head"><span class="lbl">Søvnig-læser</span><span class="time">20 sek · 1 min · 3 min</span></div>
+          <button class="reader-play-card" type="button">
+            <span class="reader-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="reader-teaser">Teknologi er fint. Men mennesket først.</span>
+          </button>
+          <script type="text/plain" class="reader-source" data-level="20s">Vi opgraderer telefoner, hjem og biler hvert år. Det system, der betyder mest — mennesket selv — får sjældent samme opmærksomhed. Brugermanual til dit barn er et forsøg på en ny indre folkeoplysning: bedre forståelse af det, der allerede er derinde.</script>
+          <script type="text/plain" class="reader-source" data-level="1m">I 1800-tallets Danmark stod en lille nation i krise. Svaret blev en indre oprustning — ikke flere våben, men mere dannelse.
+I dag har vi en lignende opgave, bare vendt indad. Vi ved mere end nogensinde om hjernen, nervesystemet, tilknytning og relationer. Alligevel når den viden sjældent frem, der hvor den skal bruges: ved spisebordet, i garderoben, midt i konflikten klokken seks om morgenen.
+Vi opgraderer alt omkring os — telefoner, hjem, biler. Men det vigtigste system, mennesket selv, får ikke samme opdatering.
+Brugermanual til dit barn er et forsøg på en ny indre folkeoplysning. Ikke ny viden. Bedre adgang til den, vi allerede har.</script>
+          <script type="text/plain" class="reader-source" data-level="3m">I 1800-tallets Danmark stod en lille nation i en dyb krise. Løsningen blev ikke flere våben, men en indre oprustning: hvad udad tabes, skal indad vindes. Nye ord, ny dannelse, nyt sprog til et folk, der skulle finde sig selv igen.
+I dag står vi med en beslægtet opgave — bare vendt indad på en anden måde. Vi ved mere end nogensinde om hjernen, nervesystemet, tilknytning, følelser, læring, motivation og relationer. Forskningen findes. Den er bare svær at få fat i, netop når det gælder.
+Klokken er 6.47. Skoen vil ikke på. Barnet hyler. Du har et møde om 40 minutter, og et sted derinde ligger al den viden, du nogensinde har læst om følelsesregulering — helt utilgængelig, fordi dit eget nervesystem lige nu kører på nødstrøm.
+Vi opgraderer alt omkring os. Telefonen får ny software hvert år. Boligen bliver smart. Bilen kører selv. Men det system, der rent faktisk betyder mest for, hvordan en morgen som denne forløber — mennesket selv — får sjældent samme opmærksomhed.
+Brugermanual til dit barn er et forsøg på en ny indre folkeoplysning. Ikke flere teorier. Bedre adgang til dem, vi allerede har — præcis når skoen stadig ikke vil på.</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · DET FÅR DU UD AF MANUALEN ============ -->
+<section class="section" id="udbytte">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Udbyttet · Det får du ud af manualen</span><span class="rule"></span></div>
+    <h2 class="lead-h2">Konkrete redskaber til de svære øjeblikke.</h2>
+    <p class="lead-p">Ikke endnu en teori. Et opslagsværk, du kan bruge midt i hverdagen — også når dit eget system er tæt på overophedning.</p>
+    <div class="benefit-grid">
+      <div class="benefit"><span class="num">01</span><h3>Et opslagsværk til de svære øjeblikke</h3><p>21 fejlkoder, du kan slå op i, når systemet hakker. Find den rigtige på tre måder: hvad du ser lige nu, hvornår på dagen, eller hvad du vil forstå.</p></div>
+      <div class="benefit"><span class="num">02</span><h3>Tre trin, der virker, når du er presset</h3><p>Forbind. Forstå. Formidl. Den samme rækkefølge hver gang, så du ikke skal tænke, når du har mindst overskud.</p></div>
+      <div class="benefit"><span class="num">03</span><h3>Ord, du kan sige</h3><p>Konkrete formuleringer til situationen — fx: “Det er helt ok bare at sidde stille et øjeblik. Jeg sidder her også bare lidt.”</p></div>
+      <div class="benefit"><span class="num">04</span><h3>Råd, der passer til barnets alder</h3><p>Hver kode er delt op i 0–2 år og 2–5 år, så støtten passer til barnets udvikling. Brug alder som en retning, ikke en forventning.</p></div>
+      <div class="benefit"><span class="num">05</span><h3>En vej tilbage til ro</h3><p>Esc-tasten, en kort statustjek-version til her-og-nu og dobbeltindånding: en hurtig fysiologisk genstart, når pulsen stiger.</p></div>
+      <div class="benefit"><span class="num">06</span><h3>Mindre skyld. Mere kontakt.</h3><p>Et sprog, der gør psykologi lettere at huske og lettere at tale om uden skyld. Et fejlkompetent styresystem opstår ikke i fraværet af fejl, men gennem gentagne, succesfulde genstarter.</p></div>
+    </div>
+    <div class="benefit-cta"><a class="btn-install btn-buy " href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
+            Køb manualen
+          </a></div>
+  </div>
+</section>
+
+<section class="section" id="opslag-03">
+  <div class="wrap">
+    <div class="section-head"><span class="index">03 · Fra viden til handling</span><span class="rule"></span></div>
+    <div class="opslag">
+      <div class="venn">
+        <svg viewBox="0 0 440 440" class="venn-circles"><circle class="venn-circle" cx="168" cy="220" r="150"/><circle class="venn-circle" cx="272" cy="220" r="150"/></svg>
+        <div class="venn-label left">
+          <h3>Informeret</h3>
+        </div>
+        <div class="venn-center">
+          <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+          </a>
+        </div>
+        <div class="venn-label right">
+          <h3>Aktiveret</h3>
+        </div>
+      </div>
+
+      <div class="opslag-body">
+        
+        <h2>Klog er ikke det samme<br>som klar.</h2>
+        <p>Du kan godt vide, hvad du burde gøre, og stadig ikke kunne bruge det i øjeblikket.</p>
+
+        <div class="reader" data-topic="Klog er ikke det samme som klar.">
+          <div class="reader-head"><span class="lbl">Søvnig-læser</span><span class="time">20 sek · 1 min · 3 min</span></div>
+          <button class="reader-play-card" type="button">
+            <span class="reader-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="reader-teaser">Fra viden til handling — du vælger tempoet.</span>
+          </button>
+          <script type="text/plain" class="reader-source" data-level="20s">At vide, hvad du burde gøre, er ikke det samme som at kunne gøre det i øjeblikket. Teknologisk flytter fokus fra person til proces: et barn er ikke besværligt, systemet er overbelastet. Det gør det lettere at handle roligt, når det gælder.</script>
+          <script type="text/plain" class="reader-source" data-level="1m">Mange samtaler om børn, opdragelse og følelsesmæssige reaktioner bliver hurtigt personlige. Forældre føler sig kritiserede. Børn føler sig forkerte. Voksne går i forsvar. Skyld og skam tager pladsen fra nysgerrighed.
+Teknologisk gør noget vigtigt her: det flytter fokus fra person til proces.
+Et barn er ikke besværligt. Systemet er overbelastet.
+En forælder er ikke mislykket. Batteriet er lavt, og der kører for mange processer i baggrunden.
+Når sproget bliver mere neutralt, falder alarmen i kroppen. Når alarmen falder, kan du tænke igen. Og når du kan tænke, kan du handle klogere — ikke bare mere velinformeret.</script>
+          <script type="text/plain" class="reader-source" data-level="3m">Mange samtaler om børn, opdragelse og følelsesmæssige reaktioner bliver hurtigt personlige. Forældre føler sig kritiserede. Børn føler sig forkerte. Voksne går i forsvar. Skyld og skam tager pladsen fra nysgerrighed og læring — netop når nysgerrighed er det, situationen har mest brug for.
+Teknologisk gør noget vigtigt: det flytter fokus fra person til proces.
+Et barn er ikke besværligt. Systemet er overbelastet.
+En forælder er ikke mislykket. Batteriet er lavt, og der kører for mange processer i baggrunden.
+Forestil dig et badeværelse klokken 19.30. Tandbørstningen ender i skrig for tredje aften i træk. Du ved godt — rent teoretisk, du har læst det, du nikkede genkendende i manualen — at det ikke handler om tandbørsten. Men lige nu, med vand på gulvet og en dryppende hårbørste i hånden, er den viden ikke tilgængelig. Den sidder et sted, du ikke kan nå.
+Det er forskellen på informeret og aktiveret. Informeret er at vide det. Aktiveret er at kunne bruge det, mens vandet stadig drypper.
+Når sproget bliver mere neutralt — systemet er overbelastet, ikke barnet er besværligt — falder alarmen i kroppen. Når alarmen falder, kan du tænke igen. Og når du kan tænke, kan du handle roligere. Ikke fordi du pludselig ved mere. Men fordi det, du allerede ved, endelig er tilgængeligt.</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="opslag-04">
+  <div class="wrap">
+    <div class="section-head"><span class="index">04 · Adfærd giver mening</span><span class="rule"></span></div>
+    <div class="opslag">
+      <div class="venn">
+        <svg viewBox="0 0 440 440" class="venn-circles"><circle class="venn-circle" cx="168" cy="220" r="150"/><circle class="venn-circle" cx="272" cy="220" r="150"/></svg>
+        <div class="venn-label left">
+          <h3>Input</h3>
+        </div>
+        <div class="venn-center">
+          <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+          </a>
+        </div>
+        <div class="venn-label right">
+          <h3>Output</h3>
+        </div>
+      </div>
+
+      <div class="opslag-body">
+        
+        <h2>Trods er ikke et angreb.<br>Det er output.</h2>
+        <p>Adfærd er ikke bare noget, der skal stoppes. Det er også noget, der skal aflæses.</p>
+
+        <div class="reader" data-topic="Trods er ikke et angreb. Det er output.">
+          <div class="reader-head"><span class="lbl">Søvnig-læser</span><span class="time">20 sek · 1 min · 3 min</span></div>
+          <button class="reader-play-card" type="button">
+            <span class="reader-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="reader-teaser">Se bag om trods, i det tempo du har overskud til.</span>
+          </button>
+          <script type="text/plain" class="reader-source" data-level="20s">Et raserianfald er ikke trods. Det er output fra et overbelastet system. Hardware er krop og hjerne. Software er følelser og mønstre. Genstart er ro og kontakt. Samme barn, samme situation — men en helt anden forbindelse, når du forstår signalet.</script>
+          <script type="text/plain" class="reader-source" data-level="1m">Hardware er hjernen og kroppen. Software er tanker, følelser, vaner og indre mønstre. Forbindelsen er relationen. Reparation er kærlighed efter konflikt.
+Lavt batteri er mangel på søvn, mad, pauser eller nærvær. Overophedning er nervesystemet under pres. En systemfejl er ikke en fiasko. Det er information — et signal om, at noget kræver opmærksomhed.
+Genstart er ro, rytme, regulering og kontakt. Installation er nye erfaringer, der gentages, indtil de virker indefra, ikke bare udenpå.
+Når et raserianfald forstås som en systemnedsmeltning i stedet for trods, ændrer det den voksnes reaktion først — og barnets reaktion derefter. Samme barn. Samme situation. Helt anden forbindelse.</script>
+          <script type="text/plain" class="reader-source" data-level="3m">Hardware er hjernen og kroppen. Software er tanker, følelser, vaner og indre mønstre. Forbindelsen er relationen mellem barn og voksen. Reparation er kærlighed efter konflikt — den del, de fleste forældrebøger glemmer er lige så vigtig som selve konflikten.
+Lavt batteri er mangel på søvn, mad, vand, pauser eller nærvær. Overophedning er nervesystemet under pres, længe før det ser sådan ud udefra. En systemfejl er ikke en fiasko. Det er information — data om, at noget netop nu kræver opmærksomhed, ikke straf.
+Klokken er 17.15, og barnet ligger på gulvet i Netto med et hyl, der får hele butikken til at kigge. Instinktet siger: dette er trods, dette skal stoppes nu. Men se på det som output i stedet for angreb: et system har fået flere krav, end det aktuelt kan rumme — for mange indtryk, for lidt søvn, for langt fra sidste måltid — og det, der kommer ud, er et raserianfald, ikke et angreb på dig personligt.
+Genstart er ro, rytme, regulering og kontakt — ikke først en forklaring, men en hånd på ryggen. Installation er nye erfaringer, der gentages, indtil de virker indefra og ikke kun udenpå, som en regel barnet husker, men ikke mærker.
+Når et raserianfald forstås som en systemnedsmeltning i stedet for trods, ændrer det den voksnes reaktion først. Og når den voksnes reaktion ændrer sig, ændrer barnets reaktion sig med tiden også. Samme barn. Samme situation på gulvet i Netto. En helt anden forbindelse.</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · FEJLKODERNE (blå side, hvide kapsler) ============ -->
+<section class="section section-dark grid-bg" id="fejlkoder">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Fejlkoderne · 21 koder, ét opslagsværk</span><span class="rule"></span></div>
+    <div class="fk-head">
+      <h2>Slå op, når systemet hakker.</h2>
+      <p class="fk-lede">Hver kode er bygget ens, så du hurtigt kan finde rundt — også midt i en presset situation. Følg altid sekvensen: Forbind. Forstå. Formidl.</p>
+      <div class="fk-steps"><span>Hvad ser du?</span><span>Hvad sker der i systemet?</span><span>0–2 år / 2–5 år</span><span>Forbind · Forstå · Formidl</span><span>Statustjek</span></div>
     </div>
 
-    <div class="action">
-      <button class="bear-button" type="button" data-open-rsvp aria-label="Tilmeld dig Manual-receptionen">
-        <svg class="speech-bubble" viewBox="463 162 993 761" aria-hidden="true">
-          <path fill="#0000ff" d="M534.527,225.993c-33.894,30.827-51.737,63.141-55.421,105.599
-            c-6.424,74.028-8.354,194.391-1.463,267.838c7.422,79.114,77.876,148.673,176.312,157.815l394.851,3.174l182.879,143.448
-            c14.197,9.191,18.218,12.63,34.503,2.701l2.243-144.97c1.59-1.995,47.308-9.236,56.354-12.49
-            c66.983-24.096,110.673-90.993,116.053-149.481c6.619-71.957,7.5-186.789,1.44-258.699c-6.643-78.814-73.61-157.133-176.065-164.067
-            c-198.408-13.428-415.65,6.712-616.028-3.74C603.842,179.82,565.224,198.074,534.527,225.993z M1238.166,747.305l-0.801,126.264
-            l-177.209-137.418l-409.938-3.144c-100.17-20.252-138.059-77.131-142.797-157.537c-3.971-67.395-3.703-158.201,1.453-225.415
-            c6.147-80.133,49.022-140.589,152.173-152.671c194.412,10.412,405.037-9.261,597.543,3.77
-            c82.292,5.57,144.856,64.808,150.341,130.279c7.573,90.401-7.527,188.721-1.978,279.979
-            c-7.522,59.569-59.357,109.592-130.336,124.824C1265.134,738.7,1241.387,733.05,1238.166,747.305z"/>
-          <text x="959" y="400" font-size="95" fill="#0000ff">Klik på mig</text>
-          <text x="959" y="525" font-size="95" fill="#0000ff">Tilmeld dig</text>
-        </svg>
-        <img src="images/bear.png" alt="">
-      </button>
-      <div class="countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
+    <div class="fk-example">
+      <div>
+        <div class="label">Sådan ser en kode ud</div>
+        <span class="fk-pill">F404 · FORBINDELSE IKKE FUNDET</span>
+        <div class="fk-sub">Al adgang er slukket</div>
+        <div class="fk-field"><h4>Hvad ser du?</h4><p>Barnet bliver mere stille. Du forsøger at få kontakt, men får ingen respons. Barnet stirrer tomt ud i luften eller direkte igennem dig.</p></div>
+        <div class="fk-field"><h4>Hvad sker der i systemet?</h4><p>Systemet er aktivt, men har lukket for direkte kontakt. Ved øget pres lukker systemet yderligere ned for adgang.</p></div>
+      </div>
+      <div class="fk-protocol">
+        <div class="pyr" role="img" aria-label="Forbindelsespyramiden: Forbind nederst, Forstå i midten, Formidl øverst"><img src="assets/pyramid-3f.processed.svg" alt=""></div>
+        <div><strong>Forbind</strong><p>Sænk din signalstyrke. Vær fysisk tilgængelig uden krav om respons. Hvis muligt, så læg en hånd på ryggen af barnet.</p></div>
+        <div><strong>Forstå</strong><p>Læs tavsheden som en lydløs alarm. “Det er helt ok bare at sidde stille et øjeblik. Jeg sidder her også bare lidt.”</p></div>
+        <div><strong>Formidl</strong><p>Vent på, at barnet sender signal om, at det er klar: et blik, en finger, der rører din arm. Svar med lav intensitet.</p></div>
+        <div class="fk-status"><b>SYMPTOM</b> Tomt blik · mekaniske svar · kroppen fraværende<br><b>LØSNING</b> Send ingen nye forespørgsler · vær en tændt ladestation · vent på signal<br><b>VIGTIGT</b> Systemet kan ikke tvinges online.</div>
+      </div>
     </div>
 
+    <div class="fk-wall">
+        <div class="fk-item"><span class="fk-pill">F00 · BIOLOGISK DRIFTSFEJL</span><p>Pjevsethed og irritabilitet uden tydelig årsag.</p></div>
+        <div class="fk-item"><span class="fk-pill">F101 · SELVSTÆNDIGHED AKTIVERET</span><p>Siger konsekvent nej til alt — selv det, barnet plejer at elske.</p></div>
+        <div class="fk-item"><span class="fk-pill">F202 · SYSTEMKOLLAPS</span><p>Slår, bider, kaster ting, råber — trykket går ud gennem kroppen.</p></div>
+        <div class="fk-item"><span class="fk-pill">F303 · SENSORISK OVERLOAD</span><p>Bliver mere aktivt, hopper mellem aktiviteter, larmer og afbryder.</p></div>
+        <div class="fk-item"><span class="fk-pill">F404 · FORBINDELSE IKKE FUNDET</span><p>Bliver mere stille og stirrer tomt — du får ingen respons.</p></div>
+        <div class="fk-item"><span class="fk-pill">F505 · FØLELSESMÆSSIG KORTSLUTNING</span><p>Utrøstelig gråd og nedsmeltning — afviser hjælp.</p></div>
+        <div class="fk-item"><span class="fk-pill">F606 · BUFFERFEJL</span><p>Modstand, når du beder det skifte fra leg til tøj eller fra bad til mad.</p></div>
+        <div class="fk-item"><span class="fk-pill">F707 · LOOPAKTIVERING</span><p>Sidder fast i gentagelser — samme leg, samme ønske, igen og igen.</p></div>
+        <div class="fk-item"><span class="fk-pill">F808 · SIGNALSTØJ FRA ADMINISTRATOR</span><p>Bliver krævende og ustabilt — præcis når du er mest presset.</p></div>
+        <div class="fk-item"><span class="fk-pill">F909 · MANGEL PÅ BÅNDBREDDE</span><p>Reagerer kraftigt, når du hjælper en søskende.</p></div>
+        <div class="fk-item"><span class="fk-pill">F10.0.10 · SOCIAL FORSTYRRELSE</span><p>Opfører sig anderledes i supermarkedet, til fødselsdag eller ved hentning.</p></div>
+        <div class="fk-item"><span class="fk-pill">F11.0.11 · FREKVENSFEJL</span><p>Du trøster, barnet skubber dig væk — din ro bliver en blokering.</p></div>
+        <div class="fk-item"><span class="fk-pill">F12.0.12 · TIMINGFEJL</span><p>Stærk modstand mod afbrydelser og pludselige følelsesudladninger.</p></div>
+        <div class="fk-item"><span class="fk-pill">F13.0.13 · ADMINISTRATOR OFFLINE</span><p>Alt larmer — barnet skruer op for sine egne fejlkoder for at finde dig.</p></div>
+        <div class="fk-item"><span class="fk-pill">F14.0.14 · UAUTORISERET ADGANG</span><p>Maser sig fysisk tæt på, afbryder eller tager dine ting.</p></div>
+        <div class="fk-item"><span class="fk-pill">F15.0.15 · NETVÆRKSUDVIDELSE</span><p>Klamrer sig til din krop, græder ved døren eller stivner i garderoben.</p></div>
+        <div class="fk-item"><span class="fk-pill">F16.0.16 · DELT RESSOURCEBLOKERING</span><p>Råber “MIN”, trækker legetøjet til sig eller skubber andre væk.</p></div>
+        <div class="fk-item"><span class="fk-pill">F17.0.17 · SØVNTILSTAND</span><p>Falder ikke til ro ved sengetid — løber rundt, griner, græder, når lyset slukkes.</p></div>
+        <div class="fk-item"><span class="fk-pill">F18.0.18 · UKLARE RETNINGSLINJER</span><p>Tester den samme grænse igen og igen: “Bare to minutter mere.”</p></div>
+        <div class="fk-item"><span class="fk-pill">F19.0.19 · PASSIV TILSTAND</span><p>Virker meget nemt og føjeligt — men sender færre signaler end før.</p></div>
+        <div class="fk-item"><span class="fk-pill">F20.0.20 · ANDERLEDES KONFIGURERET</span><p>Reaktioner, der virker ude af proportion med situationen.</p></div>
+    </div>
+    <p class="fk-note">F00 og F20.0.20 er ikke fejlkoder i egentlig forstand — de er grundvilkår og perspektiver. De øvrige 19 er konkrete situationer, du kan slå op i, når systemet hakker.</p>
   </div>
+</section>
 
-  <div class="modal-backdrop hidden" role="presentation" data-backdrop>
-    <section class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
-      <button class="close-button" type="button" data-close-rsvp aria-label="Luk">×</button>
-
-      <form class="rsvp-form" name="tilmelding" method="POST" data-netlify="true" netlify-honeypot="website">
-        <input type="hidden" name="form-name" value="tilmelding">
-        <p class="system-label">[ MANUAL-RECEPTION ]</p>
-        <h2 id="rsvp-title">Tilmeld dig</h2>
-        <p class="modal-intro">1. september 2026 – Kl. 16.00-18.00,<br>Slagtehusgade 5e, Kødbyen, KBH&nbsp;V</p>
-        <div class="field">
-          <label for="rsvp-name">Navn</label>
-          <input id="rsvp-name" name="name" type="text" required autocomplete="name" autocapitalize="words" autocorrect="off">
+<section class="section" id="opslag-05">
+  <div class="wrap">
+    <div class="section-head"><span class="index">05 · Om forfatterne</span><span class="rule"></span></div>
+    <div class="opslag">
+      <div class="venn">
+        <svg viewBox="0 0 440 440" class="venn-circles"><circle class="venn-circle" cx="168" cy="220" r="150"/><circle class="venn-circle" cx="272" cy="220" r="150"/></svg>
+        <div class="venn-label left">
+          <h3>Dorte <br>Rudi</h3>
+          <a class="in-link" href="https://www.linkedin.com/in/dorte-rudi-andersen-9840ab92/" target="_blank" rel="noopener noreferrer" aria-label="Dorte Rudi Andersen på LinkedIn" title="Dorte Rudi Andersen på LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="24" height="24" rx="4" fill="currentColor"/><circle cx="6.6" cy="6.4" r="1.8" fill="#fff"/><rect x="5.1" y="9.5" width="3" height="9.5" fill="#fff"/><path fill="#fff" d="M10 9.5h2.9v1.4c.6-1 1.7-1.7 3.2-1.7 2.6 0 3.9 1.6 3.9 4.4V19h-3v-4.8c0-1.4-.6-2.2-1.8-2.2-1.2 0-2.2.9-2.2 2.4V19H10z"/></svg></a>
         </div>
-        <div class="field">
-          <label for="rsvp-email">Email</label>
-          <input id="rsvp-email" name="email" type="email" required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false">
+        <div class="venn-center">
+          <a class="venn-packshot-link" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" aria-label="Køb Brugermanual til dit barn">
+            <img class="cover-art-mini" src="assets/cover/packshot-forside.png" alt="Brugermanual til dit barn — bogomslag">
+          </a>
         </div>
-        <div class="field">
-          <p class="field-label">Hvor mange kommer I?</p>
-          <select id="rsvp-adults" name="adults" required aria-label="Antal store vidunderlige mennesker">
-            <option value="" selected disabled hidden>Antal store vidunderlige mennesker</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          <select id="rsvp-children" name="children" aria-label="Antal små vidunderlige mennesker">
-            <option value="" selected disabled hidden>Antal små vidunderlige mennesker</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
+        <div class="venn-label right">
+          <h3>Niels <br>Rahr</h3>
+          <a class="in-link" href="https://www.linkedin.com/in/niels-rahr-helloanotherme/" target="_blank" rel="noopener noreferrer" aria-label="Niels Rahr på LinkedIn" title="Niels Rahr på LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="24" height="24" rx="4" fill="currentColor"/><circle cx="6.6" cy="6.4" r="1.8" fill="#fff"/><rect x="5.1" y="9.5" width="3" height="9.5" fill="#fff"/><path fill="#fff" d="M10 9.5h2.9v1.4c.6-1 1.7-1.7 3.2-1.7 2.6 0 3.9 1.6 3.9 4.4V19h-3v-4.8c0-1.4-.6-2.2-1.8-2.2-1.2 0-2.2.9-2.2 2.4V19H10z"/></svg></a>
         </div>
-        <label class="honeypot" aria-hidden="true">Hjemmeside<input name="website" tabindex="-1" autocomplete="off"></label>
-        <p class="form-error" data-form-error>Tilmeldingen kunne ikke gemmes. Prøv igen.</p>
-        <button class="primary-button" type="submit" data-submit-button>Tilmeld mig</button>
-        <p class="privacy-note">Oplysningerne bruges kun til administration af receptionen.</p>
-      </form>
-
-      <div class="success-message" data-success>
-        <img class="success-bear-icon" src="images/bear.png" alt="">
-        <h2>Mange tak for din tilmelding.</h2>
-        <p class="success-body">Vi glæder os helt vildt til at se&nbsp;dig.<br>Heldigvis skal vi kun sove<br><span data-sleeps>0</span> gange før vi ses.</p>
-        <div class="countdown" aria-label="Nedtælling til receptionen" data-countdown></div>
-        <button class="primary-button" type="button" data-close-rsvp>Luk</button>
       </div>
-    </section>
-  </div>
 
-  <div class="modal-backdrop hidden" role="presentation" data-book-backdrop>
-    <section class="book-modal" role="dialog" aria-modal="true" aria-label="Bogomslag i stort format">
-      <button class="close-button" type="button" data-close-book aria-label="Luk">×</button>
-      <div class="book-modal-scroll">
-        <img class="book-modal-img" src="images/book.png" alt="Bogomslag: Brugermanual til dit barn">
+      <div class="opslag-body">
+        <h2>To fagligheder.<br>Én brugerflade.</h2>
+        <p>Vores børn kom uden manual.<br>Derfor har vi skrevet én.</p>
+
+        <ul class="people">
+          <li><img src="assets/photos/dorte.jpg" alt="Dorte Rudi Andersen"><span><strong>Dorte Rudi Andersen</strong>Psykoterapeut · Cand.mag. · 25+ års erfaring · Børns udvikling</span></li>
+          <li><img src="assets/photos/niels.jpg" alt="Niels Rahr"><span><strong>Niels Rahr</strong>Kreativ strateg · Kommunikation · Teknologi · Prisvindende</span></li>
+        </ul>
+
+        <div class="reader" data-topic="To fagligheder. Én brugerflade.">
+          <div class="reader-head"><span class="lbl">Søvnig-læser</span><span class="time">20 sek · 1 min · 3 min</span></div>
+          <button class="reader-play-card" type="button">
+            <span class="reader-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="reader-teaser">Mød Dorte og Niels — historien bag brugerfladen.</span>
+          </button>
+          <script type="text/plain" class="reader-source" data-level="20s">Dorte har 25 års psykologisk faglighed. Niels har spørgsmålet, alle trætte forældre stiller: hvor er knappen? De mødtes ved et køkkenbord med samme frustration — og byggede sammen den brugerflade, ingen af dem kunne have lavet alene: Brugermanual til dit barn.</script>
+          <script type="text/plain" class="reader-source" data-level="1m">Dorte Rudi Andersen er psykoterapeut og cand.mag. med over 25 års erfaring i børns udvikling. Niels Rahr er kreativ strateg med baggrund i kommunikation og teknologi.
+Det startede ved et køkkenbord. Niels var blevet far og stod med et helt konkret problem: han vidste ikke, hvad han skulle gøre, når følelserne kørte af sporet — hverken sine egne eller barnets.
+"Dorte, du fortæller mig, hvad chippen inde i opvaskemaskinen er lavet af," sagde han engang. "Jeg har brug for at vide, hvor knappen sidder."
+Det blev briefen for hele manualen: maksimal faglighed, maksimal anvendelighed, minimal kognitiv belastning. To fagligheder. Én brugerflade.</script>
+          <script type="text/plain" class="reader-source" data-level="3m">Dorte Rudi Andersen er psykoterapeut og cand.mag. med mere end 25 års erfaring i arbejdet med børns udvikling. Niels Rahr er kreativ strateg med en karriere bygget på kommunikation og teknologi — og en evne til at gøre komplicerede ting forståelige for almindelige mennesker under tidspres.
+Historien starter ikke på et kontor. Den starter ved et køkkenbord, en helt almindelig aften, hvor Niels var blevet far og stod med et problem, ingen konsulentbaggrund kunne løse: han vidste ikke, hvad han skulle stille op, når følelserne — sine egne eller barnets — kørte helt af sporet.
+Dorte havde svarene. Hun havde arbejdet med børn og familier i årevis og kunne de psykologiske mekanismer ud og ind. Men samtalerne mellem dem gik ofte skævt — ikke fordi viden manglede, men fordi den kom i en form, der var svær at gribe fat i midt i en hverdag med opvask og skoletasker.
+"Dorte, du fortæller mig, hvad chippen inde i opvaskemaskinen er lavet af," sagde Niels en aften. "Jeg har bare brug for at vide, hvor knappen sidder."
+Sætningen blev hængende. Den blev til briefen for hele projektet: maksimal faglighed, maksimal anvendelighed, minimal kognitiv belastning. Ikke en forsimpling af psykologien. En brugerflade til den.
+Dortes faglighed sikrer, at intet i manualen er opdigtet eller unuanceret. Niels' baggrund sikrer, at det rent faktisk kan bruges klokken seks en tirsdag morgen, med sko der ikke vil på, og et barn, der ikke vil med ud ad døren.
+To fagligheder. Én brugerflade. Bygget af to mennesker, der stadig ikke er blevet perfekte forældre — og som mener, at det er meget bevidst pointen.</script>
+        </div>
       </div>
-      <a class="buy-circle" href="https://www.williamdam.dk/brugermanual-til-dit-barn__4393526" target="_blank" rel="noopener noreferrer"><span class="buy-circle-label"><span>KØB</span><span>HER</span></span></a>
-    </section>
+    </div>
   </div>
-</main>
+</section>
 
+<!-- ============ 6 · FOREDRAG ============ -->
+<section class="section talk" id="foredrag">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Foredrag · Dorte og Niels kommer ud</span><span class="rule"></span></div>
+    <div class="talk-grid">
+      <div>
+        <h2>Dorte og Niels kommer ud og holder foredrag.</h2>
+        <p class="lead-p">Oplev Brugermanual til dit barn fra scenen — fra forfatterne selv.</p>
+        <ul>
+          <li>Hvorfor vi ved for meget — og alligevel ikke kan bruge det, når det gælder</li>
+          <li>Teknologisk: et fælles sprog til hverdagens svære øjeblikke</li>
+          <li>Forbind. Forstå. Formidl. — tre trin, du kan bruge allerede i morgen</li>
+        </ul>
+        <div class="talk-cta">
+          <a class="btn-install btn-on-light" href="mailto:Brugermanualen@gmail.com?subject=Foredrag%20-%20Brugermanual%20til%20dit%20barn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            Book et foredrag
+          </a>
+        </div>
+        <p class="talk-note">Skriv til Dorte og Niels med jeres anledning og målgruppe — så finder vi formatet sammen.</p>
+      </div>
+      <div class="speakers">
+        <div class="speaker"><img src="assets/photos/dorte.jpg" alt="Dorte Rudi Andersen"><strong>Dorte Rudi Andersen</strong><span>Psykoterapeut · Cand.mag.<br>25+ års erfaring med børns udvikling</span></div>
+        <div class="speaker"><img src="assets/photos/niels.jpg" alt="Niels Rahr"><strong>Niels Rahr</strong><span>Kreativ strateg<br>Kommunikation · Teknologi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="opslag-06">
+  <div class="wrap">
+    <div class="section-head"><span class="index">06 · En varig forskel</span><span class="rule"></span></div>
+    <div class="opslag">
+      <div class="pyr-art"><img src="assets/forbindelsespyramide-blaa.svg" alt="Forbindelsespyramiden: Forbind nederst, Forstå i midten, Formidl øverst" width="746" height="642"></div>
+
+      <div class="opslag-body">
+        
+        <h2>Fra reolen til rygraden.</h2>
+        <p>Viden hjælper først for alvor, når den kan bruges uden at lede efter den.</p>
+
+        <div class="reader" data-topic="Fra reolen til rygraden.">
+          <div class="reader-head"><span class="lbl">Søvnig-læser</span><span class="time">20 sek · 1 min · 3 min</span></div>
+          <button class="reader-play-card" type="button">
+            <span class="reader-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="reader-teaser">Gør viden til en varig forskel.</span>
+          </button>
+          <script type="text/plain" class="reader-source" data-level="20s">Brugermanual til dit barn er en manual, en metode og et sprog. Når sproget ændrer sig, ændrer blikket sig. Når blikket ændrer sig, ændrer reaktionen sig. Og når reaktionen ændrer sig, ændrer forbindelsen sig. Det er hele vejen fra reolen til rygraden.</script>
+          <script type="text/plain" class="reader-source" data-level="1m">Brugermanual til dit barn er en manual, en metode og en digital platform. Men først og fremmest er det et nyt sprog for menneskelig forståelse.
+Et sprog, der gør forskning brugbar. Et sprog, der gør hverdagen mere håndterbar. Et sprog, der hjælper voksne med at forstå barnet, før de forsøger at styre det.
+For når vi ændrer sproget, ændrer vi blikket. Når vi ændrer blikket, ændrer vi reaktionen. Når vi ændrer reaktionen, ændrer vi forbindelsen.
+Og i forbindelsen begynder al trivsel. Det er den varige forskel: ikke mere viden på reolen, men viden der er flyttet ind i rygraden, hvor den er til at få fat i, når det gælder.</script>
+          <script type="text/plain" class="reader-source" data-level="3m">Brugermanual til dit barn er en manual, en metode og en digital platform. Men først og fremmest er det et nyt sprog for menneskelig forståelse.
+Et sprog, der gør forskning brugbar. Et sprog, der gør hverdagen mere håndterbar. Et sprog, der hjælper voksne med at forstå barnet, før de forsøger at styre barnet.
+Der er forskel på viden på en reol og viden i en rygrad. På reolen ligger den pænt, alfabetisk, tilgængelig for den, der har tid, ro og overskud til at læse den igen. I rygraden er den en refleks — noget kroppen ved, uden at hjernen først skal bladre.
+Vejen derfra går gennem sproget. For når vi ændrer sproget, ændrer vi blikket. Et barn, der "ikke vil høre efter", bliver til et system, der er overbelastet. Når vi ændrer blikket, ændrer vi reaktionen: vi går fra straf til nysgerrighed. Og når vi ændrer reaktionen, ændrer vi forbindelsen — den mellem barn og voksen, som alt andet i sidste ende hænger på.
+Og i forbindelsen begynder al trivsel. Ikke i den perfekte forælder, den fejlfri metode eller den ideelle dag. I forbindelsen, gang på gang, også efter de dage hvor intet gik, som det skulle.
+Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikke mere viden stående på en reol, men viden der er flyttet hele vejen ind i rygraden, hvor den rent faktisk er til at få fat i, når det gælder.</script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-lavender" id="faq">
+  <div class="wrap">
+    <div class="section-head"><span class="index">FAQ</span><span class="rule"></span></div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-q">Ser I børn som maskiner eller computere?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="accordion-a"><p>Nej. Teknologisproget er et pædagogisk interface og et voksenværktøj — en måde at gøre kompleks viden lettere at huske og bruge, ikke en påstand om, at børn fungerer som maskiner.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">Er der ny forskning eller nye teorier i manualen?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="accordion-a"><p>Manualen bygger på eksisterende forskning og faglig viden inden for psykologi, tilknytning og udvikling. Innovationen ligger i oversættelsen og brugerfladen — ikke i nye videnskabelige påstande.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">Hvilken alder dækker manualen?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="accordion-a"><p>0 til 5 år.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">Hvordan adskiller manualen sig fra andre forældrebøger?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="accordion-a"><p>Gennem brugerfladen: et fælles sprog, tre klare protokoller (Forbind, Forstå, Formidl) og et design, der er lavet til at bruges midt i hverdagen — ikke kun læses i ro.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">Er forfatterne selv blevet perfekte forældre?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="accordion-a"><p>Nej — og det er meget bevidst pointen. Perfektion er en systemfejl. Manualen handler om familiekode, fejl som input og evnen til at reparere, ikke om at undgå fejl.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">Kan manualen erstatte professionel rådgivning?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="accordion-a"><p>Nej. Manualen er generel formidling og erstatter ikke individuel faglig vurdering, rådgivning eller behandling.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="presse">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Presse, interviews &amp; samarbejde</span><span class="rule"></span></div>
+    <div class="presse-grid">
+      <div class="presse-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>Omslag og packshots</div>
+      <div class="presse-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Forfatterbios og portrætfotos</div>
+      <div class="presse-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>Projektbeskrivelse og citater</div>
+    </div>
+    <p class="presse-contact">Pressemateriale, interviews og samarbejdsforespørgsler koordineres direkte med forfatterne og Forlaget Momenta. <a href="mailto:Brugermanualen@gmail.com?subject=Presse%20-%20Brugermanual%20til%20dit%20barn">Skriv til Dorte og Niels</a>, så vender vi tilbage med det, du har brug for.</p>
+  </div>
+</section>
+<section class="section section-dark grid-bg" id="sproget">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Sproget · Vores vigtigste teknologi</span><span class="rule"></span></div>
+    <h2 class="lead-h2">Sproget er vores vigtigste teknologi.</h2>
+    <p class="lead-p">Vi har altid brugt det, vi byggede, til at forstå os selv — og sproget bestemmer, hvad vi kan se og gøre. Når vi ændrer sproget, ændrer vi blikket. Når vi ændrer blikket, ændrer vi reaktionen. Når vi ændrer reaktionen, ændrer vi forbindelsen. Teknologisk er et metaforisk, operationelt sprog, der bruger velkendte systembegreber til at gøre psykologisk og biologisk viden lettere at genkende og bruge. Ordene er mentale modeller, ikke biologiske definitioner. Klik på et begreb.</p>
+    <div class="glossary">
+      <button class="term" aria-expanded="false"><span class="word">Hardware<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Krop, hjerne og nervesystem — det fysiske grundlag, alt andet kører på.</span></button>
+      <button class="term" aria-expanded="false"><span class="word">Software<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Tanker, ord, sprog og mønstre — det, der kører på hardwaren.</span></button>
+      <button class="term" aria-expanded="false"><span class="word">Batteri<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Søvn, mad, energi og fysiologiske ressourcer — det, der løber tør før alt andet.</span></button>
+      <button class="term" aria-expanded="false"><span class="word">Åbne faner<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Input, krav og mental belastning — alt det, systemet holder åbent på samme tid.</span></button>
+      <button class="term" aria-expanded="false"><span class="word">Signal<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Adfærd, følelser og kommunikation — det, systemet sender udad.</span></button>
+      <button class="term" aria-expanded="false"><span class="word">Forbindelse<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Relationen — netværket, alle de andre begreber kører igennem.</span></button>
+      <button class="term" aria-expanded="false"><span class="word">Overload<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Et system med flere krav end aktuel kapacitet.</span></button>
+      <button class="term" aria-expanded="false"><span class="word">Genstart<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="gloss">Ro, reparation og ny kontakt — vejen tilbage efter et overload.</span></button>
+    </div>
+    <p class="glossary-note">Manualen ser ikke børn som maskiner. Sproget er et voksenværktøj — en brugerflade til viden, vi allerede har.</p>
+  </div>
+</section>
+<section class="section" id="historien">
+  <div class="wrap">
+    <div class="section-head"><span class="index">Sproget som teknologi</span><span class="rule"></span></div>
+    <h2 style="font-size:clamp(22px,3vw,32px); margin-bottom:clamp(28px,4vw,40px); max-width:22ch;">Vi har altid brugt det, vi byggede, til at forstå os selv.</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-when">Antikken</div><div class="timeline-body"><h3>Platon</h3><p>Sjælen beskrevet som en stridsvogn med to heste — et tidligt billede på indre kræfter, der skal styres i samme retning.</p></div></div>
+      <div class="timeline-item"><div class="timeline-when">1600-tallet</div><div class="timeline-body"><h3>Descartes</h3><p>Kroppen forstået gennem datidens mekanik — rør, ventiler og bevægelse som model for det biologiske.</p></div></div>
+      <div class="timeline-item"><div class="timeline-when">1800-tallet</div><div class="timeline-body"><h3>H.C. Ørsted</h3><p>Skabte nye danske ord for naturvidenskaben, så den kunne tales om uden latin — adgang frem for opfindelse.</p></div></div>
+      <div class="timeline-item"><div class="timeline-when">1800-tallet</div><div class="timeline-body"><h3>Grundtvig</h3><p>Det levende ord og sproget mellem mennesker som forudsætning for oplysning, ikke kun det skrevne.</p></div></div>
+      <div class="timeline-item"><div class="timeline-when">1900-tallet</div><div class="timeline-body"><h3>Alan Turing</h3><p>Beregning blev formaliseret — grundlaget for det digitale sprog, vi i dag taler flydende.</p></div></div>
+      <div class="timeline-item"><div class="timeline-when">I dag</div><div class="timeline-body"><h3>Digitalt sprog</h3><p>Hardware. Software. Netværk. Signal. Feedback. Forbindelse. Ord, en hel generation af forældre allerede taler.</p></div></div>
+      <div class="timeline-item"><div class="timeline-when">Nu</div><div class="timeline-body"><h3>Brugermanual til dit barn</h3><p>Teknologiens nutidige sprog bruges som metaforisk interface til eksisterende viden om mennesket — ikke som ny teori.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="closer grid-bg" id="installer-sektion">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Verdens vigtigste netværk fortjener en god forbindelse</div>
+      <h2>Mindre teori.<br>Mere ro i hverdagen.</h2>
+      <p style="opacity:.85; max-width:46ch; margin-bottom:22px; font-size:13.5px;">Brugermanual til dit barn gør vigtig viden lettere at få fra reolen og ind på rygraden. 0-5 år · Dorte Rudi Andersen &amp; Niels Rahr.</p>
+      <div class="closer-ctas">
+        <a class="btn-install btn-buy" href="https://www.bog-ide.dk/products/brugermanual-til-dit-barn-dorte-rudi-og-niels-rahr-haeftet-3466682" target="_blank" rel="noopener noreferrer" id="footer-install-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
+          Køb manualen
+        </a>
+        <span style="font-size:12px; opacity:.8;">Forbind. Forstå. Formidl.</span>
+      </div>
+    </div>
+    <ul class="closer-list">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Praktisk</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Forskningsbaseret</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Let at bruge</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Skrevet til virkeligheden</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Brugermanual<br>til dit barn</div>
+    <ul class="flinks">
+      <li><a href="#omtale">Omtale</a></li>
+      <li><a href="#fejlkoder">Fejlkoder</a></li>
+      <li><a href="#opslag-05">Forfatterne</a></li>
+      <li><a href="#foredrag">Foredrag</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#presse">Presse</a></li>
+      <li><a href="mailto:Brugermanualen@gmail.com">Kontakt</a></li>
+    </ul>
+    <div class="fine">© 2026 Brugermanual til dit barn. Alle rettigheder forbeholdes.</div>
+  </div>
+</footer>
 <script>
-(function () {
-  var EVENT_TIME = new Date("2026-09-01T16:00:00+02:00");
+(function(){
+  'use strict';
 
-  function getRemaining() {
-    var now = new Date();
-    if (now >= EVENT_TIME) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    var totalSeconds = Math.floor((EVENT_TIME.getTime() - now.getTime()) / 1000);
-    return {
-      days: Math.floor(totalSeconds / 86400),
-      hours: Math.floor((totalSeconds % 86400) / 3600),
-      minutes: Math.floor((totalSeconds % 3600) / 60),
-      seconds: totalSeconds % 60
-    };
+  function tokenize(raw){
+    if(!raw) return [];
+    return raw.replace(/-\s+/g,'').trim().match(/\S+/g) || [];
+  }
+  function centerIndex(word){
+    var len = word.length;
+    if(len <= 1) return 0;
+    return Math.floor((len-1)/2);
+  }
+  function duration(word, wpm){
+    var base = 60000/wpm, len = word.length, f = 1;
+    if(len<=2) f=0.85; else if(len<=4) f=0.95; else if(len<=7) f=1.05;
+    else if(len<=10) f=1.25; else if(len<=13) f=1.55; else f=1.85;
+    var pause = 0;
+    if(/[.!?]$/.test(word)) pause = 2*base;
+    else if(/[,;:]$/.test(word)) pause = 0.5*base;
+    else if(/[–—-]$/.test(word)) pause = 0.3*base;
+    return base*f + pause;
   }
 
-  var countdownEls = document.querySelectorAll("[data-countdown]");
-  var sleepsEls = document.querySelectorAll("[data-sleeps]");
+  // ---- Søvnig-læser: one shared full-screen RSVP instrument, fed by ----
+  // ---- each section's card with its 20s/1m/3m sources.               ----
+  var overlay = document.getElementById('reader-overlay');
+  if(overlay){
+    var ovTopic = document.getElementById('reader-ov-topic');
+    var segL = overlay.querySelector('.orp .l'), segF = overlay.querySelector('.orp .f'), segR = overlay.querySelector('.orp .r');
+    var fill = overlay.querySelector('.reader-ov-progress .fill');
+    var progressTrack = overlay.querySelector('.reader-ov-progress');
+    var statusEl = overlay.querySelector('.status'), countEl = overlay.querySelector('.count'),
+        pctEl = overlay.querySelector('.pct'), etaEl = overlay.querySelector('.eta');
+    var toggleBtn = overlay.querySelector('.toggle'), prevBtn = overlay.querySelector('.prev'), nextBtn = overlay.querySelector('.next');
+    var closeBtn = overlay.querySelector('.reader-ov-close');
+    var wpmSlider = overlay.querySelector('.wpm-slider'), wpmLabel = overlay.querySelector('.wpm');
+    var normalLink = overlay.querySelector('.reader-normal-link');
+    var normalText = document.getElementById('reader-ov-normaltext');
+    var levelBtns = overlay.querySelectorAll('.lvl');
 
-  function renderCountdown() {
-    var r = getRemaining();
-    var units = [[r.days, "Dage"], [r.hours, "Timer"], [r.minutes, "Minutter"], [r.seconds, "Sekunder"]];
-    var html = units.map(function (u) {
-      return '<div class="countdown-unit"><span>' + u[0] + '</span><strong>' + u[1] + '</strong></div>';
-    }).join("");
-    countdownEls.forEach(function (el) {
-      el.innerHTML = html;
-    });
-    sleepsEls.forEach(function (el) {
-      el.textContent = r.days;
-    });
-  }
+    var sourcesByLevel = {}, rawText = '', tokens = [], idx = 0, playing = false, timer = null, wpm = 300;
 
-  renderCountdown();
-  setInterval(renderCountdown, 1000);
-
-  var zoomHint = document.querySelector(".zoom-hint");
-  var bookWrap = document.querySelector(".book-wrap");
-
-  function alignZoomHint() {
-    if (window.matchMedia("(orientation: portrait)").matches) return;
-    var circle = document.querySelector(".countdown-unit span");
-    if (!circle) return;
-    var circleRect = circle.getBoundingClientRect();
-    var wrapRect = bookWrap.getBoundingClientRect();
-    var centerY = circleRect.top + circleRect.height / 2;
-    zoomHint.style.top = (centerY - wrapRect.top) + "px";
-  }
-
-  alignZoomHint();
-  window.addEventListener("resize", alignZoomHint);
-  window.addEventListener("orientationchange", alignZoomHint);
-  window.addEventListener("load", alignZoomHint);
-  var bookImgForAlign = document.querySelector(".book-link img");
-
-  var momentaLink = document.querySelector(".momenta-link");
-  var signatureEl = document.querySelector(".signature");
-  var frontBubble = document.querySelector(".action .speech-bubble");
-
-  function alignMomentaLogo() {
-    if (!window.matchMedia("(orientation: portrait)").matches) {
-      momentaLink.style.marginTop = "";
-      momentaLink.style.marginBottom = "";
-      return;
+    function statusWord(){
+      if(playing) return 'Læser';
+      if(tokens.length && idx >= tokens.length-1) return 'Færdig';
+      return 'Klar';
     }
-    momentaLink.style.marginTop = "";
-    momentaLink.style.marginBottom = "";
-    var sigBottom = signatureEl.getBoundingClientRect().bottom;
-    var naturalMarginTop = momentaLink.getBoundingClientRect().top - sigBottom;
-    var naturalGapBelow = frontBubble.getBoundingClientRect().top - momentaLink.getBoundingClientRect().bottom;
-    var extraGapBelow = 16;
-    var target = (naturalMarginTop + naturalGapBelow) / 2;
-    momentaLink.style.marginTop = target + "px";
-    momentaLink.style.marginBottom = Math.max(0, target - naturalGapBelow + extraGapBelow) + "px";
+    function render(){
+      if(tokens.length === 0){ segL.textContent=''; segF.textContent='—'; segR.textContent=''; updateMeta(); return; }
+      if(idx < 0) idx = 0;
+      if(idx >= tokens.length) idx = tokens.length-1;
+      var w = tokens[idx], m = centerIndex(w);
+      segL.textContent = w.substring(0,m);
+      segF.textContent = w.charAt(m);
+      segR.textContent = w.substring(m+1);
+      updateMeta();
+    }
+    function updateMeta(){
+      var total = tokens.length, cur = total===0?0:idx+1;
+      var pct = total===0?0:Math.round((cur/total)*100);
+      statusEl.textContent = statusWord();
+      countEl.textContent = cur+' / '+total;
+      pctEl.textContent = pct+' %';
+      fill.style.width = pct+'%';
+      var rem=0; for(var i=idx;i<total;i++) rem += duration(tokens[i], wpm);
+      var s = Math.ceil(rem/1000), mm = Math.floor(s/60), ss = s%60;
+      etaEl.textContent = String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0');
+    }
+    function step(){
+      if(!playing) return;
+      if(idx >= tokens.length-1){ pause(); return; }
+      var d = duration(tokens[idx], wpm);
+      timer = setTimeout(function(){ idx++; render(); step(); }, d);
+    }
+    function play(){
+      if(tokens.length===0) return;
+      if(idx >= tokens.length-1) idx = 0;
+      playing = true; toggleBtn.textContent = 'Pause';
+      render(); step();
+    }
+    function pause(){ playing=false; clearTimeout(timer); toggleBtn.textContent='Start'; render(); }
+    function toggle(){ playing ? pause() : play(); }
+    function setWpm(v){
+      wpm = Math.max(150, Math.min(600, v));
+      wpmSlider.value = wpm; wpmLabel.textContent = wpm+' wpm'; updateMeta();
+    }
+    function setLevel(lvl, autoplay){
+      if(!sourcesByLevel[lvl]) return;
+      rawText = sourcesByLevel[lvl];
+      tokens = tokenize(rawText);
+      idx = 0;
+      levelBtns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.level === lvl ? 'true' : 'false'); });
+      normalText.classList.remove('show'); normalText.textContent = ''; normalLink.textContent = 'Læs som almindelig tekst →';
+      pause();
+      if(autoplay) play(); else render();
+    }
+    function open(card){
+      sourcesByLevel = {};
+      card.querySelectorAll('.reader-source').forEach(function(s){ sourcesByLevel[s.dataset.level] = s.textContent.trim(); });
+      ovTopic.textContent = card.dataset.topic || '';
+      overlay.hidden = false;
+      document.body.classList.add('reader-locked');
+      setLevel(sourcesByLevel['1m'] ? '1m' : Object.keys(sourcesByLevel)[0], true);
+      closeBtn.focus();
+    }
+    function close(){
+      pause();
+      overlay.hidden = true;
+      document.body.classList.remove('reader-locked');
+    }
+
+    levelBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){ setLevel(btn.dataset.level, true); });
+    });
+    toggleBtn.addEventListener('click', toggle);
+    closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', function(){ pause(); if(idx>0){ idx--; render(); } });
+    nextBtn.addEventListener('click', function(){ pause(); if(idx<tokens.length-1){ idx++; render(); } });
+    wpmSlider.addEventListener('input', function(e){ setWpm(parseInt(e.target.value,10)); });
+    progressTrack.addEventListener('click', function(e){
+      if(tokens.length===0) return;
+      var r = progressTrack.getBoundingClientRect();
+      var ratio = Math.max(0, Math.min(1, (e.clientX-r.left)/r.width));
+      idx = Math.floor(ratio*(tokens.length-1)); render();
+    });
+    normalLink.addEventListener('click', function(){
+      var showing = normalText.classList.toggle('show');
+      normalText.textContent = showing ? rawText : '';
+      normalLink.textContent = showing ? 'Skjul teksten' : 'Læs som almindelig tekst →';
+      if(showing) pause();
+    });
+    document.addEventListener('keydown', function(e){
+      if(overlay.hidden) return;
+      if(e.key === 'Escape'){ close(); }
+      else if(e.key === ' '){ e.preventDefault(); toggle(); }
+      else if(e.key === 'ArrowLeft'){ pause(); if(idx>0){ idx--; render(); } }
+      else if(e.key === 'ArrowRight'){ pause(); if(idx<tokens.length-1){ idx++; render(); } }
+    });
+
+    document.querySelectorAll('.reader-play-card').forEach(function(btn){
+      btn.addEventListener('click', function(){ open(btn.closest('.reader')); });
+    });
   }
 
-  alignMomentaLogo();
-  window.addEventListener("resize", alignMomentaLogo);
-  window.addEventListener("orientationchange", alignMomentaLogo);
-  window.addEventListener("load", alignMomentaLogo);
-  if (!bookImgForAlign.complete) bookImgForAlign.addEventListener("load", alignZoomHint);
-
-  var backdrop = document.querySelector("[data-backdrop]");
-  var form = document.querySelector(".rsvp-form");
-  var successEl = document.querySelector("[data-success]");
-  var errorEl = document.querySelector("[data-form-error]");
-  var submitButton = document.querySelector("[data-submit-button]");
-
-  function openModal() {
-    backdrop.classList.remove("hidden");
-    form.classList.remove("hidden");
-    successEl.classList.remove("visible");
-    errorEl.classList.remove("visible");
+  // ---- format-aware Venn diagrams ----
+  // Landscape screens (16:9-ish) keep the circles side by side; portrait
+  // screens (9:16-ish) flip them to stack vertically. The CSS transitions
+  // above make the switch glide rather than snap when the ratio crosses 1:1.
+  function updateFormat(){
+    var isPortrait = window.innerWidth / window.innerHeight < 1;
+    document.body.classList.toggle('format-portrait', isPortrait);
   }
+  updateFormat();
+  window.addEventListener('resize', updateFormat);
+  window.addEventListener('orientationchange', updateFormat);
 
-  function closeModal() {
-    backdrop.classList.add("hidden");
-  }
-
-  document.querySelectorAll("[data-open-rsvp]").forEach(function (btn) {
-    btn.addEventListener("click", openModal);
+  // ---- whole-page reflow choreography ----
+  // The venn circles already glide between side-by-side and stacked with a
+  // CSS transition. So the rest of the layout reads as one coordinated
+  // movement rather than the venn animating in isolation, every block that
+  // actually changes position when a section's grid collapses (hero text vs.
+  // visual, venn vs. copy, closer copy vs. checklist) is measured before and
+  // after the reflow and glided there with the same easing (a FLIP: First,
+  // Last, Invert, Play).
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var flipEls = [];
+  document.querySelectorAll('.hero .wrap, .opslag, .closer .wrap').forEach(function(container){
+    Array.prototype.forEach.call(container.children, function(child){ flipEls.push(child); });
   });
-  document.querySelectorAll("[data-close-rsvp]").forEach(function (btn) {
-    btn.addEventListener("click", closeModal);
-  });
-  backdrop.addEventListener("mousedown", function (event) {
-    if (event.target === backdrop) closeModal();
-  });
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && !backdrop.classList.contains("hidden")) closeModal();
-  });
-
-  var BOOK_URL = "https://www.williamdam.dk/brugermanual-til-dit-barn__4393526";
-  var bookBackdrop = document.querySelector("[data-book-backdrop]");
-
-  function openBookModal() {
-    bookBackdrop.classList.remove("hidden");
+  var flipRects = new WeakMap();
+  var flipHandlers = new WeakMap();
+  function recordRects(){
+    flipEls.forEach(function(el){ flipRects.set(el, el.getBoundingClientRect()); });
   }
-
-  function closeBookModal() {
-    bookBackdrop.classList.add("hidden");
+  function playFlip(){
+    if(reduceMotion){ recordRects(); return; }
+    flipEls.forEach(function(el){
+      var before = flipRects.get(el);
+      if(!before) return;
+      var after = el.getBoundingClientRect();
+      var dx = before.left - after.left, dy = before.top - after.top;
+      if(Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+      // A flip already in flight on this element (e.g. a mid-drag resize)
+      // never fires its own transitionend once we cut it off below, so its
+      // listener has to be torn down here or it leaks.
+      var prevHandler = flipHandlers.get(el);
+      if(prevHandler){ el.removeEventListener('transitionend', prevHandler); flipHandlers.delete(el); }
+      el.style.transition = '';
+      // Elements like .venn carry their own stylesheet transition (e.g.
+      // aspect-ratio); capture it so the inline transform transition adds
+      // to it instead of replacing it outright.
+      var ownTransition = getComputedStyle(el).transition;
+      el.style.transition = 'none';
+      el.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+      el.getBoundingClientRect();
+      el.style.transition = 'transform .6s cubic-bezier(.4,0,.2,1), ' + ownTransition;
+      el.style.transform = '';
+      var handler = function(e){
+        if(e.target !== el) return;
+        el.style.transition = '';
+        el.removeEventListener('transitionend', handler);
+        flipHandlers.delete(el);
+      };
+      flipHandlers.set(el, handler);
+      el.addEventListener('transitionend', handler);
+    });
+    recordRects();
   }
+  recordRects();
+  var flipRaf = null;
+  window.addEventListener('resize', function(){
+    if(flipRaf) return;
+    flipRaf = requestAnimationFrame(function(){ playFlip(); flipRaf = null; });
+  });
+  window.addEventListener('orientationchange', function(){ setTimeout(playFlip, 60); });
 
-  document.querySelectorAll("[data-open-book]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      if (window.matchMedia("(orientation: portrait)").matches) {
-        window.open(BOOK_URL, "_blank", "noopener");
-      } else {
-        openBookModal();
-      }
+  // scroll helper
+  document.querySelectorAll('[data-scroll-to]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.dataset.scrollTo);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
-  document.querySelectorAll("[data-close-book]").forEach(function (btn) {
-    btn.addEventListener("click", closeBookModal);
-  });
-  bookBackdrop.addEventListener("mousedown", function (event) {
-    if (event.target === bookBackdrop) closeBookModal();
-  });
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && !bookBackdrop.classList.contains("hidden")) closeBookModal();
-  });
 
-  function encodeForm(data) {
-    return Object.keys(data).map(function (key) {
-      return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    }).join("&");
+  document.querySelectorAll('.venn-label h3').forEach(function(h){ var t=h.textContent.trim(); h.style.setProperty('--len', t.length); h.style.setProperty('--lw', Math.max.apply(null, t.split(/\s+/).map(function(w){return w.length;}))); });
+
+  // ---- sticky mobile buy bar: shown once the hero has scrolled past ----
+  var stickyBuy = document.getElementById('sticky-buy');
+  var heroEl = document.querySelector('.hero');
+  if(stickyBuy && heroEl && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){ stickyBuy.classList.toggle('show', !entry.isIntersecting); });
+    }, { rootMargin: '-1px 0px 0px 0px' });
+    io.observe(heroEl);
   }
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    var website = form.elements["website"].value;
-    if (website) return;
-
-    errorEl.classList.remove("visible");
-    submitButton.disabled = true;
-    submitButton.textContent = "Sender…";
-
-    var payload = {
-      "form-name": "tilmelding",
-      name: form.elements["name"].value,
-      email: form.elements["email"].value,
-      adults: form.elements["adults"].value,
-      children: form.elements["children"].value || "0"
-    };
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encodeForm(payload)
-    })
-      .then(function (response) {
-        if (!response.ok) throw new Error("submit failed");
-        form.classList.add("hidden");
-        successEl.classList.add("visible");
-      })
-      .catch(function () {
-        errorEl.classList.add("visible");
-      })
-      .finally(function () {
-        submitButton.disabled = false;
-        submitButton.textContent = "Tilmeld mig";
-      });
+  // ---- sproget: interactive glossary ----
+  document.querySelectorAll('.glossary .term').forEach(function(term){
+    term.addEventListener('click', function(){
+      var open = term.getAttribute('aria-expanded') === 'true';
+      term.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
   });
 
+  // ---- FAQ accordion ----
+  document.querySelectorAll('.accordion-item').forEach(function(item){
+    var q = item.querySelector('.accordion-q');
+    q.addEventListener('click', function(){
+      var open = item.dataset.open === 'true';
+      item.dataset.open = open ? 'false' : 'true';
+    });
+  });
+
+  // ---- personlig relevans: chip-select mini-interaction ----
+  var relevansData = {
+    folelser: { before:'Hvordan får jeg mit barn til at stoppe?', after:'Hvad prøver systemet at fortælle mig?', tip:'Store følelser er signal, ikke støj. Se på, hvad der ligger bag udbruddet, før du reagerer på selve udbruddet.' },
+    sovn: { before:'Hvorfor vil hun ikke bare sove?', after:'Er batteriet ladet nok til at lukke ned i ro?', tip:'Søvn er systemets vigtigste opladning. Uro ved sengetid er ofte et spørgsmål om regulering, ikke trods.' },
+    graenser: { before:'Hvordan får jeg ham til at adlyde?', after:'Hvilken grænse har vi brug for lige nu — og hvorfor?', tip:'Grænser er tydeligst, når de kommer fra forbindelse, ikke fra kontrol. Forbind først, sæt grænsen bagefter.' },
+    morgen: { before:'Hvorfor kan vi aldrig nå det om morgenen?', after:'Hvor mange åbne faner har systemet, når vi vågner?', tip:'Morgenkaos er ofte for mange samtidige krav på et system, der lige er tændt. Færre valg, samme rækkefølge hver dag.' },
+    sosk: { before:'Hvorfor kan de ikke bare være søde ved hinanden?', after:'Hvilket netværk deler de lige nu — og hvad konkurrerer de om?', tip:'Søskenderelationer er et netværk under opbygning. Konflikt er ofte forhandling om plads, ikke ondskab.' },
+    batteri: { before:'Hvorfor har jeg intet tilbage i dag?', after:'Hvad kræver systemet lige nu — og hvad giver det?', tip:'Et lavt batteri hos forælderen smitter direkte af på barnets system. Din egen opladning er ikke et sidespor.' },
+    forbindelse: { before:'Hvorfor er stemningen så anspændt?', after:'Hvornår mistede vi forbindelsen — og hvordan genstarter vi den?', tip:'En tryg relation består af mange vellykkede genstarter, ikke af at aldrig ryge forbindelsen.' },
+    input: { before:'Hvorfor reagerer hun så voldsomt på så lidt?', after:'Hvor mange samtidige signaler skal systemet fortolke lige nu?', tip:'For mange input på én gang overbelaster selv et rask system. Fjern et input, før du beder om mere ro.' }
+  };
+  var chipRow = document.querySelector('.chip-row');
+  var relevansOut = document.getElementById('relevans-out');
+  var relevansPlaceholder = document.getElementById('relevans-placeholder');
+  if(chipRow){
+    chipRow.querySelectorAll('.chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chipRow.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+        chip.setAttribute('aria-pressed','true');
+        var data = relevansData[chip.dataset.topic];
+        if(!data) return;
+        document.getElementById('relevans-before').textContent = data.before;
+        document.getElementById('relevans-after').textContent = data.after;
+        document.getElementById('relevans-tip').textContent = data.tip;
+        relevansOut.classList.add('show');
+        if(relevansPlaceholder) relevansPlaceholder.style.display = 'none';
+      });
+    });
+  }
 })();
 </script>
 
+<script>
+(function(){
+  'use strict';
+
+  // ---- medie-karrusel: hver omtale står stille ca. 2 sek., så glider næste ind ----
+  function initCarousel(carouselId, trackId, dotsId, HOLD){
+    var carousel = document.getElementById(carouselId), track = document.getElementById(trackId), dotsEl = document.getElementById(dotsId);
+    if(!carousel || !track || !dotsEl) return;
+    var originals = Array.prototype.slice.call(track.children), n = originals.length;
+    var SLIDE = 800, EASE = 'cubic-bezier(.65,0,.25,1)';
+    var dots = originals.map(function(){ var d = document.createElement('i'); dotsEl.appendChild(d); return d; });
+    dotsEl.style.setProperty('--cycle', (HOLD + SLIDE) + 'ms');
+    function markDot(k){
+      dots.forEach(function(d, j){ d.classList.remove('on'); });
+      void dotsEl.offsetWidth;                       // restart the fill animation
+      dots[k].classList.add('on');
+    }
+    markDot(0);
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches || !track.animate) return;
+
+    // one set before and three after: cards are always present on both sides
+    function cloneSet(){ return originals.map(function(c){ var k = c.cloneNode(true); k.setAttribute('aria-hidden','true'); k.tabIndex = -1; return k; }); }
+    cloneSet().forEach(function(k){ track.insertBefore(k, originals[0]); });
+    for(var r = 0; r < 3; r++) cloneSet().forEach(function(k){ track.appendChild(k); });
+
+    var step = 0, pos = 0, anim = null, timer = null, paused = false, dragging = false;
+    function measure(){ step = track.children[1].offsetLeft - track.children[0].offsetLeft; }
+    function xFor(idx){ return -(n + idx) * step; }
+    function place(){ track.style.transform = 'translate3d(' + xFor(pos) + 'px,0,0)'; }
+    function schedule(){ clearTimeout(timer); if(!paused && !document.hidden) timer = setTimeout(function(){ go(1); }, HOLD); }
+
+    function go(dir){
+      if(anim) return;
+      clearTimeout(timer);
+      var from = xFor(pos), to = xFor(pos + dir);
+      pos += dir;
+      markDot(((pos % n) + n) % n);
+      carousel.classList.add('moving');
+      anim = track.animate(
+        [{ transform: 'translate3d(' + from + 'px,0,0)' }, { transform: 'translate3d(' + to + 'px,0,0)' }],
+        { duration: SLIDE, easing: EASE, fill: 'forwards' }
+      );
+      anim.onfinish = function(){
+        pos = ((pos % n) + n) % n;                   // identical clone sets: jump back unseen
+        place(); anim.cancel(); anim = null;
+        carousel.classList.remove('moving');
+        schedule();
+      };
+    }
+
+    measure(); place(); schedule();
+    window.addEventListener('resize', function(){ if(anim){ anim.cancel(); anim = null; carousel.classList.remove('moving'); } measure(); place(); schedule(); });
+    document.addEventListener('visibilitychange', schedule);
+    function hold(v){ return function(){ paused = v; if(v) clearTimeout(timer); else schedule(); }; }
+    carousel.addEventListener('mouseenter', hold(true));  carousel.addEventListener('mouseleave', hold(false));
+    carousel.addEventListener('focusin', hold(true));     carousel.addEventListener('focusout', hold(false));
+
+    // swipe / drag one card at a time
+    var sx = 0, moved = false;
+    carousel.addEventListener('pointerdown', function(e){ if(e.pointerType === 'mouse' && e.button !== 0) return; sx = e.clientX; moved = false; dragging = true; carousel.classList.add('dragging'); });
+    window.addEventListener('pointerup', function(e){
+      if(!dragging) return; dragging = false; carousel.classList.remove('dragging');
+      var dx = e.clientX - sx; if(Math.abs(dx) > 8) moved = true;
+      if(Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    });
+    carousel.addEventListener('click', function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    carousel.addEventListener('dragstart', function(e){ e.preventDefault(); });
+  }
+  initCarousel('carousel', 'carousel-track', 'carousel-dots', 2000);
+  initCarousel('learn-carousel', 'learn-track', 'learn-dots', 4500);   // længere tid: der er tekst at læse
+
+  // ---- fast køb-knap på mobil, når forsiden er scrollet forbi ----
+  var stickyBuy = document.getElementById('sticky-buy'), heroEl = document.querySelector('.hero-quotes');
+  if(stickyBuy && heroEl && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ stickyBuy.classList.toggle('show', !en.isIntersecting); });
+    }, { rootMargin: '-1px 0px 0px 0px' }).observe(heroEl);
+  }
+})();
+</script>
 </body>
 </html>
