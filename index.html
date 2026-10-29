@@ -595,8 +595,10 @@
   }
   @media (max-width:820px){ body{ padding-bottom:calc(60px + env(safe-area-inset-bottom)); } }
   @supports (height:100svh){
-    .hero-pack img{ height:min(calc(100svh - 90px), 860px); }
     .reader-overlay{ height:100dvh; }
+  }
+  @media (min-width:901px){
+    @supports (height:100svh){ .hero-pack img{ width:min(100%, calc(min(100svh - 90px, 860px) * .679)); height:auto; min-height:0; } }
   }
   @media (orientation:landscape) and (max-height:520px) and (max-width:900px){
     .hero-quotes{ padding-top:20px; }
