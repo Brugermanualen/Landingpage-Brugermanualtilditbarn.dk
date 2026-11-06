@@ -638,6 +638,14 @@
   dl.facts a{ text-decoration:underline; text-underline-offset:3px; }
   .pk-thumb{ flex:none; height:33px; aspect-ratio:2.2/1; overflow:hidden; border:1.4px solid var(--blue); }
   .pk-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .media-card--links{ position:relative; cursor:pointer; }
+  .media-stretch{ color:inherit; text-decoration:none; }
+  .media-stretch::after{ content:''; position:absolute; inset:0; z-index:1; }
+  .media-card--links .media-meta{ flex-wrap:wrap; gap:6px 16px; }
+  .media-links{ display:flex; flex-wrap:wrap; gap:4px 14px; }
+  .media-links a{ position:relative; z-index:2; font-weight:700; color:inherit; text-decoration:none; }
+  @media (hover:hover){ .media-links a:hover{ text-decoration:underline; text-underline-offset:3px; } }
+  .si-logo{ flex:none; height:33px; width:auto; display:block; }
 </style>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 </head>
@@ -749,16 +757,16 @@
   </div>
   <div class="carousel" id="carousel" role="region" aria-label="Medieomtale">
     <div class="carousel-track" id="carousel-track">
-<a class="media-card" href="https://open.spotify.com/episode/3xqZNz2nY12cLR2OUlytXP" target="_blank" rel="noopener noreferrer">
+<div class="media-card media-card--links">
         <div class="media-brand-row">
-          <span class="dept-badge">PÆDAGOGISK KVARTER</span>
+          <img class="si-logo" src="assets/logos/socialt-indblik.webp" alt="Socialt Indblik" width="360" height="68" loading="lazy" decoding="async">
           <span class="pk-thumb"><img src="assets/photos/paedagogisk-kvarter.webp" alt="Niels Rahr, Dorte Rudi Andersen og Anja Kristine Hvidberg Olsen i podcaststudiet" width="264" height="120" loading="lazy" decoding="async"></span>
         </div>
         <div class="media-kicker">Podcast · Pædagogisk kvarter</div>
-        <h3 class="media-title">Kan man lave en brugermanual til børn?</h3>
+        <h3 class="media-title"><a class="media-stretch" href="https://open.spotify.com/episode/3xqZNz2nY12cLR2OUlytXP" target="_blank" rel="noopener noreferrer">Kan man lave en brugermanual til børn?</a></h3>
         <p class="media-desc">Dorte Rudi Andersen i samtale med Anja Kristine Hvidberg Olsen om hvorfor bogen er bygget som en manual — med styresystem, software og fejlkoder — og om de tre F'er: Forbind, Forstå, Formidl.</p>
-        <div class="media-meta"><span>5. nov. 2026 · 20 min</span><span>Hør afsnittet →</span></div>
-      </a>
+        <div class="media-meta"><span>5. nov. 2026 · 20 min</span><span class="media-links"><a href="https://open.spotify.com/episode/3xqZNz2nY12cLR2OUlytXP" target="_blank" rel="noopener noreferrer">Spotify →</a><a href="https://podcasts.apple.com/dk/podcast/155-kan-man-lave-en-brugermanual-til-b%C3%B8rn-med-dorte/id1640429757?i=1000800028499&amp;l=da" target="_blank" rel="noopener noreferrer">Apple Podcasts →</a></span></div>
+      </div>
 <a class="media-card" href="https://www.dr.dk/nyheder/kultur/det-er-den-vigtigste-opgave-vi-har-og-der-er-ikke-nogen-brugermanual-derfor-har-vi-skrevet-den" target="_blank" rel="noopener noreferrer">
         <div class="media-brand-row">
           <span class="media-logo-wrap"><svg class="media-logo" viewBox="0 0 134 40" aria-label="DR"><rect width="134" height="40"/><g class="media-logo-mark" transform="translate(24,9)"><path d="M21.8199,17.0835 L12.8819,17.0835 C12.6279,17.0835 12.5779,16.9815 12.5779,16.7795 L12.5779,4.7535 C12.5779,4.5525 12.6279,4.4505 12.8819,4.4505 L21.8199,4.4505 C27.1349,4.4505 29.2619,5.9685 29.2619,10.7535 C29.2619,15.5395 27.1349,17.0835 21.8199,17.0835 M29.2079,0.7795 L0.6759,0.7795 C0.4229,0.7795 0.2969,0.9305 0.2969,1.1585 L0.2969,20.3745 C0.2969,20.6025 0.4229,20.7545 0.6759,20.7545 L29.2079,20.7545 C37.5889,20.7545 41.8169,17.9695 41.8169,10.7045 C41.8169,3.4885 37.5889,0.7795 29.2079,0.7795"/><path d="M68.9093,11.9438 L58.9343,11.9438 C58.7053,11.9438 58.6303,11.8668 58.6303,11.6408 L58.6303,4.7538 C58.6303,4.5268 58.7053,4.4498 58.9343,4.4498 L68.9093,4.4498 C72.2513,4.4498 73.6693,5.3618 73.6693,8.1208 C73.6693,10.9058 72.2513,11.9438 68.9093,11.9438 M86.8303,19.9438 L78.5773,14.1218 C78.3743,13.9688 78.2483,13.8938 78.2483,13.7918 C78.2483,13.6918 78.3243,13.6398 78.5023,13.6398 C82.6783,13.6398 85.9193,11.6918 85.9193,7.3878 C85.9193,3.1098 83.1343,0.7788 77.9953,0.7788 L46.7283,0.7788 C46.4753,0.7788 46.3483,0.9308 46.3483,1.1578 L46.3483,20.3738 C46.3483,20.6028 46.4753,20.7548 46.7283,20.7548 L58.2343,20.7548 C58.4873,20.7548 58.6143,20.6028 58.6143,20.3738 L58.6143,15.8178 C58.6143,15.5898 58.6893,15.5148 58.9173,15.5148 L65.5383,15.5148 C65.8683,15.5148 65.9943,15.5398 66.2213,15.7168 L71.9703,20.4758 C72.2493,20.7038 72.4513,20.7548 72.7793,20.7548 L87.0843,20.7548 C87.2873,20.7548 87.3883,20.6778 87.3883,20.5258 C87.3883,20.3238 87.0343,20.0958 86.8303,19.9438"/></g></svg></span>
