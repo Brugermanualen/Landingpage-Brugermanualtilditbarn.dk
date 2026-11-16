@@ -1730,12 +1730,12 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
 (function(){
   'use strict';
 
-  // ---- medie-karrusel: hver omtale står stille ca. 2 sek., så glider næste ind ----
-  function initCarousel(carouselId, trackId, dotsId, HOLD){
+  // ---- medie-karrusel: skifter hver 2. sek.: stille 1,4 s, glider 0,6 s ----
+  function initCarousel(carouselId, trackId, dotsId, HOLD, SLIDE_MS){
     var carousel = document.getElementById(carouselId), track = document.getElementById(trackId), dotsEl = document.getElementById(dotsId);
     if(!carousel || !track || !dotsEl) return;
     var originals = Array.prototype.slice.call(track.children), n = originals.length;
-    var SLIDE = 800, EASE = 'cubic-bezier(.65,0,.25,1)';
+    var SLIDE = SLIDE_MS || 800, EASE = 'cubic-bezier(.65,0,.25,1)';
     var dots = originals.map(function(){ var d = document.createElement('i'); dotsEl.appendChild(d); return d; });
     dotsEl.style.setProperty('--cycle', (HOLD + SLIDE) + 'ms');
     function markDot(k){
@@ -1796,7 +1796,7 @@ Det er den varige forskel, Brugermanual til dit barn er bygget til at skabe: ikk
     carousel.addEventListener('click', function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
     carousel.addEventListener('dragstart', function(e){ e.preventDefault(); });
   }
-  initCarousel('carousel', 'carousel-track', 'carousel-dots', 2000);
+  initCarousel('carousel', 'carousel-track', 'carousel-dots', 1400, 600);   // skifter hver 2. sek. (1,4 s stille + 0,6 s glid)
   initCarousel('learn-carousel', 'learn-track', 'learn-dots', 4500);   // længere tid: der er tekst at læse
 
   // ---- fast køb-knap på mobil, når forsiden er scrollet forbi ----
